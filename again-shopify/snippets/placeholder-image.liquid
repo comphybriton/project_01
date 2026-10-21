@@ -1,0 +1,25 @@
+{% doc %}
+  Renders a branded placeholder for a missing image.
+
+  @param {string} [aspect_ratio] - CSS aspect ratio, such as "1 / 1" or "16 / 9"
+  @param {string} [color] - Placeholder background colour
+  @param {string} [label] - Accessible description
+
+  @example
+  {% render 'placeholder-image',
+    aspect_ratio: '1 / 1',
+    color: '#d6f2ed',
+    label: 'Product image placeholder'
+  %}
+{% enddoc %}
+
+<div
+  class="again-placeholder"
+  style="--again-placeholder-ratio: {{ aspect_ratio | default: '1 / 1' }}; --again-placeholder-color: {{ color | default: '#d6f2ed' }};"
+  role="img"
+  aria-label="{{ label | default: 'Image placeholder' | escape }}"
+>
+  <span class="again-placeholder__symbol" aria-hidden="true">
+    {{ 'again-teal-symbol.svg' | inline_asset_content }}
+  </span>
+</div>

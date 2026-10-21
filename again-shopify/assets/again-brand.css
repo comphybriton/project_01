@@ -1,0 +1,63 @@
+@font-face {
+  font-family: "Nicky Sans";
+  src: url("NickySans-Medium.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  src: url("FiraSans-Light.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  src: url("FiraSans-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  src: url("FiraSans-Medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+:root {
+  --again-font-heading: "Nicky Sans", system-ui, sans-serif;
+  --again-font-body: "Fira Sans", system-ui, sans-serif;
+}
+
+.again-placeholder {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: var(--again-placeholder-ratio, 1 / 1);
+  overflow: hidden;
+  background-color: var(--again-placeholder-color, #d6f2ed);
+}
+
+.again-placeholder::before {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgb(255 255 255 / 35%),
+    transparent 65%
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.again-placeholder__symbol {
+  position: relative;
+  width: 18%;
+  opacity: 0.14;
+}
