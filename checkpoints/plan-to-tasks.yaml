@@ -1,0 +1,216 @@
+metadata:
+  generated: "2026-10-12"
+  source_plan: "AGAIN_Shopify_Implementation_Plan.md"
+  target_tasks: "AGAIN_Shopify_Implementation_Plan.md (inline task list)"
+
+summary:
+  total_plan_items: 21
+  covered_plan_items: 21
+  missing_plan_items: 0
+  coverage_percentage: 100.0
+  total_tasks_generated: 39
+  orphan_tasks: 0
+
+phases:
+  - phase_id: "Phase-1"
+    phase_name: "Safe setup and design reconnaissance"
+    items:
+      - item_id: "1.1"
+        description: "Set up a safe Dawn development theme and project baseline"
+        tasks: ["T001", "T002"]
+        notes: ""
+      - item_id: "1.2"
+        description: "Audit visual references and document open decisions"
+        tasks: ["T003", "T004"]
+        notes: ""
+  - phase_id: "Phase-2"
+    phase_name: "Shopify fundamentals and design foundation"
+    items:
+      - item_id: "2.1"
+        description: "Understand existing Dawn architecture"
+        tasks: ["T005"]
+        notes: ""
+      - item_id: "2.2"
+        description: "Set up brand settings, typography and styling"
+        tasks: ["T006", "T007", "T008"]
+        notes: ""
+      - item_id: "2.3"
+        description: "Implement and verify media fallbacks and editor controls"
+        tasks: ["T009", "T010"]
+        notes: ""
+  - phase_id: "Phase-3"
+    phase_name: "Shared storefront shell and homepage"
+    items:
+      - item_id: "3.1"
+        description: "Adapt global navigation and footer"
+        tasks: ["T011"]
+        notes: ""
+      - item_id: "3.2"
+        description: "Build configurable homepage content sections"
+        tasks: ["T012", "T013", "T014", "T015"]
+        notes: ""
+      - item_id: "3.3"
+        description: "Assemble homepage and verify responsive design"
+        tasks: ["T016"]
+        notes: ""
+  - phase_id: "Phase-4"
+    phase_name: "Editorial pages and reusable content blocks"
+    items:
+      - item_id: "4.1"
+        description: "Build generic editorial page sections"
+        tasks: ["T017"]
+        notes: ""
+      - item_id: "4.2"
+        description: "Build About, Ingredients and FAQ content"
+        tasks: ["T018", "T019", "T020"]
+        notes: ""
+      - item_id: "4.3"
+        description: "Create and assign JSON page templates"
+        tasks: ["T020", "T021"]
+        notes: "T020 also creates the page template files."
+  - phase_id: "Phase-5"
+    phase_name: "Products, variants and buying experience"
+    items:
+      - item_id: "5.1"
+        description: "Create catalog data and verify product/bundle decisions"
+        tasks: ["T022"]
+        notes: ""
+      - item_id: "5.2"
+        description: "Build reusable product media, form and content sections"
+        tasks: ["T023", "T024", "T025"]
+        notes: ""
+      - item_id: "5.3"
+        description: "Assemble and test product templates"
+        tasks: ["T026"]
+        notes: ""
+  - phase_id: "Phase-6"
+    phase_name: "Subscriptions, bundle and customer portal"
+    items:
+      - item_id: "6.1"
+        description: "Evaluate and select a provider against verified capabilities"
+        tasks: ["T027"]
+        notes: ""
+      - item_id: "6.2"
+        description: "Configure and submit real selling plans and validate kit behavior"
+        tasks: ["T028", "T029", "T030"]
+        notes: ""
+      - item_id: "6.3"
+        description: "Configure and test the subscription portal"
+        tasks: ["T031"]
+        notes: ""
+  - phase_id: "Phase-7"
+    phase_name: "Cart, checkout, account styling and quality"
+    items:
+      - item_id: "7.1"
+        description: "Implement and validate cart behavior"
+        tasks: ["T032", "T033", "T034"]
+        notes: ""
+      - item_id: "7.2"
+        description: "Configure checkout branding and run quality audits"
+        tasks: ["T035", "T036"]
+        notes: ""
+  - phase_id: "Phase-8"
+    phase_name: "Final walkthrough and portfolio packaging"
+    items:
+      - item_id: "8.1"
+        description: "Document setup and capture real theme evidence"
+        tasks: ["T037", "T038"]
+        notes: ""
+      - item_id: "8.2"
+        description: "Complete journey evidence and known limitations"
+        tasks: ["T039"]
+        notes: ""
+
+missing_plan_items: []
+orphan_tasks: []
+
+upstream_trace:
+  - plan_item: "1.1"
+    source_requirements: ["REQ-001"]
+    tasks: ["T001", "T002"]
+    full_trace: "REQ-001 → Phase-1.1 → T001,T002"
+  - plan_item: "1.2"
+    source_requirements: ["REQ-001", "REQ-008", "REQ-013"]
+    tasks: ["T003", "T004"]
+    full_trace: "REQ-001,REQ-008,REQ-013 → Phase-1.2 → T003,T004"
+  - plan_item: "2.1"
+    source_requirements: ["REQ-002"]
+    tasks: ["T005"]
+    full_trace: "REQ-002 → Phase-2.1 → T005"
+  - plan_item: "2.2"
+    source_requirements: ["REQ-002", "REQ-012"]
+    tasks: ["T006", "T007", "T008"]
+    full_trace: "REQ-002,REQ-012 → Phase-2.2 → T006,T007,T008"
+  - plan_item: "2.3"
+    source_requirements: ["REQ-003", "REQ-012"]
+    tasks: ["T009", "T010"]
+    full_trace: "REQ-003,REQ-012 → Phase-2.3 → T009,T010"
+  - plan_item: "3.1"
+    source_requirements: ["REQ-004"]
+    tasks: ["T011"]
+    full_trace: "REQ-004 → Phase-3.1 → T011"
+  - plan_item: "3.2"
+    source_requirements: ["REQ-003", "REQ-004", "REQ-012"]
+    tasks: ["T012", "T013", "T014", "T015"]
+    full_trace: "REQ-003,REQ-004,REQ-012 → Phase-3.2 → T012,T013,T014,T015"
+  - plan_item: "3.3"
+    source_requirements: ["REQ-004", "REQ-012"]
+    tasks: ["T016"]
+    full_trace: "REQ-004,REQ-012 → Phase-3.3 → T016"
+  - plan_item: "4.1"
+    source_requirements: ["REQ-003", "REQ-005"]
+    tasks: ["T017"]
+    full_trace: "REQ-003,REQ-005 → Phase-4.1 → T017"
+  - plan_item: "4.2"
+    source_requirements: ["REQ-005", "REQ-012"]
+    tasks: ["T018", "T019", "T020"]
+    full_trace: "REQ-005,REQ-012 → Phase-4.2 → T018,T019,T020"
+  - plan_item: "4.3"
+    source_requirements: ["REQ-005"]
+    tasks: ["T020", "T021"]
+    full_trace: "REQ-005 → Phase-4.3 → T020,T021"
+  - plan_item: "5.1"
+    source_requirements: ["REQ-006", "REQ-008"]
+    tasks: ["T022"]
+    full_trace: "REQ-006,REQ-008 → Phase-5.1 → T022"
+  - plan_item: "5.2"
+    source_requirements: ["REQ-003", "REQ-006"]
+    tasks: ["T023", "T024", "T025"]
+    full_trace: "REQ-003,REQ-006 → Phase-5.2 → T023,T024,T025"
+  - plan_item: "5.3"
+    source_requirements: ["REQ-006"]
+    tasks: ["T026"]
+    full_trace: "REQ-006 → Phase-5.3 → T026"
+  - plan_item: "6.1"
+    source_requirements: ["REQ-007", "REQ-008", "REQ-010"]
+    tasks: ["T027"]
+    full_trace: "REQ-007,REQ-008,REQ-010 → Phase-6.1 → T027"
+  - plan_item: "6.2"
+    source_requirements: ["REQ-007", "REQ-008"]
+    tasks: ["T028", "T029", "T030"]
+    full_trace: "REQ-007,REQ-008 → Phase-6.2 → T028,T029,T030"
+  - plan_item: "6.3"
+    source_requirements: ["REQ-010"]
+    tasks: ["T031"]
+    full_trace: "REQ-010 → Phase-6.3 → T031"
+  - plan_item: "7.1"
+    source_requirements: ["REQ-009", "REQ-012"]
+    tasks: ["T032", "T033", "T034"]
+    full_trace: "REQ-009,REQ-012 → Phase-7.1 → T032,T033,T034"
+  - plan_item: "7.2"
+    source_requirements: ["REQ-011", "REQ-012"]
+    tasks: ["T035", "T036"]
+    full_trace: "REQ-011,REQ-012 → Phase-7.2 → T035,T036"
+  - plan_item: "8.1"
+    source_requirements: ["REQ-013"]
+    tasks: ["T037", "T038"]
+    full_trace: "REQ-013 → Phase-8.1 → T037,T038"
+  - plan_item: "8.2"
+    source_requirements: ["REQ-013"]
+    tasks: ["T039"]
+    full_trace: "REQ-013 → Phase-8.2 → T039"
+
+validation:
+  passed: true
+  errors: []
+  warnings: []

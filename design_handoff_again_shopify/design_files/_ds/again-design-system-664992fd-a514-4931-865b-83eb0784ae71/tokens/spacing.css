@@ -1,0 +1,41 @@
+/* AGAIN — Spacing, radii, shadows, layout.
+   Brand leans clean, simple, tactile. Generous whitespace, soft natural shadows,
+   gently rounded corners (calm, not bubbly). */
+
+:root {
+  /* Spacing scale (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* Soft, natural shadows — low contrast, teal-tinted */
+  --shadow-xs: 0 1px 2px rgba(13, 63, 56, 0.06);
+  --shadow-sm: 0 2px 8px rgba(13, 63, 56, 0.07);
+  --shadow-md: 0 8px 24px rgba(13, 63, 56, 0.09);
+  --shadow-lg: 0 18px 48px rgba(13, 63, 56, 0.12);
+  --shadow-focus: 0 0 0 3px rgba(13, 63, 56, 0.18);
+
+  /* Layout */
+  --container-max: 1200px;
+  --container-narrow: 720px;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);   /* @kind other */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);       /* @kind other */
+  --dur-fast: 140ms;   /* @kind other */
+  --dur-base: 220ms;   /* @kind other */
+  --dur-slow: 360ms;   /* @kind other */
+}

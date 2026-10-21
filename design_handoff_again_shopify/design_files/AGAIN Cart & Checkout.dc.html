@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/again-design-system-664992fd-a514-4931-865b-83eb0784ae71/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/again-design-system-664992fd-a514-4931-865b-83eb0784ae71/tokens/colors.css">
+<link rel="stylesheet" href="_ds/again-design-system-664992fd-a514-4931-865b-83eb0784ae71/tokens/typography.css">
+<link rel="stylesheet" href="_ds/again-design-system-664992fd-a514-4931-865b-83eb0784ae71/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/again-design-system-664992fd-a514-4931-865b-83eb0784ae71/tokens/base.css">
+<link rel="stylesheet" href="_ds/again-design-system-664992fd-a514-4931-865b-83eb0784ae71/styles.css">
+<script src="_ds/again-design-system-664992fd-a514-4931-865b-83eb0784ae71/_ds_bundle.js"></script>
+</helmet>
+
+<!-- ░░░ TITLE ░░░ -->
+<div style="position:absolute; left:0px; top:0px; width:900px;">
+  <div data-drags-parent="1" style="cursor:grab; user-select:none;">
+    <div style="font-family:var(--font-body); font-weight:500; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:#4c6661;">AGAIN · Cart &amp; Checkout flow</div>
+    <div style="font-family:var(--font-heading); font-weight:500; font-size:34px; letter-spacing:-0.02em; color:#0d3f38; margin-top:8px;">Bag → Checkout → Confirmation</div>
+    <div style="font-family:var(--font-body); font-weight:300; font-size:15px; line-height:1.6; color:#4c6661; margin-top:10px; max-width:700px;">The full purchase flow, mobile-first at left and desktop at right. A free-shipping progress nudge threads through the bag; checkout is one page (contact · delivery · payment) with a live order summary; confirmation recaps the order. Subtotal $44.75 + $5.25 standard shipping = $50.00. Imagery is tactile placeholder until real photography lands.</div>
+  </div>
+</div>
+
+<!-- ══════════════════ ROW LABEL: CART ══════════════════ -->
+<div style="position:absolute; left:0px; top:150px; width:900px;">
+  <div data-drags-parent="1" style="cursor:grab; user-select:none; display:flex; align-items:center; gap:12px;">
+    <span style="font-family:var(--font-heading); font-weight:500; font-size:22px; letter-spacing:-0.01em; color:#0d3f38;">1 · The bag</span>
+    <span style="font-family:var(--font-body); font-weight:300; font-size:13.5px; color:#4c6661;">Mobile = full bag page · Desktop = slide-out drawer over the store</span>
+  </div>
+</div>
+
+<!-- ░░░░░ CART — MOBILE ░░░░░ -->
+<div style="position:absolute; left:0px; top:196px; width:392px;">
+  <div data-drags-parent="1" style="cursor:grab; user-select:none; font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#4c6661; margin-bottom:12px;">Mobile · 392px</div>
+
+  <div data-screen-label="Cart — mobile" style="width:392px; border-radius:30px; overflow:hidden; box-shadow:0 18px 50px rgba(13,63,56,0.16); background:var(--again-off-white); border:1px solid rgba(13,63,56,0.06);">
+    <!-- status bar -->
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:11px 24px 4px; background:#fff; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--text-primary);"><span>9:41</span><span style="display:flex; gap:5px; align-items:center;"><svg width="16" height="11" viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="7" width="3" height="5" rx="1"></rect><rect x="4.5" y="4.5" width="3" height="7.5" rx="1"></rect><rect x="9" y="2" width="3" height="10" rx="1"></rect><rect x="13.5" y="0" width="3" height="12" rx="1" opacity="0.35"></rect></svg><svg width="22" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1"><rect x="1" y="1" width="19" height="10" rx="2.5"></rect><rect x="2.5" y="2.5" width="13" height="7" rx="1.2" fill="currentColor" stroke="none"></rect><rect x="21" y="4" width="2" height="4" rx="1" fill="currentColor" stroke="none"></rect></svg></span></div>
+    <!-- nav -->
+    <header style="display:flex; align-items:center; justify-content:space-between; padding:12px 20px; background:#fff; border-bottom:1px solid var(--border-subtle);">
+      <span style="display:flex; align-items:center; justify-content:center; width:34px; height:34px; color:var(--text-primary);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></span>
+      <img src="assets/logos/again-teal-logo.svg" alt="AGAIN" style="height:20px;">
+      <span style="position:relative; display:flex; align-items:center; justify-content:center; width:34px; height:34px; color:var(--accent);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 7h12l-1 13H7L6 7Z"></path><path d="M9 7a3 3 0 0 1 6 0"></path></svg><span style="position:absolute; top:0; right:0; min-width:15px; height:15px; padding:0 3px; border-radius:999px; background:var(--accent); color:#fff; font-size:9.5px; font-weight:600; display:flex; align-items:center; justify-content:center;">2</span></span>
+    </header>
+
+    <!-- heading -->
+    <div style="padding:22px 22px 0; background:var(--again-off-white);">
+      <h1 style="font-family:var(--font-heading); font-weight:500; font-size:30px; line-height:1.0; letter-spacing:-0.02em; color:var(--text-primary); margin:0;">Your bag <span style="color:var(--text-tertiary);">(2)</span></h1>
+    </div>
+
+    <!-- free shipping progress -->
+    <div style="padding:18px 22px 6px; background:var(--again-off-white);">
+      <div style="background:#fff; border:1px solid var(--border-subtle); border-radius:16px; padding:14px 16px;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="12" height="9" rx="1"></rect><path d="M14 10h4l3 3v3h-7z"></path><circle cx="7" cy="18.5" r="1.6"></circle><circle cx="17.5" cy="18.5" r="1.6"></circle></svg><span style="font-family:var(--font-body); font-weight:300; font-size:13px; color:var(--text-primary);">You're <strong style="font-weight:500;">$5.25</strong> away from free shipping</span></div>
+        <div style="height:7px; border-radius:999px; background:var(--again-off-white); overflow:hidden;"><div style="width:89.5%; height:100%; border-radius:999px; background:var(--accent);"></div></div>
+      </div>
+    </div>
+
+    <!-- line items -->
+    <div style="padding:12px 22px 4px; background:var(--again-off-white);">
+      <!-- balm -->
+      <div style="display:flex; gap:14px; padding:16px 0; border-bottom:1px solid var(--border-subtle);">
+        <div style="width:78px; height:78px; flex-shrink:0; background:var(--again-fresh-blue); border-radius:14px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;"><div style="position:absolute; inset:0; background:radial-gradient(120% 90% at 30% 22%, rgba(255,255,255,0.5), rgba(255,255,255,0) 55%);"></div><img src="assets/logos/again-teal-symbol.svg" alt="" style="position:relative; width:40%; opacity:0.18;"></div>
+        <div style="flex:1; min-width:0;">
+          <div style="display:flex; justify-content:space-between; gap:8px;"><div style="font-family:var(--font-heading); font-weight:500; font-size:16px; color:var(--text-primary);">The Deodorant Balm</div><button style="border:none; background:transparent; cursor:pointer; color:var(--text-tertiary); padding:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></button></div>
+          <div style="font-family:var(--font-body); font-weight:300; font-size:12px; color:var(--text-secondary); margin:2px 0 4px;">Eucalyptus &amp; Bergamot · 60g</div>
+          <div style="display:inline-flex; align-items:center; gap:6px; margin-bottom:10px;"><span style="font-family:var(--font-body); font-weight:500; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--accent); background:var(--teal-050); border-radius:999px; padding:3px 8px;">Subscribe · every 6 wks</span></div>
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <x-import component-from-global-scope="AGAINDesignSystem_664992.QuantityStepper" value="1" size="sm" hint-size="96px,38px"></x-import>
+            <div style="text-align:right;"><span style="font-family:var(--font-heading); font-weight:500; font-size:15px; color:var(--text-primary);">$29.75</span> <span style="font-family:var(--font-body); font-weight:300; font-size:12px; color:var(--text-tertiary); text-decoration:line-through;">$35</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- companion -->
+      <div style="display:flex; gap:14px; padding:16px 0; border-bottom:1px solid var(--border-subtle);">
+        <div style="width:78px; height:78px; flex-shrink:0; background:var(--again-sand); border-radius:14px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;"><div style="position:absolute; inset:0; background:radial-gradient(120% 90% at 30% 22%, rgba(255,255,255,0.45), rgba(255,255,255,0) 55%);"></div><img src="assets/logos/again-teal-symbol.svg" alt="" style="position:relative; width:40%; opacity:0.18;"></div>
+        <div style="flex:1; min-width:0;">
+          <div style="display:flex; justify-content:space-between; gap:8px;"><div style="font-family:var(--font-heading); font-weight:500; font-size:16px; color:var(--text-primary);">The Companion</div><button style="border:none; background:transparent; cursor:pointer; color:var(--text-tertiary); padding:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></button></div>
+          <div style="font-family:var(--font-body); font-weight:300; font-size:12px; color:var(--text-secondary); margin:2px 0 12px;">Solid brass · one-time</div>
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <x-import component-from-global-scope="AGAINDesignSystem_664992.QuantityStepper" value="1" size="sm" hint-size="96px,38px"></x-import>
+            <span style="font-family:var(--font-heading); font-weight:500; font-size:15px; color:var(--text-primary);">$15</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- summary -->
+    <div style="padding:18px 22px 8px; background:var(--again-off-white);">
+      <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span style="font-family:var(--font-body); font-weight:300; font-size:14px; color:var(--text-secondary);">Subtotal</span><span style="font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--text-primary);">$44.75</span></div>
+      <p style="font-family:var(--font-body); font-weight:300; font-size:12px; color:var(--text-tertiary); margin:0 0 14px;">Shipping &amp; taxes calculated at checkout.</p>
+      <x-import component-from-global-scope="AGAINDesignSystem_664992.Button" variant="solid" size="lg" full-width="true" hint-size="100%,52px">Checkout · $44.75</x-import>
+      <div style="text-align:center; margin-top:12px;"><a style="font-family:var(--font-body); font-weight:500; font-size:13.5px; color:var(--accent); cursor:pointer;">or continue shopping</a></div>
+    </div>
+
+    <!-- you might also like -->
+    <div style="padding:22px 22px 30px; background:var(--again-off-white);">
+      <div style="font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-tertiary); margin-bottom:12px;">You might also like</div>
+      <div style="display:flex; align-items:center; gap:14px; background:#fff; border:1px solid var(--border-subtle); border-radius:16px; padding:12px;">
+        <div style="width:56px; height:56px; flex-shrink:0; background:var(--again-cool-blue); border-radius:12px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;"><div style="position:absolute; inset:0; background:radial-gradient(120% 90% at 30% 22%, rgba(255,255,255,0.4), rgba(255,255,255,0) 55%);"></div><img src="assets/logos/again-white-symbol.svg" alt="" style="position:relative; width:44%; opacity:0.3;"></div>
+        <div style="flex:1;"><div style="font-family:var(--font-heading); font-weight:500; font-size:15px; color:var(--text-primary);">The Starter Kit</div><div style="font-family:var(--font-body); font-weight:300; font-size:12px; color:var(--text-secondary); margin-top:1px;">Save $5 vs buying separately</div></div>
+        <button style="border:1px solid var(--border-default); background:#fff; border-radius:999px; padding:7px 14px; font-family:var(--font-body); font-weight:500; font-size:12.5px; color:var(--accent); cursor:pointer;">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ░░░░░ CART — DESKTOP (drawer over store) ░░░░░ -->
+<div style="position:absolute; left:480px; top:196px; width:1200px;">
+  <div data-drags-parent="1" style="cursor:grab; user-select:none; font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#4c6661; margin-bottom:12px;">Desktop · slide-out drawer</div>
+
+  <div data-screen-label="Cart drawer — desktop" style="width:1200px; height:760px; border-radius:14px; overflow:hidden; box-shadow:0 18px 50px rgba(13,63,56,0.16); position:relative; background:var(--again-off-white); border:1px solid rgba(13,63,56,0.06);">
+    <!-- dimmed store backdrop -->
+    <div style="position:absolute; inset:0; background:var(--again-off-white);">
+      <div style="background:var(--again-deep-teal); padding:11px 48px; text-align:center; font-family:var(--font-body); font-weight:500; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--again-fresh-blue);">Shipping on us for orders over $50</div>
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:18px 48px; background:#fff; border-bottom:1px solid var(--border-subtle);">
+        <img src="assets/logos/again-teal-logo.svg" alt="AGAIN" style="height:24px;">
+        <div style="display:flex; gap:30px; font-family:var(--font-body); font-weight:500; font-size:14.5px; color:var(--text-secondary);"><span>Shop</span><span>How it works</span><span>Ingredients</span><span>Our Story</span></div>
+        <div style="display:flex; gap:14px; color:var(--text-primary);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-3.5 3.6-6 8-6s8 2.5 8 6"></path></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6"><path d="M6 7h12l-1 13H7L6 7Z"></path><path d="M9 7a3 3 0 0 1 6 0"></path></svg></div>
+      </div>
+      <div style="padding:52px 48px;">
+        <div style="height:26px; width:220px; border-radius:8px; background:rgba(13,63,56,0.06); margin-bottom:26px;"></div>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:22px;"><div style="height:280px; border-radius:20px; background:rgba(13,63,56,0.05);"></div><div style="height:280px; border-radius:20px; background:rgba(13,63,56,0.05);"></div><div style="height:280px; border-radius:20px; background:rgba(13,63,56,0.05);"></div></div>
+      </div>
+    </div>
+    <!-- scrim -->
+    <div style="position:absolute; inset:0; background:rgba(8,41,37,0.32);"></div>
+
+    <!-- drawer -->
+    <aside style="position:absolute; top:0; right:0; height:100%; width:410px; background:var(--again-off-white); box-shadow:-12px 0 40px rgba(8,41,37,0.18); display:flex; flex-direction:column;">
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:22px 24px; border-bottom:1px solid var(--border-subtle); background:#fff;">
+        <h3 style="font-family:var(--font-heading); font-weight:500; font-size:20px; letter-spacing:-0.01em; color:var(--text-primary); margin:0;">Your bag <span style="color:var(--text-tertiary);">(2)</span></h3>
+        <button style="border:none; background:transparent; cursor:pointer; color:var(--text-primary); display:flex;" aria-label="Close"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+      </div>
+
+      <!-- progress -->
+      <div style="padding:16px 24px; border-bottom:1px solid var(--border-subtle); background:#fff;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:9px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="12" height="9" rx="1"></rect><path d="M14 10h4l3 3v3h-7z"></path><circle cx="7" cy="18.5" r="1.6"></circle><circle cx="17.5" cy="18.5" r="1.6"></circle></svg><span style="font-family:var(--font-body); font-weight:300; font-size:12.5px; color:var(--text-primary);">You're <strong style="font-weight:500;">$5.25</strong> away from free shipping</span></div>
+        <div style="height:7px; border-radius:999px; background:var(--again-off-white); overflow:hidden;"><div style="width:89.5%; height:100%; border-radius:999px; background:var(--accent);"></div></div>
+      </div>
+
+      <!-- items -->
+      <div style="flex:1; overflow:hidden; padding:4px 24px;">
+        <div style="display:flex; gap:14px; padding:18px 0; border-bottom:1px solid var(--border-subtle);">
+          <div style="width:70px; height:70px; flex-shrink:0; background:var(--again-fresh-blue); border-radius:12px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;"><div style="position:absolute; inset:0; background:radial-gradient(120% 90% at 30% 22%, rgba(255,255,255,0.5), rgba(255,255,255,0) 55%);"></div><img src="assets/logos/again-teal-symbol.svg" alt="" style="position:relative; width:40%; opacity:0.18;"></div>
+          <div style="flex:1;">
+            <div style="font-family:var(--font-heading); font-weight:500; font-size:15px; color:var(--text-primary);">The Deodorant Balm</div>
+            <div style="font-family:var(--font-body); font-weight:300; font-size:12px; color:var(--text-secondary); margin:2px 0 4px;">Eucalyptus &amp; Bergamot · 60g</div>
+            <div style="font-family:var(--font-body); font-weight:500; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--accent); margin-bottom:9px;">Subscribe · every 6 wks</div>
+            <x-import component-from-global-scope="AGAINDesignSystem_664992.QuantityStepper" value="1" size="sm" hint-size="96px,36px"></x-import>
+          </div>
+          <div style="text-align:right;"><div style="font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--text-primary);">$29.75</div><div style="font-family:var(--font-body); font-weight:300; font-size:11.5px; color:var(--text-tertiary); text-decoration:line-through;">$35</div></div>
+        </div>
+        <div style="display:flex; gap:14px; padding:18px 0; border-bottom:1px solid var(--border-subtle);">
+          <div style="width:70px; height:70px; flex-shrink:0; background:var(--again-sand); border-radius:12px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;"><div style="position:absolute; inset:0; background:radial-gradient(120% 90% at 30% 22%, rgba(255,255,255,0.45), rgba(255,255,255,0) 55%);"></div><img src="assets/logos/again-teal-symbol.svg" alt="" style="position:relative; width:40%; opacity:0.18;"></div>
+          <div style="flex:1;">
+            <div style="font-family:var(--font-heading); font-weight:500; font-size:15px; color:var(--text-primary);">The Companion</div>
+            <div style="font-family:var(--font-body); font-weight:300; font-size:12px; color:var(--text-secondary); margin:2px 0 9px;">Solid brass · one-time</div>
+            <x-import component-from-global-scope="AGAINDesignSystem_664992.QuantityStepper" value="1" size="sm" hint-size="96px,36px"></x-import>
+          </div>
+          <div style="text-align:right;"><div style="font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--text-primary);">$15</div></div>
+        </div>
+      </div>
+
+      <!-- footer -->
+      <div style="padding:20px 24px; border-top:1px solid var(--border-subtle); background:#fff;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:4px;"><span style="font-family:var(--font-body); font-weight:300; font-size:14px; color:var(--text-secondary);">Subtotal</span><span style="font-family:var(--font-heading); font-weight:500; font-size:18px; color:var(--text-primary);">$44.75</span></div>
+        <p style="font-family:var(--font-body); font-weight:300; font-size:12px; color:var(--text-tertiary); margin:0 0 14px;">Shipping &amp; taxes calculated at checkout.</p>
+        <x-import component-from-global-scope="AGAINDesignSystem_664992.Button" variant="solid" size="lg" full-width="true" hint-size="100%,52px">Checkout</x-import>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ══════════════════ ROW LABEL: CHECKOUT ══════════════════ -->
+<div style="position:absolute; left:0px; top:1140px; width:900px;">
+  <div data-drags-parent="1" style="cursor:grab; user-select:none; display:flex; align-items:center; gap:12px;">
+    <span style="font-family:var(--font-heading); font-weight:500; font-size:22px; letter-spacing:-0.01em; color:#0d3f38;">2 · Checkout</span>
+    <span style="font-family:var(--font-body); font-weight:300; font-size:13.5px; color:#4c6661;">One page — contact · delivery · payment, with a live order summary</span>
+  </div>
+</div>
+
+<!-- ░░░░░ CHECKOUT — MOBILE ░░░░░ -->
+<div style="position:absolute; left:0px; top:1186px; width:392px;">
+  <div data-drags-parent="1" style="cursor:grab; user-select:none; font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#4c6661; margin-bottom:12px;">Mobile · 392px</div>
+
+  <div data-screen-label="Checkout — mobile" style="width:392px; border-radius:30px; overflow:hidden; box-shadow:0 18px 50px rgba(13,63,56,0.16); background:#fff; border:1px solid rgba(13,63,56,0.06);">
+    <!-- status bar -->
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:11px 24px 4px; background:#fff; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--text-primary);"><span>9:41</span><span style="display:flex; gap:5px; align-items:center;"><svg width="16" height="11" viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="7" width="3" height="5" rx="1"></rect><rect x="4.5" y="4.5" width="3" height="7.5" rx="1"></rect><rect x="9" y="2" width="3" height="10" rx="1"></rect><rect x="13.5" y="0" width="3" height="12" rx="1" opacity="0.35"></rect></svg><svg width="22" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1"><rect x="1" y="1" width="19" height="10" rx="2.5"></rect><rect x="2.5" y="2.5" width="13" height="7" rx="1.2" fill="currentColor" stroke="none"></rect><rect x="21" y="4" width="2" height="4" rx="1" fill="currentColor" stroke="none"></rect></svg></span></div>
+    <!-- simplified checkout header -->
+    <header style="display:flex; align-items:center; justify-content:center; position:relative; padding:14px 20px; border-bottom:1px solid var(--border-subtle);">
+      <span style="position:absolute; left:20px; display:flex; align-items:center; gap:5px; color:var(--text-secondary);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg></span>
+      <img src="assets/logos/again-teal-logo.svg" alt="AGAIN" style="height:20px;">
+      <span style="position:absolute; right:20px; display:flex; align-items:center; color:var(--text-tertiary);"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg></span>
+    </header>
+
+    <!-- collapsible order summary -->
+    <button style="width:100%; display:flex; align-items:center; justify-content:space-between; padding:14px 22px; background:var(--again-fresh-blue); border:none; border-bottom:1px solid rgba(13,63,56,0.08); cursor:pointer;">
+      <span style="display:flex; align-items:center; gap:8px; font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--accent);">Order summary<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></span>
+      <span style="font-family:var(--font-heading); font-weight:500; font-size:17px; color:var(--text-primary);">$50.00</span>
+    </button>
+
+    <!-- express -->
+    <div style="padding:22px 22px 6px;">
+      <div style="font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-tertiary); text-align:center; margin-bottom:12px;">Express checkout</div>
+      <div style="display:flex; gap:8px;">
+        <div style="flex:1; height:44px; border-radius:12px; background:var(--again-deep-teal); display:flex; align-items:center; justify-content:center; font-family:var(--font-body); font-weight:600; font-size:13px; color:#fff; cursor:pointer;">Shop Pay</div>
+        <div style="flex:1; height:44px; border-radius:12px; background:#fff; border:1px solid var(--border-default); display:flex; align-items:center; justify-content:center; font-family:var(--font-body); font-weight:600; font-size:13px; color:var(--text-primary); cursor:pointer;">Apple&nbsp;Pay</div>
+        <div style="flex:1; height:44px; border-radius:12px; background:#fff; border:1px solid var(--border-default); display:flex; align-items:center; justify-content:center; font-family:var(--font-body); font-weight:600; font-size:13px; color:var(--text-primary); cursor:pointer;">PayPal</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px; margin:18px 0 4px;"><div style="flex:1; height:1px; background:var(--border-subtle);"></div><span style="font-family:var(--font-body); font-weight:300; font-size:12px; color:var(--text-tertiary);">or pay with card</span><div style="flex:1; height:1px; background:var(--border-subtle);"></div></div>
+    </div>
+
+    <!-- contact -->
+    <section style="padding:14px 22px 4px;">
+      <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px;"><h2 style="font-family:var(--font-heading); font-weight:500; font-size:18px; letter-spacing:-0.01em; color:var(--text-primary); margin:0;">Contact</h2><a style="font-family:var(--font-body); font-weight:400; font-size:12.5px; color:var(--accent); cursor:pointer;">Log in</a></div>
+      <x-import component-from-global-scope="AGAINDesignSystem_664992.Input" type="email" placeholder="you@email.com" hint-size="100%,48px"></x-import>
+      <label style="display:flex; align-items:center; gap:9px; margin-top:12px; cursor:pointer;"><span style="width:19px; height:19px; border-radius:5px; background:var(--accent); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2 5 8.5 9.5 3.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span style="font-family:var(--font-body); font-weight:300; font-size:13px; color:var(--text-secondary);">Email me with news and offers</span></label>
+    </section>
+
+    <!-- delivery -->
+    <section style="padding:22px 22px 4px;">
+      <h2 style="font-family:var(--font-heading); font-weight:500; font-size:18px; letter-spacing:-0.01em; color:var(--text-primary); margin:0 0 12px;">Delivery</h2>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div style="display:flex; gap:12px;"><div style="flex:1;"><x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="First name" hint-size="100%,48px"></x-import></div><div style="flex:1;"><x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="Last name" hint-size="100%,48px"></x-import></div></div>
+        <x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="Address" hint-size="100%,48px"></x-import>
+        <x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="Apartment, suite, etc. (optional)" hint-size="100%,48px"></x-import>
+        <div style="display:flex; gap:12px;"><div style="flex:1.4;"><x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="City" hint-size="100%,48px"></x-import></div><div style="flex:1;"><x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="State" hint-size="100%,48px"></x-import></div><div style="flex:1;"><x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="Postcode" hint-size="100%,48px"></x-import></div></div>
+      </div>
+    </section>
+
+    <!-- delivery method -->
+    <section style="padding:22px 22px 4px;">
+      <h2 style="font-family:var(--font-heading); font-weight:500; font-size:18px; letter-spacing:-0.01em; color:var(--text-primary); margin:0 0 12px;">Shipping method</h2>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="display:flex; align-items:center; gap:12px; padding:14px; border-radius:12px; border:1.5px solid var(--accent); background:var(--teal-050);"><span style="width:18px; height:18px; border-radius:999px; flex-shrink:0; border:5px solid var(--accent); background:#fff;"></span><div style="flex:1;"><div style="font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--text-primary);">Standard</div><div style="font-family:var(--font-body); font-weight:300; font-size:12px; color:var(--text-secondary);">3–5 business days</div></div><span style="font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--text-primary);">$5.25</span></div>
+        <div style="display:flex; align-items:center; gap:12px; padding:14px; border-radius:12px; border:1.5px solid var(--border-default); background:#fff;"><span style="width:18px; height:18px; border-radius:999px; flex-shrink:0; border:2px solid var(--border-strong); background:#fff;"></span><div style="flex:1;"><div style="font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--text-primary);">Express</div><div style="font-family:var(--font-body); font-weight:300; font-size:12px; color:var(--text-secondary);">1–2 business days</div></div><span style="font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--text-primary);">$12</span></div>
+      </div>
+    </section>
+
+    <!-- payment -->
+    <section style="padding:22px 22px 4px;">
+      <h2 style="font-family:var(--font-heading); font-weight:500; font-size:18px; letter-spacing:-0.01em; color:var(--text-primary); margin:0 0 4px;">Payment</h2>
+      <p style="font-family:var(--font-body); font-weight:300; font-size:12.5px; color:var(--text-tertiary); margin:0 0 12px; display:flex; align-items:center; gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>All transactions are secure and encrypted.</p>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div style="position:relative;"><x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="Card number" hint-size="100%,48px"></x-import><div style="position:absolute; right:12px; top:50%; transform:translateY(-50%); display:flex; gap:4px;"><span style="font-family:var(--font-body); font-weight:700; font-size:9px; color:#1a1f71; background:#fff; border:1px solid var(--border-subtle); border-radius:4px; padding:2px 4px;">VISA</span><span style="font-family:var(--font-body); font-weight:700; font-size:9px; color:#eb001b; background:#fff; border:1px solid var(--border-subtle); border-radius:4px; padding:2px 4px;">MC</span></div></div>
+        <div style="display:flex; gap:12px;"><div style="flex:1;"><x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="MM / YY" hint-size="100%,48px"></x-import></div><div style="flex:1;"><x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="CVC" hint-size="100%,48px"></x-import></div></div>
+        <x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="Name on card" hint-size="100%,48px"></x-import>
+      </div>
+    </section>
+
+    <!-- pay button -->
+    <div style="padding:22px 22px 30px;">
+      <x-import component-from-global-scope="AGAINDesignSystem_664992.Button" variant="solid" size="lg" full-width="true" hint-size="100%,54px">Pay now · $50.00</x-import>
+      <div style="display:flex; align-items:center; justify-content:center; gap:6px; margin-top:12px; font-family:var(--font-body); font-weight:300; font-size:12px; color:var(--text-tertiary);"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>Secure checkout · 30-day guarantee</div>
+    </div>
+  </div>
+</div>
+
+<!-- ░░░░░ CHECKOUT — DESKTOP ░░░░░ -->
+<div style="position:absolute; left:480px; top:1186px; width:1200px;">
+  <div data-drags-parent="1" style="cursor:grab; user-select:none; font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#4c6661; margin-bottom:12px;">Desktop · 1200px</div>
+
+  <div data-screen-label="Checkout — desktop" style="width:1200px; border-radius:14px; overflow:hidden; box-shadow:0 18px 50px rgba(13,63,56,0.16); background:#fff; border:1px solid rgba(13,63,56,0.06);">
+    <!-- browser chrome -->
+    <div style="display:flex; align-items:center; gap:14px; padding:11px 18px; background:#fff; border-bottom:1px solid var(--border-subtle);">
+      <div style="display:flex; gap:7px;"><span style="width:11px; height:11px; border-radius:999px; background:#ff5f57;"></span><span style="width:11px; height:11px; border-radius:999px; background:#febc2e;"></span><span style="width:11px; height:11px; border-radius:999px; background:#28c840;"></span></div>
+      <div style="flex:1; max-width:380px; margin:0 auto; background:var(--again-off-white); border-radius:8px; padding:6px 16px; font-family:var(--font-body); font-weight:400; font-size:12.5px; color:var(--text-tertiary); text-align:center;">again.com/checkout</div>
+      <div style="width:54px;"></div>
+    </div>
+    <!-- checkout header -->
+    <header style="display:flex; align-items:center; justify-content:center; position:relative; padding:20px 48px; border-bottom:1px solid var(--border-subtle);">
+      <img src="assets/logos/again-teal-logo.svg" alt="AGAIN" style="height:24px;">
+      <span style="position:absolute; right:48px; display:flex; align-items:center; gap:7px; font-family:var(--font-body); font-weight:400; font-size:13px; color:var(--text-tertiary);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>Secure checkout</span>
+    </header>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr;">
+      <!-- LEFT: form -->
+      <div style="padding:44px 56px 56px; border-right:1px solid var(--border-subtle);">
+        <div style="max-width:480px;">
+          <!-- express -->
+          <div style="display:flex; gap:10px; margin-bottom:22px;">
+            <div style="flex:1; height:46px; border-radius:12px; background:var(--again-deep-teal); display:flex; align-items:center; justify-content:center; font-family:var(--font-body); font-weight:600; font-size:13.5px; color:#fff; cursor:pointer;">Shop Pay</div>
+            <div style="flex:1; height:46px; border-radius:12px; background:#fff; border:1px solid var(--border-default); display:flex; align-items:center; justify-content:center; font-family:var(--font-body); font-weight:600; font-size:13.5px; color:var(--text-primary); cursor:pointer;">Apple&nbsp;Pay</div>
+            <div style="flex:1; height:46px; border-radius:12px; background:#fff; border:1px solid var(--border-default); display:flex; align-items:center; justify-content:center; font-family:var(--font-body); font-weight:600; font-size:13.5px; color:var(--text-primary); cursor:pointer;">PayPal</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:14px; margin-bottom:26px;"><div style="flex:1; height:1px; background:var(--border-subtle);"></div><span style="font-family:var(--font-body); font-weight:300; font-size:12.5px; color:var(--text-tertiary);">or pay with card</span><div style="flex:1; height:1px; background:var(--border-subtle);"></div></div>
+
+          <!-- contact -->
+          <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:14px;"><h2 style="font-family:var(--font-heading); font-weight:500; font-size:21px; letter-spacing:-0.01em; color:var(--text-primary); margin:0;">Contact</h2><a style="font-family:var(--font-body); font-weight:400; font-size:13px; color:var(--accent); cursor:pointer;">Log in</a></div>
+          <x-import component-from-global-scope="AGAINDesignSystem_664992.Input" type="email" placeholder="you@email.com" hint-size="100%,48px"></x-import>
+          <label style="display:flex; align-items:center; gap:10px; margin-top:12px; cursor:pointer;"><span style="width:20px; height:20px; border-radius:5px; background:var(--accent); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2 5 8.5 9.5 3.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span style="font-family:var(--font-body); font-weight:300; font-size:13.5px; color:var(--text-secondary);">Email me with news and offers</span></label>
+
+          <!-- delivery -->
+          <h2 style="font-family:var(--font-heading); font-weight:500; font-size:21px; letter-spacing:-0.01em; color:var(--text-primary); margin:32px 0 14px;">Delivery</h2>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div style="display:flex; gap:14px;"><div style="flex:1;"><x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="First name" hint-size="100%,48px"></x-import></div><div style="flex:1;"><x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="Last name" hint-size="100%,48px"></x-import></div></div>
+            <x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="Address" hint-size="100%,48px"></x-import>
+            <x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="Apartment, suite, etc. (optional)" hint-size="100%,48px"></x-import>
+            <div style="display:flex; gap:14px;"><div style="flex:1.4;"><x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="City" hint-size="100%,48px"></x-import></div><div style="flex:1;"><x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="State" hint-size="100%,48px"></x-import></div><div style="flex:1;"><x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="Postcode" hint-size="100%,48px"></x-import></div></div>
+            <x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="Phone (for delivery updates)" hint-size="100%,48px"></x-import>
+          </div>
+
+          <!-- shipping method -->
+          <h2 style="font-family:var(--font-heading); font-weight:500; font-size:21px; letter-spacing:-0.01em; color:var(--text-primary); margin:32px 0 14px;">Shipping method</h2>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; align-items:center; gap:12px; padding:15px; border-radius:12px; border:1.5px solid var(--accent); background:var(--teal-050);"><span style="width:18px; height:18px; border-radius:999px; flex-shrink:0; border:5px solid var(--accent); background:#fff;"></span><div style="flex:1;"><span style="font-family:var(--font-body); font-weight:500; font-size:14.5px; color:var(--text-primary);">Standard</span><span style="font-family:var(--font-body); font-weight:300; font-size:13px; color:var(--text-secondary); margin-left:8px;">3–5 business days</span></div><span style="font-family:var(--font-body); font-weight:500; font-size:14.5px; color:var(--text-primary);">$5.25</span></div>
+            <div style="display:flex; align-items:center; gap:12px; padding:15px; border-radius:12px; border:1.5px solid var(--border-default); background:#fff;"><span style="width:18px; height:18px; border-radius:999px; flex-shrink:0; border:2px solid var(--border-strong); background:#fff;"></span><div style="flex:1;"><span style="font-family:var(--font-body); font-weight:500; font-size:14.5px; color:var(--text-primary);">Express</span><span style="font-family:var(--font-body); font-weight:300; font-size:13px; color:var(--text-secondary); margin-left:8px;">1–2 business days</span></div><span style="font-family:var(--font-body); font-weight:500; font-size:14.5px; color:var(--text-primary);">$12</span></div>
+          </div>
+
+          <!-- payment -->
+          <h2 style="font-family:var(--font-heading); font-weight:500; font-size:21px; letter-spacing:-0.01em; color:var(--text-primary); margin:32px 0 4px;">Payment</h2>
+          <p style="font-family:var(--font-body); font-weight:300; font-size:13px; color:var(--text-tertiary); margin:0 0 14px; display:flex; align-items:center; gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>All transactions are secure and encrypted.</p>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div style="position:relative;"><x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="Card number" hint-size="100%,48px"></x-import><div style="position:absolute; right:12px; top:50%; transform:translateY(-50%); display:flex; gap:4px;"><span style="font-family:var(--font-body); font-weight:700; font-size:9px; color:#1a1f71; background:#fff; border:1px solid var(--border-subtle); border-radius:4px; padding:2px 4px;">VISA</span><span style="font-family:var(--font-body); font-weight:700; font-size:9px; color:#eb001b; background:#fff; border:1px solid var(--border-subtle); border-radius:4px; padding:2px 4px;">MC</span><span style="font-family:var(--font-body); font-weight:700; font-size:9px; color:#016fd0; background:#fff; border:1px solid var(--border-subtle); border-radius:4px; padding:2px 4px;">AMEX</span></div></div>
+            <div style="display:flex; gap:14px;"><div style="flex:1;"><x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="Expiration (MM / YY)" hint-size="100%,48px"></x-import></div><div style="flex:1;"><x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="Security code" hint-size="100%,48px"></x-import></div></div>
+            <x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="Name on card" hint-size="100%,48px"></x-import>
+          </div>
+
+          <div style="margin-top:28px;"><x-import component-from-global-scope="AGAINDesignSystem_664992.Button" variant="solid" size="lg" full-width="true" hint-size="100%,56px">Pay now · $50.00</x-import></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: order summary -->
+      <div style="padding:44px 56px 56px; background:var(--again-off-white);">
+        <div style="max-width:420px;">
+          <h2 style="font-family:var(--font-heading); font-weight:500; font-size:21px; letter-spacing:-0.01em; color:var(--text-primary); margin:0 0 18px;">Order summary</h2>
+          <!-- items -->
+          <div style="display:flex; gap:14px; margin-bottom:18px;">
+            <div style="position:relative; width:64px; height:64px; flex-shrink:0; background:var(--again-fresh-blue); border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center;"><div style="position:absolute; inset:0; background:radial-gradient(120% 90% at 30% 22%, rgba(255,255,255,0.5), rgba(255,255,255,0) 55%);"></div><img src="assets/logos/again-teal-symbol.svg" alt="" style="position:relative; width:42%; opacity:0.18;"><span style="position:absolute; top:-6px; right:-6px; width:20px; height:20px; border-radius:999px; background:var(--text-secondary); color:#fff; font-family:var(--font-body); font-weight:600; font-size:11px; display:flex; align-items:center; justify-content:center;">1</span></div>
+            <div style="flex:1;"><div style="font-family:var(--font-heading); font-weight:500; font-size:14.5px; color:var(--text-primary);">The Deodorant Balm</div><div style="font-family:var(--font-body); font-weight:300; font-size:12px; color:var(--text-secondary); margin-top:2px;">Eucalyptus &amp; Bergamot · Subscribe 6 wks</div></div>
+            <div style="text-align:right;"><div style="font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--text-primary);">$29.75</div><div style="font-family:var(--font-body); font-weight:300; font-size:11.5px; color:var(--text-tertiary); text-decoration:line-through;">$35</div></div>
+          </div>
+          <div style="display:flex; gap:14px; margin-bottom:20px;">
+            <div style="position:relative; width:64px; height:64px; flex-shrink:0; background:var(--again-sand); border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center;"><div style="position:absolute; inset:0; background:radial-gradient(120% 90% at 30% 22%, rgba(255,255,255,0.45), rgba(255,255,255,0) 55%);"></div><img src="assets/logos/again-teal-symbol.svg" alt="" style="position:relative; width:42%; opacity:0.18;"><span style="position:absolute; top:-6px; right:-6px; width:20px; height:20px; border-radius:999px; background:var(--text-secondary); color:#fff; font-family:var(--font-body); font-weight:600; font-size:11px; display:flex; align-items:center; justify-content:center;">1</span></div>
+            <div style="flex:1;"><div style="font-family:var(--font-heading); font-weight:500; font-size:14.5px; color:var(--text-primary);">The Companion</div><div style="font-family:var(--font-body); font-weight:300; font-size:12px; color:var(--text-secondary); margin-top:2px;">Solid brass · one-time</div></div>
+            <div style="font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--text-primary);">$15</div>
+          </div>
+          <!-- discount -->
+          <div style="display:flex; gap:10px; margin-bottom:20px;">
+            <div style="flex:1;"><x-import component-from-global-scope="AGAINDesignSystem_664992.Input" placeholder="Discount code" hint-size="100%,46px"></x-import></div>
+            <x-import component-from-global-scope="AGAINDesignSystem_664992.Button" variant="outline" size="md" hint-size="88px,46px">Apply</x-import>
+          </div>
+          <!-- totals -->
+          <div style="border-top:1px solid var(--border-subtle); padding-top:16px; display:flex; flex-direction:column; gap:9px;">
+            <div style="display:flex; justify-content:space-between;"><span style="font-family:var(--font-body); font-weight:300; font-size:14px; color:var(--text-secondary);">Subtotal</span><span style="font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--text-primary);">$44.75</span></div>
+            <div style="display:flex; justify-content:space-between;"><span style="font-family:var(--font-body); font-weight:300; font-size:14px; color:var(--text-secondary);">Subscription saving</span><span style="font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--accent);">−$5.25</span></div>
+            <div style="display:flex; justify-content:space-between;"><span style="font-family:var(--font-body); font-weight:300; font-size:14px; color:var(--text-secondary);">Shipping</span><span style="font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--text-primary);">$5.25</span></div>
+          </div>
+          <div style="border-top:1px solid var(--border-subtle); margin-top:16px; padding-top:16px; display:flex; align-items:baseline; justify-content:space-between;"><span style="font-family:var(--font-heading); font-weight:500; font-size:18px; color:var(--text-primary);">Total</span><span style="display:flex; align-items:baseline; gap:8px;"><span style="font-family:var(--font-body); font-weight:300; font-size:12px; color:var(--text-tertiary);">USD</span><span style="font-family:var(--font-heading); font-weight:500; font-size:24px; color:var(--text-primary);">$50.00</span></span></div>
+          <!-- reassurance -->
+          <div style="display:flex; flex-direction:column; gap:10px; margin-top:24px; padding-top:20px; border-top:1px solid var(--border-subtle);">
+            <div style="display:flex; align-items:center; gap:9px; font-family:var(--font-body); font-weight:300; font-size:13px; color:var(--text-secondary);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Free returns within 30 days</div>
+            <div style="display:flex; align-items:center; gap:9px; font-family:var(--font-body); font-weight:300; font-size:13px; color:var(--text-secondary);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Pause, skip or cancel your subscription anytime</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ ROW LABEL: CONFIRMATION ══════════════════ -->
+<div style="position:absolute; left:0px; top:3230px; width:900px;">
+  <div data-drags-parent="1" style="cursor:grab; user-select:none; display:flex; align-items:center; gap:12px;">
+    <span style="font-family:var(--font-heading); font-weight:500; font-size:22px; letter-spacing:-0.01em; color:#0d3f38;">3 · Order confirmation</span>
+    <span style="font-family:var(--font-body); font-weight:300; font-size:13.5px; color:#4c6661;">Thank-you + order recap</span>
+  </div>
+</div>
+
+<!-- ░░░░░ CONFIRMATION — MOBILE ░░░░░ -->
+<div style="position:absolute; left:0px; top:3276px; width:392px;">
+  <div data-drags-parent="1" style="cursor:grab; user-select:none; font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#4c6661; margin-bottom:12px;">Mobile · 392px</div>
+
+  <div data-screen-label="Confirmation — mobile" style="width:392px; border-radius:30px; overflow:hidden; box-shadow:0 18px 50px rgba(13,63,56,0.16); background:var(--again-off-white); border:1px solid rgba(13,63,56,0.06);">
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:11px 24px 4px; background:#fff; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--text-primary);"><span>9:41</span><span style="display:flex; gap:5px; align-items:center;"><svg width="16" height="11" viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="7" width="3" height="5" rx="1"></rect><rect x="4.5" y="4.5" width="3" height="7.5" rx="1"></rect><rect x="9" y="2" width="3" height="10" rx="1"></rect><rect x="13.5" y="0" width="3" height="12" rx="1" opacity="0.35"></rect></svg><svg width="22" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1"><rect x="1" y="1" width="19" height="10" rx="2.5"></rect><rect x="2.5" y="2.5" width="13" height="7" rx="1.2" fill="currentColor" stroke="none"></rect><rect x="21" y="4" width="2" height="4" rx="1" fill="currentColor" stroke="none"></rect></svg></span></div>
+    <header style="display:flex; align-items:center; justify-content:center; padding:14px 20px; background:#fff; border-bottom:1px solid var(--border-subtle);"><img src="assets/logos/again-teal-logo.svg" alt="AGAIN" style="height:20px;"></header>
+
+    <!-- hero -->
+    <div style="background:var(--again-deep-teal); padding:38px 24px 34px; text-align:center; position:relative; overflow:hidden;">
+      <img src="assets/logos/again-white-symbol.svg" alt="" style="position:absolute; right:-50px; bottom:-40px; width:200px; opacity:0.07;">
+      <div style="position:relative; width:60px; height:60px; border-radius:999px; background:var(--again-fresh-blue); display:flex; align-items:center; justify-content:center; margin:0 auto 18px;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></div>
+      <div style="position:relative; font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--again-fresh-blue); margin-bottom:10px;">Order AG-2026-1487</div>
+      <h1 style="position:relative; font-family:var(--font-heading); font-weight:500; font-size:30px; line-height:1.05; letter-spacing:-0.02em; color:#fff; margin:0 0 10px;">Thank you, Maya!</h1>
+      <p style="position:relative; font-family:var(--font-body); font-weight:300; font-size:14.5px; line-height:1.6; color:var(--again-fresh-blue); margin:0;">We're getting your ritual ready. A confirmation is on its way to your inbox.</p>
+    </div>
+
+    <!-- what's next -->
+    <div style="padding:24px 22px 6px;">
+      <div style="background:#fff; border:1px solid var(--border-subtle); border-radius:16px; padding:18px;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding-bottom:16px; border-bottom:1px solid var(--border-subtle);">
+          <span style="flex-shrink:0; width:36px; height:36px; border-radius:10px; background:var(--again-fresh-blue); display:flex; align-items:center; justify-content:center; color:var(--accent);"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 6 12 13 2 6"></path><rect x="2" y="5" width="20" height="14" rx="2"></rect></svg></span>
+          <div><div style="font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--text-primary);">Confirmation sent</div><div style="font-family:var(--font-body); font-weight:300; font-size:12.5px; line-height:1.5; color:var(--text-secondary); margin-top:2px;">maya@email.com</div></div>
+        </div>
+        <div style="display:flex; gap:14px; align-items:flex-start; padding-top:16px;">
+          <span style="flex-shrink:0; width:36px; height:36px; border-radius:10px; background:var(--again-fresh-blue); display:flex; align-items:center; justify-content:center; color:var(--accent);"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="12" height="9" rx="1"></rect><path d="M14 10h4l3 3v3h-7z"></path><circle cx="7" cy="18.5" r="1.6"></circle><circle cx="17.5" cy="18.5" r="1.6"></circle></svg></span>
+          <div><div style="font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--text-primary);">Arrives in 3–5 days</div><div style="font-family:var(--font-body); font-weight:300; font-size:12.5px; line-height:1.5; color:var(--text-secondary); margin-top:2px;">Shipping to 12 Coogee St, Sydney NSW 2034</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- order recap -->
+    <div style="padding:18px 22px 6px;">
+      <div style="background:#fff; border:1px solid var(--border-subtle); border-radius:16px; padding:18px;">
+        <div style="font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-tertiary); margin-bottom:14px;">Your order</div>
+        <div style="display:flex; gap:12px; align-items:center; margin-bottom:14px;">
+          <div style="width:52px; height:52px; flex-shrink:0; background:var(--again-fresh-blue); border-radius:10px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;"><div style="position:absolute; inset:0; background:radial-gradient(120% 90% at 30% 22%, rgba(255,255,255,0.5), rgba(255,255,255,0) 55%);"></div><img src="assets/logos/again-teal-symbol.svg" alt="" style="position:relative; width:42%; opacity:0.18;"></div>
+          <div style="flex:1;"><div style="font-family:var(--font-body); font-weight:500; font-size:13.5px; color:var(--text-primary);">The Deodorant Balm</div><div style="font-family:var(--font-body); font-weight:300; font-size:11.5px; color:var(--text-secondary);">Subscribe · 6 wks × 1</div></div>
+          <span style="font-family:var(--font-body); font-weight:500; font-size:13.5px; color:var(--text-primary);">$29.75</span>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center; margin-bottom:16px;">
+          <div style="width:52px; height:52px; flex-shrink:0; background:var(--again-sand); border-radius:10px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;"><div style="position:absolute; inset:0; background:radial-gradient(120% 90% at 30% 22%, rgba(255,255,255,0.45), rgba(255,255,255,0) 55%);"></div><img src="assets/logos/again-teal-symbol.svg" alt="" style="position:relative; width:42%; opacity:0.18;"></div>
+          <div style="flex:1;"><div style="font-family:var(--font-body); font-weight:500; font-size:13.5px; color:var(--text-primary);">The Companion</div><div style="font-family:var(--font-body); font-weight:300; font-size:11.5px; color:var(--text-secondary);">One-time × 1</div></div>
+          <span style="font-family:var(--font-body); font-weight:500; font-size:13.5px; color:var(--text-primary);">$15</span>
+        </div>
+        <div style="border-top:1px solid var(--border-subtle); padding-top:14px; display:flex; flex-direction:column; gap:7px;">
+          <div style="display:flex; justify-content:space-between;"><span style="font-family:var(--font-body); font-weight:300; font-size:13px; color:var(--text-secondary);">Subtotal</span><span style="font-family:var(--font-body); font-weight:400; font-size:13px; color:var(--text-primary);">$44.75</span></div>
+          <div style="display:flex; justify-content:space-between;"><span style="font-family:var(--font-body); font-weight:300; font-size:13px; color:var(--text-secondary);">Shipping</span><span style="font-family:var(--font-body); font-weight:400; font-size:13px; color:var(--text-primary);">$5.25</span></div>
+          <div style="display:flex; justify-content:space-between; margin-top:4px;"><span style="font-family:var(--font-heading); font-weight:500; font-size:16px; color:var(--text-primary);">Total</span><span style="font-family:var(--font-heading); font-weight:500; font-size:16px; color:var(--text-primary);">$50.00</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- cta -->
+    <div style="padding:18px 22px 34px;">
+      <x-import component-from-global-scope="AGAINDesignSystem_664992.Button" variant="solid" size="lg" full-width="true" hint-size="100%,52px">Continue shopping</x-import>
+      <div style="text-align:center; margin-top:12px;"><a style="font-family:var(--font-body); font-weight:500; font-size:13.5px; color:var(--accent); cursor:pointer;">Manage your subscription</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ░░░░░ CONFIRMATION — DESKTOP ░░░░░ -->
+<div style="position:absolute; left:480px; top:3276px; width:1200px;">
+  <div data-drags-parent="1" style="cursor:grab; user-select:none; font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#4c6661; margin-bottom:12px;">Desktop · 1200px</div>
+
+  <div data-screen-label="Confirmation — desktop" style="width:1200px; border-radius:14px; overflow:hidden; box-shadow:0 18px 50px rgba(13,63,56,0.16); background:var(--again-off-white); border:1px solid rgba(13,63,56,0.06);">
+    <div style="display:flex; align-items:center; gap:14px; padding:11px 18px; background:#fff; border-bottom:1px solid var(--border-subtle);">
+      <div style="display:flex; gap:7px;"><span style="width:11px; height:11px; border-radius:999px; background:#ff5f57;"></span><span style="width:11px; height:11px; border-radius:999px; background:#febc2e;"></span><span style="width:11px; height:11px; border-radius:999px; background:#28c840;"></span></div>
+      <div style="flex:1; max-width:380px; margin:0 auto; background:var(--again-off-white); border-radius:8px; padding:6px 16px; font-family:var(--font-body); font-weight:400; font-size:12.5px; color:var(--text-tertiary); text-align:center;">again.com/order/AG-2026-1487</div>
+      <div style="width:54px;"></div>
+    </div>
+    <header style="display:flex; align-items:center; justify-content:center; padding:20px 48px; background:#fff; border-bottom:1px solid var(--border-subtle);"><img src="assets/logos/again-teal-logo.svg" alt="AGAIN" style="height:24px;"></header>
+
+    <div style="padding:56px 48px 64px;">
+      <div style="max-width:940px; margin:0 auto; display:grid; grid-template-columns:1.15fr 0.85fr; gap:52px; align-items:start;">
+        <!-- left: thank you + next -->
+        <div>
+          <div style="width:64px; height:64px; border-radius:999px; background:var(--again-fresh-blue); display:flex; align-items:center; justify-content:center; margin-bottom:22px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></div>
+          <div style="font-family:var(--font-body); font-weight:500; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent); margin-bottom:12px;">Order AG-2026-1487</div>
+          <h1 style="font-family:var(--font-heading); font-weight:500; font-size:46px; line-height:1.0; letter-spacing:-0.025em; color:var(--text-primary); margin:0 0 14px;">Thank you, Maya.</h1>
+          <p style="font-family:var(--font-body); font-weight:300; font-size:16.5px; line-height:1.6; color:var(--text-secondary); margin:0 0 32px; max-width:440px;">We're getting your ritual ready. A confirmation is on its way to your inbox — you'll get tracking as soon as it ships.</p>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:32px;">
+            <div style="background:#fff; border:1px solid var(--border-subtle); border-radius:16px; padding:18px;">
+              <span style="display:flex; width:38px; height:38px; border-radius:10px; background:var(--again-fresh-blue); align-items:center; justify-content:center; color:var(--accent); margin-bottom:12px;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 6 12 13 2 6"></path><rect x="2" y="5" width="20" height="14" rx="2"></rect></svg></span>
+              <div style="font-family:var(--font-body); font-weight:500; font-size:14.5px; color:var(--text-primary); margin-bottom:3px;">Confirmation sent</div>
+              <div style="font-family:var(--font-body); font-weight:300; font-size:13px; line-height:1.5; color:var(--text-secondary);">maya@email.com</div>
+            </div>
+            <div style="background:#fff; border:1px solid var(--border-subtle); border-radius:16px; padding:18px;">
+              <span style="display:flex; width:38px; height:38px; border-radius:10px; background:var(--again-fresh-blue); align-items:center; justify-content:center; color:var(--accent); margin-bottom:12px;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="12" height="9" rx="1"></rect><path d="M14 10h4l3 3v3h-7z"></path><circle cx="7" cy="18.5" r="1.6"></circle><circle cx="17.5" cy="18.5" r="1.6"></circle></svg></span>
+              <div style="font-family:var(--font-body); font-weight:500; font-size:14.5px; color:var(--text-primary); margin-bottom:3px;">Arrives in 3–5 days</div>
+              <div style="font-family:var(--font-body); font-weight:300; font-size:13px; line-height:1.5; color:var(--text-secondary);">12 Coogee St, Sydney NSW 2034</div>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:12px; align-items:center;">
+            <x-import component-from-global-scope="AGAINDesignSystem_664992.Button" variant="solid" size="lg" hint-size="180px,52px">Continue shopping</x-import>
+            <a style="font-family:var(--font-body); font-weight:500; font-size:14.5px; color:var(--accent); cursor:pointer;">Manage your subscription →</a>
+          </div>
+        </div>
+
+        <!-- right: order recap -->
+        <div style="background:#fff; border:1px solid var(--border-subtle); border-radius:20px; padding:26px; box-shadow:var(--shadow-sm);">
+          <div style="font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-tertiary); margin-bottom:18px;">Your order</div>
+          <div style="display:flex; gap:14px; align-items:center; margin-bottom:16px;">
+            <div style="width:58px; height:58px; flex-shrink:0; background:var(--again-fresh-blue); border-radius:12px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;"><div style="position:absolute; inset:0; background:radial-gradient(120% 90% at 30% 22%, rgba(255,255,255,0.5), rgba(255,255,255,0) 55%);"></div><img src="assets/logos/again-teal-symbol.svg" alt="" style="position:relative; width:42%; opacity:0.18;"></div>
+            <div style="flex:1;"><div style="font-family:var(--font-heading); font-weight:500; font-size:15px; color:var(--text-primary);">The Deodorant Balm</div><div style="font-family:var(--font-body); font-weight:300; font-size:12px; color:var(--text-secondary); margin-top:2px;">Subscribe · 6 wks × 1</div></div>
+            <span style="font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--text-primary);">$29.75</span>
+          </div>
+          <div style="display:flex; gap:14px; align-items:center; margin-bottom:18px;">
+            <div style="width:58px; height:58px; flex-shrink:0; background:var(--again-sand); border-radius:12px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;"><div style="position:absolute; inset:0; background:radial-gradient(120% 90% at 30% 22%, rgba(255,255,255,0.45), rgba(255,255,255,0) 55%);"></div><img src="assets/logos/again-teal-symbol.svg" alt="" style="position:relative; width:42%; opacity:0.18;"></div>
+            <div style="flex:1;"><div style="font-family:var(--font-heading); font-weight:500; font-size:15px; color:var(--text-primary);">The Companion</div><div style="font-family:var(--font-body); font-weight:300; font-size:12px; color:var(--text-secondary); margin-top:2px;">One-time × 1</div></div>
+            <span style="font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--text-primary);">$15</span>
+          </div>
+          <div style="border-top:1px solid var(--border-subtle); padding-top:16px; display:flex; flex-direction:column; gap:9px;">
+            <div style="display:flex; justify-content:space-between;"><span style="font-family:var(--font-body); font-weight:300; font-size:14px; color:var(--text-secondary);">Subtotal</span><span style="font-family:var(--font-body); font-weight:400; font-size:14px; color:var(--text-primary);">$44.75</span></div>
+            <div style="display:flex; justify-content:space-between;"><span style="font-family:var(--font-body); font-weight:300; font-size:14px; color:var(--text-secondary);">Shipping</span><span style="font-family:var(--font-body); font-weight:400; font-size:14px; color:var(--text-primary);">$5.25</span></div>
+          </div>
+          <div style="border-top:1px solid var(--border-subtle); margin-top:16px; padding-top:16px; display:flex; align-items:baseline; justify-content:space-between;"><span style="font-family:var(--font-heading); font-weight:500; font-size:18px; color:var(--text-primary);">Total</span><span style="font-family:var(--font-heading); font-weight:500; font-size:22px; color:var(--text-primary);">$50.00</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>

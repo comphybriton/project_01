@@ -1,0 +1,175 @@
+metadata:
+  generated: "2026-10-12"
+  source_spec: "design_handoff_again_shopify/README.md"
+  target_plan: "AGAIN_Shopify_Implementation_Plan.md"
+
+summary:
+  total_requirements: 13
+  covered_requirements: 13
+  missing_requirements: 0
+  coverage_percentage: 100.0
+
+requirements:
+  - req_id: "REQ-001"
+    req_description: "Safe development-store and Dawn theme setup"
+    priority: "P1"
+    plan_mapping:
+      phase: "Phase-1"
+      phase_name: "Safe setup and design reconnaissance"
+      items:
+        - item_id: "1.1"
+          description: "Create development store, theme project, preview and design audit"
+    notes: ""
+  - req_id: "REQ-002"
+    req_description: "Responsive AGAIN brand system"
+    priority: "P1"
+    plan_mapping:
+      phase: "Phase-2"
+      phase_name: "Shopify fundamentals and design foundation"
+      items:
+        - item_id: "2.1"
+          description: "Inspect Dawn patterns"
+        - item_id: "2.2"
+          description: "Configure brand settings, fonts and global styles"
+    notes: ""
+  - req_id: "REQ-003"
+    req_description: "Editable editorial media with branded fallbacks"
+    priority: "P1"
+    plan_mapping:
+      phase: "Phase-2"
+      phase_name: "Shopify fundamentals and design foundation"
+      items:
+        - item_id: "2.3"
+          description: "Create and test reusable media fallback"
+      phase_additional: "Phase-3"
+    notes: "Media settings are wired into relevant page and homepage sections."
+  - req_id: "REQ-004"
+    req_description: "Theme-editor-first homepage"
+    priority: "P1"
+    plan_mapping:
+      phase: "Phase-3"
+      phase_name: "Shared storefront shell and homepage"
+      items:
+        - item_id: "3.1"
+          description: "Build global shell"
+        - item_id: "3.2"
+          description: "Build editable homepage sections"
+        - item_id: "3.3"
+          description: "Assemble and validate homepage"
+    notes: ""
+  - req_id: "REQ-005"
+    req_description: "Editable About, Ingredients and FAQ pages"
+    priority: "P2"
+    plan_mapping:
+      phase: "Phase-4"
+      phase_name: "Editorial pages and reusable content blocks"
+      items:
+        - item_id: "4.1"
+          description: "Build reusable page sections"
+        - item_id: "4.2"
+          description: "Build page-specific repeatable content"
+        - item_id: "4.3"
+          description: "Assemble templates and assign pages"
+    notes: ""
+  - req_id: "REQ-006"
+    req_description: "Data-driven Balm, Companion and Starter Kit product experiences"
+    priority: "P1"
+    plan_mapping:
+      phase: "Phase-5"
+      phase_name: "Products, variants and buying experience"
+      items:
+        - item_id: "5.1"
+          description: "Create and verify catalog data"
+        - item_id: "5.2"
+          description: "Build reusable product presentation"
+        - item_id: "5.3"
+          description: "Create and test product templates"
+    notes: ""
+  - req_id: "REQ-007"
+    req_description: "Balm selling plan with 15% discount and 4/6/8-week choices"
+    priority: "P1"
+    plan_mapping:
+      phase: "Phase-6"
+      phase_name: "Subscriptions, bundle and customer portal"
+      items:
+        - item_id: "6.1"
+          description: "Select provider by verified capability"
+        - item_id: "6.2"
+          description: "Configure and submit real selling plans"
+    notes: ""
+  - req_id: "REQ-008"
+    req_description: "Starter Kit bundle with correct one-time Companion fulfillment"
+    priority: "P1"
+    plan_mapping:
+      phase: "Phase-5"
+      phase_name: "Products, variants and buying experience"
+      items:
+        - item_id: "5.1"
+          description: "Create and verify catalog and bundle decision"
+      phase_additional: "Phase-6"
+    notes: "Recurring component behavior is an explicit app/bundle proof gate."
+  - req_id: "REQ-009"
+    req_description: "Desktop cart drawer, mobile cart and free-shipping progress"
+    priority: "P1"
+    plan_mapping:
+      phase: "Phase-7"
+      phase_name: "Cart, checkout account styling and quality"
+      items:
+        - item_id: "7.1"
+          description: "Build cart components and validate update/error behavior"
+    notes: ""
+  - req_id: "REQ-010"
+    req_description: "Customer account and subscription-management actions"
+    priority: "P1"
+    plan_mapping:
+      phase: "Phase-6"
+      phase_name: "Subscriptions, bundle and customer portal"
+      items:
+        - item_id: "6.1"
+          description: "Verify provider capabilities and account compatibility"
+        - item_id: "6.3"
+          description: "Configure portal and test each management action"
+    notes: ""
+  - req_id: "REQ-011"
+    req_description: "Checkout branding within Shopify plan limits"
+    priority: "P2"
+    plan_mapping:
+      phase: "Phase-7"
+      phase_name: "Cart, checkout, account styling and quality"
+      items:
+        - item_id: "7.2"
+          description: "Configure checkout branding and document limitations"
+    notes: ""
+  - req_id: "REQ-012"
+    req_description: "Accessibility, responsiveness, performance and errors"
+    priority: "P1"
+    plan_mapping:
+      phase: "Phase-7"
+      phase_name: "Cart, checkout, account styling and quality"
+      items:
+        - item_id: "7.1"
+          description: "Validate responsive cart behavior and request errors"
+        - item_id: "7.2"
+          description: "Run Theme Check and manual quality audits"
+    notes: "Reduced motion, keyboard behavior and media loading are addressed in earlier phase gates."
+  - req_id: "REQ-013"
+    req_description: "Reproducible, evidence-based portfolio deliverable"
+    priority: "P3"
+    plan_mapping:
+      phase: "Phase-8"
+      phase_name: "Final walkthrough and portfolio packaging"
+      items:
+        - item_id: "8.1"
+          description: "Write setup guide and capture working-theme screenshots"
+        - item_id: "8.2"
+          description: "Record end-to-end evidence and known limitations"
+    notes: ""
+
+missing_requirements: []
+orphan_plan_items: []
+
+validation:
+  passed: true
+  errors: []
+  warnings:
+    - "App features, bundle behavior, checkout controls and font licensing must be verified in the actual development-store setup."

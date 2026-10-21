@@ -1,0 +1,59 @@
+/* AGAIN — Colour palette
+   Clean, fresh, leaning into whiter/lighter tones. Deep Teal is the brand anchor. */
+
+:root {
+  /* ── Brand palette (raw) ── */
+  --again-white: #ffffff;       /* White */
+  --again-off-white: #f5f5f5;   /* Off-White */
+  --again-fresh-blue: #d6f2ed;  /* Fresh Blue — soft mint */
+  --again-sand: #dbd8bf;        /* Sand */
+  --again-cool-blue: #9abadb;   /* Cool Blue */
+  --again-deep-teal: #0d3f38;   /* Deep Teal — primary */
+
+  /* Teal tints/shades (derived for UI states) */
+  --teal-900: #082925;
+  --teal-800: #0d3f38;  /* base */
+  --teal-700: #14554b;
+  --teal-600: #1d6a5d;
+  --teal-100: #d6f2ed;  /* = fresh blue */
+  --teal-050: #eaf8f5;
+
+  /* ── Semantic surfaces ── */
+  --surface-page: var(--again-off-white);
+  --surface-card: var(--again-white);
+  --surface-raised: var(--again-white);
+  --surface-sunken: var(--again-off-white);
+  --surface-mint: var(--again-fresh-blue);
+  --surface-sand: var(--again-sand);
+  --surface-invert: var(--again-deep-teal);
+
+  /* ── Text ── */
+  --text-primary: var(--again-deep-teal);
+  --text-secondary: #4c6661;        /* muted teal-grey */
+  --text-tertiary: #8a9a96;          /* placeholder/hint */
+  --text-on-dark: var(--again-white);
+  --text-on-mint: var(--again-deep-teal);
+
+  /* ── Brand / accent ── */
+  --accent: var(--again-deep-teal);
+  --accent-hover: var(--teal-700);
+  --accent-press: var(--teal-900);
+  --accent-soft: var(--again-fresh-blue);
+  --accent-blue: var(--again-cool-blue);
+
+  /* ── Borders / lines ── */
+  --border-subtle: rgba(13, 63, 56, 0.10);
+  --border-default: rgba(13, 63, 56, 0.18);
+  --border-strong: rgba(13, 63, 56, 0.32);
+  --border-on-dark: rgba(255, 255, 255, 0.20);
+
+  /* ── Semantic status (kept natural/muted to fit brand) ── */
+  --success: #2f7a5b;
+  --success-soft: #e0f0e7;
+  --warning: #b5862f;
+  --warning-soft: #f3ecd9;
+  --danger: #b0473b;
+  --danger-soft: #f4e2df;
+  --info: var(--again-cool-blue);
+  --info-soft: #e7eff7;
+}
