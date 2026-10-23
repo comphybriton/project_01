@@ -1,0 +1,144 @@
+<section
+  class="again-hero"
+  aria-labelledby="AgainHeroHeading-{{ section.id }}"
+>
+  <div class="again-hero__media again-hero__media--desktop">
+    {% if section.settings.desktop_image != blank %}
+      {% assign desktop_alt = section.settings.desktop_image.alt | default: section.settings.heading | escape %}
+      {{
+        section.settings.desktop_image
+        | image_url: width: 2400
+        | image_tag:
+          widths: '750, 1100, 1500, 2000, 2400',
+          sizes: '100vw',
+          loading: 'eager',
+          alt: desktop_alt
+      }}
+    {% else %}
+      {% render 'placeholder-image',
+        aspect_ratio: '1200 / 602',
+        color: section.settings.desktop_fallback_color,
+        label: 'AGAIN desktop homepage hero'
+      %}
+    {% endif %}
+  </div>
+
+  <div class="again-hero__media again-hero__media--mobile">
+    {% if section.settings.mobile_image != blank %}
+      {% assign mobile_alt = section.settings.mobile_image.alt | default: section.settings.heading | escape %}
+      {{
+        section.settings.mobile_image
+        | image_url: width: 1000
+        | image_tag:
+          widths: '392, 550, 750, 1000',
+          sizes: '100vw',
+          loading: 'eager',
+          alt: mobile_alt
+      }}
+    {% else %}
+      {% render 'placeholder-image',
+        aspect_ratio: '392 / 704',
+        color: section.settings.mobile_fallback_color,
+        label: 'AGAIN mobile homepage hero'
+      %}
+    {% endif %}
+  </div>
+
+  <div class="again-hero__content">
+    <div class="page-width">
+      {% if section.settings.heading != blank %}
+        <h1
+          class="again-hero__heading"
+          id="AgainHeroHeading-{{ section.id }}"
+        >
+          {{ section.settings.heading | escape }}
+        </h1>
+      {% endif %}
+
+      <div class="again-hero__actions">
+        {% if section.settings.primary_label != blank and section.settings.primary_link != blank %}
+          <a class="button again-hero__primary" href="{{ section.settings.primary_link }}">
+            {{ section.settings.primary_label | escape }}
+          </a>
+        {% endif %}
+
+        {% if section.settings.secondary_label != blank and section.settings.secondary_link != blank %}
+          <a class="again-hero__secondary" href="{{ section.settings.secondary_link }}">
+            {{ section.settings.secondary_label | escape }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "AGAIN hero lookbook",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero images"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop hero image"
+    },
+    {
+      "type": "color",
+      "id": "desktop_fallback_color",
+      "label": "Desktop placeholder colour",
+      "default": "#D6F2ED"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile hero image"
+    },
+    {
+      "type": "color",
+      "id": "mobile_fallback_color",
+      "label": "Mobile placeholder colour",
+      "default": "#D6F2ED"
+    },
+    {
+      "type": "header",
+      "content": "Hero content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Natural Self-Care,\nDone Right."
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary button label",
+      "default": "Shop the balm"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary link label",
+      "default": "Meet the duo →"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary link destination"
+    }
+  ],
+  "presets": [
+    {
+      "name": "AGAIN hero lookbook"
+    }
+  ]
+}
+{% endschema %}

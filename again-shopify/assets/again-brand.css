@@ -244,19 +244,6 @@ body.template-index .header-wrapper--border-bottom {
   min-width: 0;
 }
 
-.again-footer .again-newsletter__submit {
-  position: relative;
-  flex: 0 0 116px;
-  width: 116px;
-  min-height: 48px;
-  height: 48px;
-  padding: 0 16px;
-  border: 0;
-  border-radius: 999px;
-  background: #d6f2ed;
-  color: #0d3f38;
-}
-
 .again-footer .again-newsletter__submit::before,
 .again-footer .again-newsletter__submit::after {
   border-radius: 999px;
@@ -339,10 +326,6 @@ body.template-index .header-wrapper--border-bottom {
   height: 19px;
 }
 
-.again-footer .again-footer__bottom-row .footer__list-social {
-  margin: 0;
-}
-
 @media screen and (max-width: 749px) {
   .again-footer .again-footer__bottom-row {
     flex-direction: column;
@@ -365,19 +348,6 @@ body.template-index .header-wrapper--border-bottom {
 .again-footer .footer-block__newsletter > .footer-block__heading,
 .again-footer .footer-block__newsletter > .footer-block__details-content {
   max-width: 510px;
-}
-
-.again-footer .again-footer__controls .field__input {
-  min-height: 48px;
-  padding-right: 1.5rem;
-  border-radius: 12px;
-  background: #fff;
-  color: #0d3f38;
-}
-
-.again-footer .again-footer__controls .field__input::placeholder {
-  color: #8a9a96;
-  opacity: 1;
 }
 
 .again-footer .again-newsletter__controls .field__input {
@@ -431,4 +401,157 @@ body.template-index .header-wrapper--border-bottom {
   margin: 0 auto;
   padding: 22px 0 0;
   border-top: 1px solid rgb(255 255 255 / 12%);
+}
+
+/* Hero banner section */
+.again-hero {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  height: 602px;
+  overflow: hidden;
+  background: #d6f2ed;
+}
+
+.again-hero__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.again-hero__media--mobile {
+  display: none;
+}
+
+.again-hero__media img,
+.again-hero__media > .again-placeholder {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The placeholder snippet sets its own aspect ratio; fill the hero media box. */
+.again-hero__media > .again-placeholder {
+  aspect-ratio: auto;
+}
+
+.again-hero__content {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 54px;
+  left: 0;
+}
+
+.again-hero__heading {
+  max-width: 760px;
+  margin: 0 0 26px;
+  color: #0d3f38;
+  font-family: var(--again-font-heading);
+  font-size: 74px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 0.96;
+}
+
+.again-hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.again-hero__primary {
+  min-height: 52px;
+  padding: 0 28px;
+  border: 0;
+  border-radius: 999px;
+  background: #0d3f38;
+  color: #fff;
+  font-family: var(--again-font-body);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.again-hero__primary::before,
+.again-hero__primary::after {
+  border-radius: 999px;
+  box-shadow: none;
+}
+
+.again-hero__secondary {
+  padding-bottom: 3px;
+  border-bottom: 1.5px solid rgb(13 63 56 / 32%);
+  color: #0d3f38;
+  font-family: var(--again-font-body);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 749px) {
+  .again-hero {
+    height: 704px;
+  }
+
+  .again-hero__content {
+    bottom: 32px;
+  }
+
+  .again-hero__media--desktop {
+    display: none;
+  }
+
+  .again-hero__media--mobile {
+    display: block;
+  }
+
+  .again-hero__heading {
+    margin-bottom: 20px;
+    font-size: 50px;
+    letter-spacing: -0.025em;
+    line-height: 0.95;
+    white-space: pre-line;
+  }
+
+  .again-hero__actions {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .again-hero__primary {
+    width: 100%;
+  }
+}
+
+.again-hero .again-placeholder__symbol {
+  position: absolute;
+  top: 60px;
+  right: -90px;
+  width: min(44vw, 520px);
+  opacity: 0.1;
+}
+
+.again-hero .again-placeholder__symbol svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 749px) {
+  .again-hero .again-placeholder__symbol {
+    top: 118px;
+    right: -70px;
+    width: 340px;
+  }
+}
+
+.again-hero .again-placeholder::before {
+  inset: 0;
+  background: radial-gradient(
+    80% 64% at 72% 16%,
+    rgb(255 255 255 / 60%),
+    transparent 56%
+  );
 }
