@@ -14,37 +14,92 @@
         "secondary_link": ""
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "feature_cards": {
+      "type": "feature-cards",
+      "blocks": {
+        "feature_BAFECi": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/again-icon-droplet_17cfc759-c3b5-4fc3-a811-f8abd6e8e2a5.svg",
+            "title": "Ingredients that work",
+            "text": "<p>Magnesium neutralises odour all day — no bicarb, no aluminium, no irritation.</p>"
+          }
+        },
+        "feature_chJ3pr": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/again-icon-heart_4192d9ea-dbc1-4cfe-a4b7-5b83df347eb7.svg",
+            "title": "Made for sensitive skin",
+            "text": "<p>Bicarb-free and gentle by design, so it glides on smooth and calm — even on the most sensitive skin.</p>"
+          }
+        },
+        "feature_KdaNFb": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/again-icon-refresh.svg",
+            "title": "Smells beautiful",
+            "text": "<p>Our signature Eucalyptus & Bergamot blend — fresh, clean and never overpowering.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "feature_BAFECi",
+        "feature_chJ3pr",
+        "feature_KdaNFb"
+      ],
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "eyebrow": "Why AGAIN",
+        "heading": "Gentle and effective. You shouldn't have to choose — so we made sure you don't.",
+        "color_scheme": "scheme-7"
+      }
+    },
+    "product-range": {
+      "type": "product-range",
+      "blocks": {
+        "product_4CxpiT": {
+          "type": "product",
+          "settings": {
+            "product": "the-collection-snowboard-hydrogen",
+            "subtitle": "Made for sensitive skin.",
+            "badge": "",
+            "media_tone": "mint"
+          }
+        },
+        "product_LNBHDt": {
+          "type": "product",
+          "settings": {
+            "product": "the-3p-fulfilled-snowboard",
+            "subtitle": "Made for sensitive skin.",
+            "badge": "",
+            "media_tone": "sand"
+          }
+        },
+        "product_JFQa4X": {
+          "type": "product",
+          "settings": {
+            "product": "the-collection-snowboard-liquid",
+            "subtitle": "Made for sensitive skin.",
+            "badge": "NEW",
+            "media_tone": "blue"
+          }
+        }
+      },
+      "block_order": [
+        "product_4CxpiT",
+        "product_LNBHDt",
+        "product_JFQa4X"
+      ],
+      "settings": {
+        "eyebrow": "The range",
+        "heading": "Two products. That's it.",
+        "description": "<p>Everything you need, nothing you don't.</p>",
+        "color_scheme": "scheme-8"
       }
     }
   },
   "order": [
     "hero_lookbook",
-    "featured_collection"
+    "feature_cards",
+    "product-range"
   ]
 }

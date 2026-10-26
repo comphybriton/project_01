@@ -70,6 +70,28 @@
             "secondary_button_label": "#D6F2ED",
             "shadow": "#082925"
           }
+        },
+        "scheme-7": {
+          "settings": {
+            "background": "#F5F5F5",
+            "background_gradient": "",
+            "text": "#0D3F38",
+            "button": "#D6F2ED",
+            "button_label": "#0D3F38",
+            "secondary_button_label": "#0D3F38",
+            "shadow": "#0D3F38"
+          }
+        },
+        "scheme-8": {
+          "settings": {
+            "background": "#D6F2ED",
+            "background_gradient": "",
+            "text": "#0D3F38",
+            "button": "#0D3F38",
+            "button_label": "#FFFFFF",
+            "secondary_button_label": "#0D3F38",
+            "shadow": "#082925"
+          }
         }
       },
       "type_header_font": "assistant_n4",
