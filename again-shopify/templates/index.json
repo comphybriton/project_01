@@ -95,11 +95,97 @@
         "description": "<p>Everything you need, nothing you don't.</p>",
         "color_scheme": "scheme-8"
       }
+    },
+    "how-it-works": {
+      "type": "how-it-works",
+      "blocks": {
+        "step_Q9Y7eq": {
+          "type": "step",
+          "settings": {
+            "title": "Twist & warm",
+            "text": "<p>A small squeeze; the balm softens with your skin.</p>"
+          }
+        },
+        "step_RJzHxB": {
+          "type": "step",
+          "settings": {
+            "title": "Two swipes each side",
+            "text": "<p>Glides on clear — no white marks, no residue.</p>"
+          }
+        },
+        "step_8bPNh3": {
+          "type": "step",
+          "settings": {
+            "title": "Go play harder",
+            "text": "<p>Fresh that lasts the whole day. Reapply only if you want to.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step_Q9Y7eq",
+        "step_RJzHxB",
+        "step_8bPNh3"
+      ],
+      "settings": {
+        "eyebrow": "How it works",
+        "heading": "Three steps to fresh.",
+        "video_url": "https://www.youtube.com/watch?v=c6vC6uwihls",
+        "cover_image": "shopify://shop_images/woman-practicing-her-skincare-routine.jpg",
+        "video_label": "Level up your skincare",
+        "video_duration": "3:58",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "usp-marquee": {
+      "type": "usp-marquee",
+      "blocks": {
+        "claim_ga3Y3i": {
+          "type": "claim",
+          "settings": {
+            "claim": "Shipping on us over $50",
+            "icon": "truck"
+          }
+        },
+        "claim_WQRLp9": {
+          "type": "claim",
+          "settings": {
+            "claim": "100% Natural",
+            "icon": "leaf"
+          }
+        },
+        "claim_YARdJX": {
+          "type": "claim",
+          "settings": {
+            "claim": "Cruelty Free",
+            "icon": "heart"
+          }
+        },
+        "claim_98EENH": {
+          "type": "claim",
+          "settings": {
+            "claim": "Made in Australia",
+            "icon": "map-pin"
+          }
+        }
+      },
+      "block_order": [
+        "claim_ga3Y3i",
+        "claim_WQRLp9",
+        "claim_YARdJX",
+        "claim_98EENH"
+      ],
+      "settings": {
+        "display_mode": "homepage",
+        "accessibility_label": "AGAIN product claims",
+        "color_scheme": "scheme-8"
+      }
     }
   },
   "order": [
     "hero_lookbook",
     "feature_cards",
-    "product-range"
+    "product-range",
+    "how-it-works",
+    "usp-marquee"
   ]
 }

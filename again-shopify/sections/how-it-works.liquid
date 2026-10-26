@@ -1,0 +1,242 @@
+{{ 'video-section.css' | asset_url | stylesheet_tag }}
+{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+
+<section class="again-how-it-works color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <div class="again-how-it-works__layout">
+      <header class="again-how-it-works__header">
+        {% if section.settings.eyebrow != blank %}
+          <p class="again-how-it-works__eyebrow">
+            {{ section.settings.eyebrow | escape }}
+          </p>
+        {% endif %}
+
+        {% if section.settings.heading != blank %}
+          <h2 class="again-how-it-works__heading">
+            {{ section.settings.heading | escape }}
+          </h2>
+        {% endif %}
+      </header>
+
+      <div class="again-how-it-works__video">
+        <!-- Add deferred-media video/poster markup here. -->
+        {% liquid
+          assign video_id = section.settings.video.id | default: section.settings.video_url.id
+          assign poster = section.settings.video.preview_image | default: section.settings.cover_image
+          assign has_video = false
+
+          if section.settings.video != blank or section.settings.video_url != blank
+            assign has_video = true
+          endif
+        %}
+
+        {% if has_video %}
+          <deferred-media
+            class="again-how-it-works__media"
+            data-media-id="{{ video_id }}"
+          >
+            <button
+              class="again-how-it-works__poster deferred-media__poster"
+              id="Deferred-Poster-{{ section.id }}"
+              type="button"
+              aria-label="Play {{ section.settings.video_label | escape }}"
+            >
+              {% if poster != blank %}
+                {{
+                  poster
+                  | image_url: width: 1600
+                  | image_tag:
+                    widths: '375, 750, 1100, 1500, 1600',
+                    sizes: '(min-width: 990px) 52vw, 100vw',
+                    loading: 'lazy',
+                    alt: section.settings.video_label
+                }}
+              {% else %}
+                {% render 'placeholder-image',
+                  aspect_ratio: '16 / 9',
+                  color: '#D6F2ED',
+                  label: section.settings.video_label
+                %}
+              {% endif %}
+
+              <span class="again-how-it-works__play" aria-hidden="true">
+                <span class="svg-wrapper">
+                  {{ 'icon-play.svg' | inline_asset_content }}
+                </span>
+              </span>
+
+              <span class="again-how-it-works__video-label">
+                <span>{{ section.settings.video_label | escape }}</span>
+                {% if section.settings.video_duration != blank %}
+                  <span>{{ section.settings.video_duration | escape }}</span>
+                {% endif %}
+              </span>
+            </button>
+
+            <template>
+              {% if section.settings.video != blank %}
+                {{
+                  section.settings.video
+                  | video_tag: image_size: '1100x', autoplay: true, controls: true, muted: false
+                }}
+              {% elsif section.settings.video_url.type == 'youtube' %}
+                <iframe
+                  src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1&autoplay=1"
+                  allow="autoplay; encrypted-media"
+                  allowfullscreen
+                  title="{{ section.settings.video_label | escape }}"
+                ></iframe>
+              {% else %}
+                <iframe
+                  src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1"
+                  allow="autoplay; encrypted-media"
+                  allowfullscreen
+                  title="{{ section.settings.video_label | escape }}"
+                ></iframe>
+              {% endif %}
+            </template>
+          </deferred-media>
+        {% else %}
+          <div class="again-how-it-works__media">
+            {% render 'placeholder-image',
+              aspect_ratio: '16 / 9',
+              color: '#D6F2ED',
+              label: section.settings.video_label
+            %}
+            <span class="again-how-it-works__play" aria-hidden="true">
+              <span class="svg-wrapper">
+                {{ 'icon-play.svg' | inline_asset_content }}
+              </span>
+            </span>
+            {% if section.settings.video_duration != blank %}
+              <span class="again-how-it-works__video-label">
+                {{ section.settings.video_label | escape }}
+                <span>{{ section.settings.video_duration | escape }}</span>
+              </span>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+
+      <ol class="again-how-it-works__steps">
+        {% for block in section.blocks %}
+          <li class="again-how-it-works__step" {{ block.shopify_attributes }}>
+            <span class="again-how-it-works__number" aria-hidden="true">
+              {{ forloop.index }}
+            </span>
+
+            <div>
+              {% if block.settings.title != blank %}
+                <h3 class="again-how-it-works__step-title">
+                  {{ block.settings.title | escape }}
+                </h3>
+              {% endif %}
+
+              {% if block.settings.text != blank %}
+                <div class="again-how-it-works__step-text">
+                  {{ block.settings.text }}
+                </div>
+              {% endif %}
+            </div>
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "AGAIN how it works",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "How it works"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Three steps to fresh."
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Shopify-hosted video"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "label": "YouTube or Vimeo URL",
+      "accept": ["youtube", "vimeo"]
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "Video poster image"
+    },
+    {
+      "type": "text",
+      "id": "video_label",
+      "label": "Video label",
+      "default": "Watch the ritual"
+    },
+    {
+      "type": "text",
+      "id": "video_duration",
+      "label": "Displayed duration",
+      "default": "1:12"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-7"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step title",
+          "default": "Twist & warm"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Step description",
+          "default": "<p>A small squeeze; the balm softens with your skin.</p>"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "AGAIN how it works",
+      "blocks": [
+        { "type": "step" },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Two swipes each side",
+            "text": "<p>Glides on clear — no white marks, no residue.</p>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Go play harder",
+            "text": "<p>Fresh that lasts the whole day. Reapply only if you want to.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,139 @@
+<section
+  class="again-usp-marquee color-{{ section.settings.color_scheme }}"
+  data-display-mode="{{ section.settings.display_mode }}"
+  aria-label="{{ section.settings.accessibility_label | escape }}"
+>
+  {% assign sequence_count = 1 %}
+  {% if section.settings.display_mode == 'homepage' %}
+    {% assign sequence_count = 2 %}
+  {% endif %}
+
+  <div class="again-usp-marquee__track">
+    {% for copy in (1..2) %}
+      <div
+        class="again-usp-marquee__group"
+        {% if copy == 2 %}
+          aria-hidden="true"
+        {% else %}
+          role="list"
+        {% endif %}
+      >
+        {% for sequence in (1..sequence_count) %}
+          <div
+            class="again-usp-marquee__sequence"
+            role="presentation"
+            {% if sequence > 1 or copy == 2 %}
+              data-repeat="true"
+              aria-hidden="true"
+            {% endif %}
+          >
+            {% for block in section.blocks %}
+              {% liquid
+                assign claim_icon = 'icon-heart.svg'
+                case block.settings.icon
+                  when 'map-pin'
+                    assign claim_icon = 'icon-map-pin.svg'
+                  when 'truck'
+                    assign claim_icon = 'icon-truck.svg'
+                  when 'leaf'
+                    assign claim_icon = 'icon-leaf.svg'
+                endcase
+              %}
+
+              <span
+                class="again-usp-marquee__item"
+                {% if copy == 1 and sequence == 1 %}
+                  role="listitem"
+                  {{ block.shopify_attributes }}
+                {% endif %}
+              >
+                <span class="again-usp-marquee__icon" aria-hidden="true">
+                  {{ claim_icon | inline_asset_content }}
+                </span>
+                <span>{{ block.settings.claim | escape }}</span>
+              </span>
+
+              <img
+                class="again-usp-marquee__separator"
+                src="{{ 'again-teal-symbol.svg' | asset_url }}"
+                alt=""
+                width="15"
+                height="15"
+                aria-hidden="true"
+              >
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "AGAIN claims marquee",
+  "settings": [
+    {
+      "type": "select",
+      "id": "display_mode",
+      "label": "Display style",
+      "options": [
+        { "value": "homepage", "label": "Homepage marquee" },
+        { "value": "pdp", "label": "Product claims band" }
+      ],
+      "default": "homepage"
+    },
+    {
+      "type": "text",
+      "id": "accessibility_label",
+      "label": "Accessibility label",
+      "default": "AGAIN product claims"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-6"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "claim",
+      "name": "Claim",
+      "settings": [
+        {
+          "type": "text",
+          "id": "claim",
+          "label": "Claim",
+          "default": "Sensitive skin"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Claim icon",
+          "options": [
+            { "value": "heart", "label": "Heart" },
+            { "value": "map-pin", "label": "Map pin" },
+            { "value": "truck", "label": "Truck" },
+            { "value": "leaf", "label": "Leaf" }
+          ],
+          "default": "heart"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "AGAIN claims marquee",
+      "blocks": [
+        { "type": "claim" },
+        { "type": "claim", "settings": { "claim": "Bicarb-free" } },
+        { "type": "claim", "settings": { "claim": "100% Natural" } },
+        { "type": "claim", "settings": { "claim": "Plastic free" } },
+        { "type": "claim", "settings": { "claim": "All genders" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
