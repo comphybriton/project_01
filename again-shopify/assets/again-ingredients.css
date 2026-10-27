@@ -1,0 +1,235 @@
+.again-ingredients {
+  padding: 74px 48px;
+  background: #dbd8bf;
+  color: #0d3f38;
+}
+
+.again-ingredients__layout {
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  grid-template-areas:
+    "header rows"
+    "link rows";
+  gap: 56px;
+  align-items: start;
+  width: 100%;
+  max-width: 1104px;
+  margin: 0 auto;
+}
+
+.again-ingredients__header {
+  grid-area: header;
+  grid-column: 1;
+}
+
+.again-ingredients__eyebrow {
+  margin: 0;
+  color: #0d3f38;
+  font-family: var(--again-font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.again-ingredients__heading {
+  margin: 14px 0;
+  color: #0d3f38;
+  font-family: var(--again-font-heading);
+  font-size: 38px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.again-ingredients__intro {
+  margin: 0 0 24px;
+  color: #4d6863;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.again-ingredients__intro p {
+  margin: 0;
+}
+
+.again-ingredients__rows {
+  grid-area: rows;
+  grid-column: 2;
+  overflow: hidden;
+  padding: 4px 22px;
+  border: 1px solid rgb(13 63 56 / 8%);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 3px 8px rgb(13 63 56 / 8%);
+}
+
+.again-ingredients__item {
+  border-bottom: 1px solid #dfe5e3;
+}
+
+.again-ingredients__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 20px 4px;
+  border: 0;
+  background: transparent;
+  color: #0d3f38;
+  cursor: pointer;
+  font-family: var(--again-font-body);
+  font-size: 16px;
+  font-weight: 500;
+  list-style: none;
+  text-align: left;
+}
+
+.again-ingredients__summary::-webkit-details-marker {
+  display: none;
+}
+
+.again-ingredients__summary::marker {
+  content: "";
+}
+
+.again-ingredients__summary:focus-visible,
+.again-ingredients__link:focus-visible {
+  outline: 2px solid #0d3f38;
+  outline-offset: 4px;
+}
+
+.again-ingredients__toggle {
+  display: flex;
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  align-items: center;
+  justify-content: center;
+  color: #0d3f38;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1;
+  text-align: center;
+  transform: rotate(0);
+  transition: transform 220ms ease;
+}
+
+.again-ingredients__toggle::before {
+  content: "+";
+}
+
+.again-ingredients__item[open] .again-ingredients__toggle {
+  transform: rotate(45deg);
+}
+
+.again-ingredients__description {
+  max-width: 620px;
+  padding: 0 4px 20px;
+  color: #607873;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+.again-ingredients__description p {
+  margin: 0;
+}
+
+.again-ingredients__link {
+  display: inline-flex;
+  grid-area: link;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  justify-self: start;
+  gap: 8px;
+  padding: 12px 22px;
+  border: 1px solid rgb(13 63 56 / 35%);
+  border-radius: 999px;
+  background: transparent;
+  color: #0d3f38;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-decoration: none;
+  transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.again-ingredients__link:hover {
+  background: rgb(13 63 56 / 5%);
+  transform: translateY(-1px);
+}
+
+@media screen and (max-width: 989px) {
+  .again-ingredients {
+    padding: 48px 32px;
+  }
+
+  .again-ingredients__layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "header"
+      "rows"
+      "link";
+    gap: 28px;
+  }
+
+  .again-ingredients__header {
+    grid-column: 1;
+  }
+
+  .again-ingredients__rows {
+    grid-column: 1;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .again-ingredients {
+    padding: 40px 22px;
+  }
+
+  .again-ingredients__heading {
+    font-size: 30px;
+  }
+
+  .again-ingredients__link {
+    width: 100%;
+    justify-self: stretch;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .again-ingredients__rows {
+    padding-inline: 16px;
+  }
+
+  .again-ingredients__summary {
+    padding-block: 17px;
+  }
+
+  .again-ingredients__description {
+    padding-bottom: 17px;
+  }
+
+  .again-ingredients__intro {
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .again-ingredients__toggle,
+  .again-ingredients__link {
+    transition: none;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .again-header .header__icon-search,
+  .again-header .header__icon--account {
+    display: none;
+  }
+}

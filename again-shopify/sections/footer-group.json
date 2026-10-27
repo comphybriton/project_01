@@ -26,19 +26,11 @@
             "menu": "learn"
           }
         },
-        "footer-support": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Support",
-            "menu": "support"
-          }
-        }
       },
       "block_order": [
         "footer-brand",
         "footer-shop",
-        "footer-learn",
-        "footer-support"
+        "footer-learn"
       ],
       "settings": {
         "color_scheme": "scheme-6",

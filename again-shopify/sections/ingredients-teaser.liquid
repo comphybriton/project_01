@@ -19,11 +19,6 @@
         </div>
       {% endif %}
 
-      {% if section.settings.link_label != blank and section.settings.link != blank %}
-        <a class="again-ingredients__link" href="{{ section.settings.link }}">
-          {{ section.settings.link_label | escape }}
-        </a>
-      {% endif %}
     </header>
 
     <div class="again-ingredients__rows">
@@ -49,6 +44,12 @@
         </details>
       {% endfor %}
     </div>
+
+    {% if section.settings.link_label != blank and section.settings.link != blank %}
+      <a class="again-ingredients__link" href="{{ section.settings.link }}">
+        {{ section.settings.link_label | escape }}
+      </a>
+    {% endif %}
   </div>
 </section>
 

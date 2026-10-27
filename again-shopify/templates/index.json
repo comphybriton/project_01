@@ -3,15 +3,13 @@
     "hero_lookbook": {
       "type": "hero-lookbook",
       "settings": {
-        "desktop_image": "",
-        "desktop_fallback_color": "#D6F2ED",
-        "mobile_image": "",
-        "mobile_fallback_color": "#D6F2ED",
+        "desktop_fallback_color": "#d6f2ed",
+        "mobile_fallback_color": "#d6f2ed",
         "heading": "Natural Self-Care, Done Right.",
         "primary_label": "Shop the balm",
-        "primary_link": "",
+        "primary_link": "shopify://products/the-collection-snowboard-hydrogen",
         "secondary_label": "Meet the duo →",
-        "secondary_link": ""
+        "secondary_link": "shopify://products/the-3p-fulfilled-snowboard"
       }
     },
     "feature_cards": {
@@ -190,6 +188,7 @@
         "eyebrow": "Fresh, on repeat",
         "heading": "Self-care, on repeat.",
         "text": "<p>Build the habit — we'll handle the rest. Your balm arrives right when you're running low. Skip or cancel anytime.</p>",
+        "product": "the-complete-snowboard",
         "subscription_label": "Subscribe",
         "one_time_label": "One-time",
         "frequency_label": "Deliver every",

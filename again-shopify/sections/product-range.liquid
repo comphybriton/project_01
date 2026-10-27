@@ -34,12 +34,6 @@
               href="{{ product.url }}"
               aria-label="Shop {{ product.title | escape }}"
             >
-              {% if block.settings.badge != blank %}
-                <span class="again-product-card__badge">
-                  {{ block.settings.badge | escape }}
-                </span>
-              {% endif %}
-
               <div class="again-product-card__media">
                 {% if product.featured_image != blank %}
                   {{
@@ -56,15 +50,23 @@
                 {% endif %}
               </div>
 
-              <h3 class="again-product-card__title">
-                {{ product.title | escape }}
-              </h3>
+              <div class="again-product-card__details">
+                <h3 class="again-product-card__title">
+                  {{ product.title | escape }}
+                </h3>
 
-              {% if block.settings.subtitle != blank %}
-                <p class="again-product-card__subtitle">
-                  {{ block.settings.subtitle | escape }}
-                </p>
-              {% endif %}
+                {% if block.settings.badge != blank %}
+                  <span class="again-product-card__badge">
+                    {{ block.settings.badge | escape }}
+                  </span>
+                {% endif %}
+
+                {% if block.settings.subtitle != blank %}
+                  <p class="again-product-card__subtitle">
+                    {{ block.settings.subtitle | escape }}
+                  </p>
+                {% endif %}
+              </div>
 
               <div class="again-product-card__footer">
                 <span class="again-product-card__price">
