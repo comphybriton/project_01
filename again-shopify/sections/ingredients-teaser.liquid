@@ -1,0 +1,158 @@
+<section class="again-ingredients color-{{ section.settings.color_scheme }}">
+  <div class="again-ingredients__layout">
+    <header class="again-ingredients__header">
+      {% if section.settings.eyebrow != blank %}
+        <p class="again-ingredients__eyebrow">
+          {{ section.settings.eyebrow | escape }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h2 class="again-ingredients__heading">
+          {{ section.settings.heading | escape }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.description != blank %}
+        <div class="again-ingredients__intro rte">
+          {{ section.settings.description }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.link_label != blank and section.settings.link != blank %}
+        <a class="again-ingredients__link" href="{{ section.settings.link }}">
+          {{ section.settings.link_label | escape }}
+        </a>
+      {% endif %}
+    </header>
+
+    <div class="again-ingredients__rows">
+      {% for block in section.blocks %}
+        <details
+          class="again-ingredients__item"
+          id="Ingredient-{{ section.id }}-{{ block.id }}"
+          {% if block.settings.open %}
+            open
+          {% endif %}
+          {{ block.shopify_attributes }}
+        >
+          <summary class="again-ingredients__summary">
+            <span>{{ block.settings.title | escape }}</span>
+            <span class="again-ingredients__toggle" aria-hidden="true"></span>
+          </summary>
+
+          {% if block.settings.description != blank %}
+            <div class="again-ingredients__description rte">
+              {{ block.settings.description }}
+            </div>
+          {% endif %}
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "AGAIN ingredients teaser",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "What's inside"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ingredients that work, everyday."
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>A short list of naturals — click any one to see the job it does.</p>"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "See all ingredients"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-7"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Ingredient name",
+          "default": "Magnesium"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Our hero active. Magnesium neutralises odour gently and effectively — without the irritation bicarb can cause on sensitive skin.</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "open",
+          "label": "Open by default",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "AGAIN ingredients teaser",
+      "blocks": [
+        {
+          "type": "ingredient",
+          "settings": {
+            "title": "Coconut oil",
+            "description": "<p>Naturally antibacterial and deeply nourishing — it calms skin while helping keep odour-causing bacteria in check.</p>"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "title": "Magnesium",
+            "description": "<p>Our hero active. Magnesium neutralises odour gently and effectively — without the irritation bicarb can cause on sensitive skin.</p>"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "title": "Arrowroot",
+            "description": "<p>A fine plant starch that absorbs moisture and wetness, keeping you dry and comfortable right through the day.</p>"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "title": "Eucalyptus oil",
+            "description": "<p>Our signature fresh note — clean, crisp and naturally deodorising, for that just-showered feeling.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

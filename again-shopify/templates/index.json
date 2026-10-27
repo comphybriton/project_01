@@ -42,11 +42,7 @@
           }
         }
       },
-      "block_order": [
-        "feature_BAFECi",
-        "feature_chJ3pr",
-        "feature_KdaNFb"
-      ],
+      "block_order": ["feature_BAFECi", "feature_chJ3pr", "feature_KdaNFb"],
       "settings": {
         "eyebrow": "Why AGAIN",
         "heading": "Gentle and effective. You shouldn't have to choose — so we made sure you don't.",
@@ -84,11 +80,7 @@
           }
         }
       },
-      "block_order": [
-        "product_4CxpiT",
-        "product_LNBHDt",
-        "product_JFQa4X"
-      ],
+      "block_order": ["product_4CxpiT", "product_LNBHDt", "product_JFQa4X"],
       "settings": {
         "eyebrow": "The range",
         "heading": "Two products. That's it.",
@@ -121,11 +113,7 @@
           }
         }
       },
-      "block_order": [
-        "step_Q9Y7eq",
-        "step_RJzHxB",
-        "step_8bPNh3"
-      ],
+      "block_order": ["step_Q9Y7eq", "step_RJzHxB", "step_8bPNh3"],
       "settings": {
         "eyebrow": "How it works",
         "heading": "Three steps to fresh.",
@@ -133,6 +121,80 @@
         "cover_image": "shopify://shop_images/woman-practicing-her-skincare-routine.jpg",
         "video_label": "Level up your skincare",
         "video_duration": "3:58",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "ingredients-teaser": {
+      "type": "ingredients-teaser",
+      "blocks": {
+        "ingredient_coconut": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Coconut oil",
+            "description": "<p>Naturally antibacterial and deeply nourishing — it calms skin while helping keep odour-causing bacteria in check.</p>",
+            "open": false
+          }
+        },
+        "ingredient_shea": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Shea butter",
+            "description": "<p>Add your approved Shea butter description here.</p>",
+            "open": false
+          }
+        },
+        "ingredient_magnesium": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Magnesium",
+            "description": "<p>Our hero active. Magnesium neutralises odour gently and effectively — without the irritation bicarb can cause on sensitive skin.</p>",
+            "open": false
+          }
+        },
+        "ingredient_arrowroot": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Arrowroot",
+            "description": "<p>A fine plant starch that absorbs moisture and wetness, keeping you dry and comfortable right through the day.</p>",
+            "open": false
+          }
+        },
+        "ingredient_eucalyptus": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Eucalyptus oil",
+            "description": "<p>Our signature fresh note — clean, crisp and naturally deodorising, for that just-showered feeling.</p>",
+            "open": true
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_coconut",
+        "ingredient_shea",
+        "ingredient_magnesium",
+        "ingredient_arrowroot",
+        "ingredient_eucalyptus"
+      ],
+      "settings": {
+        "eyebrow": "WHAT'S INSIDE",
+        "heading": "Ingredients that work, everyday.",
+        "description": "<p>A short list of naturals — click any one to see the job it does.</p>",
+        "link_label": "See all ingredients",
+        "link": "/pages/ingredients",
+        "color_scheme": "scheme-8"
+      }
+    },
+    "subscribe-promo": {
+      "type": "subscribe-promo",
+      "settings": {
+        "eyebrow": "Fresh, on repeat",
+        "heading": "Self-care, on repeat.",
+        "text": "<p>Build the habit — we'll handle the rest. Your balm arrives right when you're running low. Skip or cancel anytime.</p>",
+        "subscription_label": "Subscribe",
+        "one_time_label": "One-time",
+        "frequency_label": "Deliver every",
+        "delivery_frequencies": "4 weeks, 6 weeks, 8 weeks",
+        "button_label": "Start your ritual",
         "color_scheme": "scheme-1"
       }
     },
@@ -168,12 +230,7 @@
           }
         }
       },
-      "block_order": [
-        "claim_ga3Y3i",
-        "claim_WQRLp9",
-        "claim_YARdJX",
-        "claim_98EENH"
-      ],
+      "block_order": ["claim_ga3Y3i", "claim_WQRLp9", "claim_YARdJX", "claim_98EENH"],
       "settings": {
         "display_mode": "homepage",
         "accessibility_label": "AGAIN product claims",
@@ -186,6 +243,8 @@
     "feature_cards",
     "product-range",
     "how-it-works",
+    "ingredients-teaser",
+    "subscribe-promo",
     "usp-marquee"
   ]
 }
