@@ -1,0 +1,110 @@
+<section
+  class="again-page-hero color-{{ section.settings.color_scheme }}{% if section.settings.image == blank %} again-page-hero--text-only{% endif %}"
+  style="--again-page-hero-background: {{ section.settings.background_color }};"
+>
+  {% if section.settings.image == blank %}
+    <img
+      class="again-page-hero__watermark"
+      src="{{ 'again-teal-symbol.svg' | asset_url }}"
+      alt=""
+      aria-hidden="true"
+      width="420"
+      height="407"
+      loading="lazy"
+    >
+  {% endif %}
+  <div class="{% unless section.settings.image == blank %}page-width {% endunless %}again-page-hero__layout{% if section.settings.image == blank %} again-page-hero__layout--text-only{% endif %}">
+    <div class="again-page-hero__content again-page-hero__content--{{ section.settings.text_alignment }}">
+      {% if section.settings.eyebrow != blank %}
+        <p class="again-page-hero__eyebrow">
+          {{ section.settings.eyebrow | escape }}
+        </p>
+      {% endif %}
+
+      <h1 class="again-page-hero__heading">
+        {{ section.settings.heading | default: page.title | escape }}
+      </h1>
+
+      {% if section.settings.intro != blank %}
+        <div class="again-page-hero__intro rte">
+          {{ section.settings.intro }}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if section.settings.image != blank %}
+      <div class="again-page-hero__media">
+        {{
+          section.settings.image
+          | image_url: width: 1600
+          | image_tag:
+            widths: '375, 550, 750, 1100, 1500, 1600',
+            sizes: '(min-width: 750px) 50vw, 100vw',
+            loading: 'lazy',
+            alt: section.settings.image.alt
+          | default: section.settings.heading
+          | escape
+        }}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "AGAIN page hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Our story"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Leave blank to use the page title."
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Introduction",
+      "default": "<p>Natural self-care, done right.</p>"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero image"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-8"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Hero background",
+      "default": "#D6F2ED"
+    }
+  ],
+  "presets": [
+    {
+      "name": "AGAIN page hero"
+    }
+  ]
+}
+{% endschema %}

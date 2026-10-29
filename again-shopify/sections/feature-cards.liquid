@@ -1,6 +1,10 @@
 <section class="again-feature-cards color-{{ section.settings.color_scheme }}">
   <div class="page-width">
-    <header class="again-feature-cards__header">
+    <header class="again-feature-cards__header text-{{ section.settings.text_alignment }}">
+      {% if section.settings.eyebrow != blank or section.settings.heading != blank %}
+        <div class="again-feature-cards__header-content">
+      {% endif %}
+
       {% if section.settings.eyebrow != blank %}
         <p class="again-feature-cards__eyebrow">
           {{ section.settings.eyebrow | escape }}
@@ -11,6 +15,10 @@
         <h2 class="again-feature-cards__heading">
           {{ section.settings.heading | escape }}
         </h2>
+      {% endif %}
+
+      {% if section.settings.eyebrow != blank or section.settings.heading != blank %}
+        </div>
       {% endif %}
     </header>
 
@@ -64,6 +72,26 @@
       "id": "heading",
       "label": "Heading",
       "default": "Gentle and effective. You shouldn't have to choose — so we made sure you don't."
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
     },
     {
       "type": "color_scheme",

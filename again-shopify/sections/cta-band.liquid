@@ -1,0 +1,88 @@
+<section class="again-cta-band color-{{ section.settings.color_scheme }}">
+  <img
+    class="again-cta-band__watermark again-cta-band__watermark--{{ section.settings.watermark_position }}"
+    src="{{ 'again-white-symbol.svg' | asset_url }}"
+    alt=""
+    aria-hidden="true"
+    width="420"
+    height="407"
+    loading="lazy"
+  >
+  <div class="page-width again-cta-band__content{% if section.settings.show_divider %} again-cta-band__content--with-divider{% endif %}">
+    {% if section.settings.heading != blank %}
+      <h2 class="again-cta-band__heading">
+        {{ section.settings.heading | escape }}
+      </h2>
+    {% endif %}
+
+    {% if section.settings.text != blank %}
+      <div class="again-cta-band__text rte">
+        {{ section.settings.text }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+      <a class="button again-cta-band__button" href="{{ section.settings.button_link }}">
+        {{ section.settings.button_label | escape }}
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "AGAIN CTA band",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ready to find your fresh?"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Meet your new everyday essential.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Shop the balm"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-6"
+    },
+    {
+      "type": "select",
+      "id": "watermark_position",
+      "label": "Watermark position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_divider",
+      "label": "Show divider line",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "AGAIN CTA band"
+    }
+  ]
+}
+{% endschema %}

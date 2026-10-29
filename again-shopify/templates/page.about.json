@@ -1,0 +1,181 @@
+{
+  "sections": {
+    "page_hero": {
+      "type": "page-hero",
+      "settings": {
+        "eyebrow": "Our story",
+        "heading": "It started with a simple no.",
+        "intro": "<p>We refused to choose between gentle and effective. So we made a deodorant for sensitive skin that actually works — and smells good doing it.</p>",
+        "text_alignment": "center",
+        "color_scheme": "scheme-8",
+        "background_color": "#d6f2ed"
+      }
+    },
+    "origin_story": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_fk399w": {
+          "type": "caption",
+          "settings": {
+            "caption": "The beginning",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "story_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Every natural one let us down.&nbsp;",
+            "heading_size": "h1"
+          }
+        },
+        "story_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>It began in a bathroom, with a drawer full of half-used tubes. Every natural deodorant either quit by lunchtime or left skin red and irritated — usually thanks to bicarb. Every one that actually worked was full of aluminium and things we couldn't pronounce.</p><p>\"Gentle <em>and</em> effective\" wasn't a product we could buy. So we spent two years making it — swapping bicarb for magnesium and testing balm after balm until it was kind to sensitive skin, smelled great, and lasted the whole day.</p>",
+            "text_style": "subtitle"
+          }
+        }
+      },
+      "block_order": [
+        "caption_fk399w",
+        "story_heading",
+        "story_text"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/woman-practicing-her-skincare-routine.jpg",
+        "height": "small",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-7",
+        "color_scheme": "scheme-7",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "page_cta": {
+      "type": "cta-band",
+      "settings": {
+        "heading": "\"You shouldn't have to choose. So we made sure you don't.\"",
+        "text": "",
+        "button_label": "",
+        "button_link": "/collections/all",
+        "color_scheme": "scheme-6",
+        "watermark_position": "right",
+        "show_divider": false
+      }
+    },
+    "feature_cards": {
+      "type": "feature-cards",
+      "blocks": {
+        "feature_about_01": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/again-icon-droplet_17cfc759-c3b5-4fc3-a811-f8abd6e8e2a5.svg",
+            "title": "No compromise",
+            "text": "<p>Gentle on sensitive skin, tough on odour. If it doesn't work, it doesn't ship.</p>"
+          }
+        },
+        "feature_about_02": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/again-icon-refresh.svg",
+            "title": "Nothing wasted",
+            "text": "<p>Recyclable packaging and a brass key that gets every last bit. Sustainability by design.</p>"
+          }
+        },
+        "feature_about_03": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/icon-checkmark.svg",
+            "title": "Kept simple",
+            "text": "<p>Honest ingredients, plain language. We're big on simplicity.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "feature_about_01",
+        "feature_about_02",
+        "feature_about_03"
+      ],
+      "settings": {
+        "eyebrow": "What we stand for",
+        "heading": "Trusted routines, positive habits.",
+        "text_alignment": "center",
+        "color_scheme": "scheme-9"
+      }
+    },
+    "second_story": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_02": {
+          "type": "caption",
+          "settings": {
+            "caption": "From the founder",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "story_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "I started AGAIN because I wanted a morning ritual I could trust — something natural, dependable, and kind to the planet.",
+            "heading_size": "h2"
+          }
+        },
+        "story_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>If it makes your day a little fresher and your routine a little better, we've done our job.</p><h3>Colin</h3><p>Founder, AGAIN</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "caption_02",
+        "story_heading",
+        "story_text"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/welcome-to-my-business.jpg",
+        "height": "small",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-7",
+        "color_scheme": "scheme-7",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "page_cta_01": {
+      "type": "cta-band",
+      "settings": {
+        "heading": "Natural Self-Care, Done Right.",
+        "text": "<p>Start your ritual today.</p>",
+        "button_label": "Shop the range",
+        "button_link": "/collections/all",
+        "color_scheme": "scheme-6",
+        "watermark_position": "right",
+        "show_divider": true
+      }
+    }
+  },
+  "order": [
+    "page_hero",
+    "origin_story",
+    "page_cta",
+    "feature_cards",
+    "second_story",
+    "page_cta_01"
+  ]
+}

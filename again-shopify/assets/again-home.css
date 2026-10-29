@@ -158,6 +158,11 @@
   margin-bottom: 42px;
 }
 
+.again-feature-cards__header.text-center {
+  margin-inline: auto;
+  text-align: center;
+}
+
 .again-feature-cards__eyebrow,
 .again-product-range__eyebrow,
 .again-how-it-works__eyebrow {
