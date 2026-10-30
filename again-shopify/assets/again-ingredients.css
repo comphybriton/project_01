@@ -233,3 +233,250 @@
     display: none;
   }
 }
+
+.again-ingredient-grid {
+  padding: 64px 0;
+  background: #f5f5f5;
+}
+
+.again-ingredient-grid__header {
+  margin-bottom: 32px;
+}
+
+.again-ingredient-grid__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.again-ingredient-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  gap: 16px;
+  padding: 26px;
+  border: 1px solid rgb(13 63 56 / 10%);
+  border-radius: 20px;
+  background: #fff;
+}
+
+.again-ingredient-card__icon-tile {
+  display: flex;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #d6f2ed;
+}
+
+.again-ingredient-card:nth-child(even) .again-ingredient-card__icon-tile {
+  background: #dbd8bf;
+}
+
+.again-ingredient-card__icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.again-ingredient-card__content {
+  width: 100%;
+}
+
+.again-ingredient-card__title {
+  margin: 0 0 7px;
+  color: #0d3f38;
+  font-size: 20px;
+}
+
+.again-ingredient-card__heading {
+  display: block;
+}
+
+.again-ingredient-card__benefit {
+  position: absolute;
+  top: 26px;
+  right: 26px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #e8f4f1;
+  color: #0d3f38;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.again-ingredient-card__description {
+  color: #4d6863;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.again-ingredient-card__description p {
+  margin: 0;
+}
+
+@media screen and (max-width: 749px) {
+  .again-ingredient-grid {
+    padding: 32px 0 30px;
+  }
+
+  .again-ingredient-grid__list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .again-ingredient-card {
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    align-items: start;
+    gap: 0 14px;
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .again-ingredient-card__icon-tile {
+    grid-column: 1;
+    width: 52px;
+    height: 52px;
+    flex-basis: 52px;
+  }
+
+  .again-ingredient-card__content {
+    display: block;
+    grid-column: 2;
+    min-width: 0;
+  }
+
+  .again-ingredient-card__heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .again-ingredient-card__title {
+    min-width: 0;
+    font-size: 17px;
+  }
+
+  .again-ingredient-card__benefit {
+    position: static;
+    flex: 0 0 auto;
+    padding: 3px 8px;
+    font-size: 9px;
+  }
+
+  .again-ingredient-card__description {
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+}
+
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .again-ingredient-grid__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.again-free-from {
+  position: relative;
+  overflow: hidden;
+  padding: 64px 0;
+  background: #0d3f38;
+  color: #fff;
+}
+
+.again-free-from__inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.again-free-from__watermark {
+  position: absolute;
+  right: -80px;
+  bottom: -180px;
+  width: 340px;
+  height: auto;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.again-free-from__eyebrow {
+  margin: 0 0 16px;
+  color: #d6f2ed;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.again-free-from__heading {
+  margin: 0 0 32px;
+  color: #fff;
+}
+
+.again-free-from__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.again-free-from__item {
+  padding: 12px 20px;
+  border: 1px solid rgb(255 255 255 / 28%);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+@media screen and (max-width: 749px) {
+  .again-free-from {
+    padding: 34px 0 40px;
+  }
+
+  .again-free-from__inner {
+    text-align: left;
+  }
+
+  .again-free-from__eyebrow {
+    margin-bottom: 12px;
+    font-size: 11px;
+  }
+
+  .again-free-from__heading {
+    margin-bottom: 18px;
+    font-size: 24px;
+    line-height: 1.1;
+  }
+
+  .again-free-from__list {
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .again-free-from__item {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  .again-free-from__watermark {
+    display: none;
+  }
+}

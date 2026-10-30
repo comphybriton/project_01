@@ -1,13 +1,17 @@
-<section class="again-cta-band color-{{ section.settings.color_scheme }}">
-  <img
+<section
+  class="again-cta-band color-{{ section.settings.color_scheme }}"
+  style="
+    --again-cta-band-background: {{ section.settings.background_color }};
+    --again-cta-band-foreground: {{ section.settings.text_color }};
+    --color-button: {{ section.settings.button_color.red }}, {{ section.settings.button_color.green }}, {{ section.settings.button_color.blue }};
+    --color-button-text: {{ section.settings.button_text_color.red }}, {{ section.settings.button_text_color.green }}, {{ section.settings.button_text_color.blue }};
+    --again-cta-band-watermark-image: url('{{ 'again-white-symbol.svg' | asset_url }}');
+  "
+>
+  <span
     class="again-cta-band__watermark again-cta-band__watermark--{{ section.settings.watermark_position }}"
-    src="{{ 'again-white-symbol.svg' | asset_url }}"
-    alt=""
     aria-hidden="true"
-    width="420"
-    height="407"
-    loading="lazy"
-  >
+  ></span>
   <div class="page-width again-cta-band__content{% if section.settings.show_divider %} again-cta-band__content--with-divider{% endif %}">
     {% if section.settings.heading != blank %}
       <h2 class="again-cta-band__heading">
@@ -61,6 +65,30 @@
       "id": "color_scheme",
       "label": "Color scheme",
       "default": "scheme-6"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "CTA background",
+      "default": "#0D3F38"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "CTA text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button background",
+      "default": "#0D3F38"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#FFFFFF"
     },
     {
       "type": "select",

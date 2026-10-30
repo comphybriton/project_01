@@ -8,7 +8,7 @@
   overflow: hidden;
   padding: 74px 48px;
   background: var(--again-page-hero-background, rgb(var(--color-background)));
-  color: rgb(var(--color-foreground));
+  color: var(--again-page-hero-foreground, rgb(var(--color-foreground)));
 }
 
 .again-page-hero__watermark {
@@ -61,7 +61,7 @@
 
 .again-page-hero__eyebrow {
   margin: 0;
-  color: #0d3f38;
+  color: var(--again-page-hero-foreground, #0d3f38);
   font-family: var(--again-font-body);
   font-size: 13px;
   font-weight: 500;
@@ -71,6 +71,7 @@
 
 .again-page-hero__heading {
   margin: 16px 0 18px;
+  color: var(--again-page-hero-foreground, #0d3f38);
   font-family: var(--again-font-heading);
   font-size: 64px;
   font-weight: 500;
@@ -81,7 +82,7 @@
 .again-page-hero__intro {
   max-width: 600px;
   margin: 0 auto;
-  color: #4d6863;
+  color: var(--again-page-hero-foreground, #4d6863);
   font-family: var(--again-font-body);
   font-size: 18px;
   font-weight: 300;
@@ -119,17 +120,21 @@
   position: relative;
   overflow: hidden;
   padding: 72px 24px;
-  background: #0d3f38;
-  color: #fff;
+  background: var(--again-cta-band-background, #0d3f38);
+  color: var(--again-cta-band-foreground, #fff);
   text-align: center;
 }
 
 .again-cta-band__watermark {
   position: absolute;
+  display: block;
   top: -40px;
   left: -40px;
   width: 240px;
-  height: auto;
+  aspect-ratio: 669.78 / 649.6;
+  background-color: var(--again-cta-band-foreground, #fff);
+  -webkit-mask: var(--again-cta-band-watermark-image) center / contain no-repeat;
+  mask: var(--again-cta-band-watermark-image) center / contain no-repeat;
   opacity: 0.1;
   pointer-events: none;
 }
@@ -160,13 +165,14 @@
 
 .again-cta-band__heading {
   margin: 0;
+  color: var(--again-cta-band-foreground, #fff);
   font-family: var(--again-font-heading);
   font-size: clamp(28px, 3vw, 36px);
 }
 
 .again-cta-band__text {
   max-width: 60ch;
-  color: #d6f2ed;
+  color: var(--again-cta-band-foreground, #fff);
 }
 
 .again-cta-band__text p {

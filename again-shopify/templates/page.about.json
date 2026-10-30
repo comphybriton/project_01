@@ -8,7 +8,8 @@
         "intro": "<p>We refused to choose between gentle and effective. So we made a deodorant for sensitive skin that actually works — and smells good doing it.</p>",
         "text_alignment": "center",
         "color_scheme": "scheme-8",
-        "background_color": "#d6f2ed"
+        "background_color": "#d6f2ed",
+        "text_color": "#0d3f38"
       }
     },
     "origin_story": {
@@ -66,6 +67,10 @@
         "button_label": "",
         "button_link": "/collections/all",
         "color_scheme": "scheme-6",
+        "background_color": "#0d3f38",
+        "text_color": "#ffffff",
+        "button_color": "#0d3f38",
+        "button_text_color": "#ffffff",
         "watermark_position": "right",
         "show_divider": false
       }
@@ -165,6 +170,10 @@
         "button_label": "Shop the range",
         "button_link": "/collections/all",
         "color_scheme": "scheme-6",
+        "background_color": "#0d3f38",
+        "text_color": "#ffffff",
+        "button_color": "#6CACA3",
+        "button_text_color": "#ffffff",
         "watermark_position": "right",
         "show_divider": true
       }

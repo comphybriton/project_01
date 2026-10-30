@@ -235,6 +235,37 @@
         "accessibility_label": "AGAIN product claims",
         "color_scheme": "scheme-8"
       }
+    },
+    "home-newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Join the routine",
+            "heading_size": "h2"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>The occasional note on fresh, natural living — and first dibs on what's new.</p>"
+          }
+        },
+        "email_form": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": ["heading", "paragraph", "email_form"],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "email_placeholder": "you@email.com",
+        "button_label": "Sign up",
+        "padding_top": 24,
+        "padding_bottom": 40
+      }
     }
   },
   "order": [
@@ -244,6 +275,7 @@
     "how-it-works",
     "ingredients-teaser",
     "subscribe-promo",
-    "usp-marquee"
+    "usp-marquee",
+    "home-newsletter"
   ]
 }

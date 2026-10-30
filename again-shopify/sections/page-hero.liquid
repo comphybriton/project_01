@@ -1,6 +1,9 @@
 <section
   class="again-page-hero color-{{ section.settings.color_scheme }}{% if section.settings.image == blank %} again-page-hero--text-only{% endif %}"
-  style="--again-page-hero-background: {{ section.settings.background_color }};"
+  style="
+    --again-page-hero-background: {{ section.settings.background_color }};
+    --again-page-hero-foreground: {{ section.settings.text_color }};
+  "
 >
   {% if section.settings.image == blank %}
     <img
@@ -99,6 +102,12 @@
       "id": "background_color",
       "label": "Hero background",
       "default": "#D6F2ED"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Hero text color",
+      "default": "#0D3F38"
     }
   ],
   "presets": [
