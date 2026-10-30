@@ -1,0 +1,95 @@
+<section class="again-faq color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    {% if section.settings.heading != blank %}
+      <h2 class="again-faq__heading">{{ section.settings.heading | escape }}</h2>
+    {% endif %}
+
+    {% if section.settings.intro != blank %}
+      <div class="again-faq__intro rte">{{ section.settings.intro }}</div>
+    {% endif %}
+
+    <div class="again-faq__items">
+      {% for block in section.blocks %}
+        <details
+          class="again-faq__item"
+          name="faq-{{ section.id }}"
+          {% if section.settings.open_first and forloop.first %}open{% endif %}
+          {{ block.shopify_attributes }}
+        >
+          <summary class="again-faq__question">
+            <span>{{ block.settings.question | escape }}</span>
+            <span class="again-faq__icon" aria-hidden="true"></span>
+          </summary>
+
+          {% if block.settings.answer != blank %}
+            <div class="again-faq__answer rte">
+              {{ block.settings.answer }}
+            </div>
+          {% endif %}
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "AGAIN FAQ group",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Group heading",
+      "default": "The product"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Introduction"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first",
+      "label": "Open the first question",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-7"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Is it suitable for sensitive skin?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Yes. It is made without bicarb and designed with sensitive skin in mind.</p>"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "AGAIN FAQ group",
+      "blocks": [
+        { "type": "question" },
+        { "type": "question" },
+        { "type": "question" }
+      ]
+    }
+  ]
+}
+{% endschema %}

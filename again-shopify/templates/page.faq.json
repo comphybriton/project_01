@@ -1,0 +1,196 @@
+{
+  "sections": {
+    "page_hero": {
+      "type": "page-hero",
+      "settings": {
+        "eyebrow": "Good to know",
+        "heading": "Questions, answered.",
+        "intro": "<p>Everything you might want to know about deodorant for sensitive skin — and how AGAIN works.</p>",
+        "text_alignment": "center",
+        "color_scheme": "scheme-8",
+        "background_color": "#d6f2ed",
+        "text_color": "#0d3f38"
+      }
+    },
+    "faq_product": {
+      "type": "faq-group",
+      "blocks": {
+        "product_q1": {
+          "type": "question",
+          "settings": {
+            "question": "Is it bicarb-free?",
+            "answer": "<p>Yes — no bicarb and no aluminium. We use magnesium instead.</p>"
+          }
+        },
+        "product_q2": {
+          "type": "question",
+          "settings": {
+            "question": "Does it work all day?",
+            "answer": "<p>It is designed to neutralise odour and keep you feeling fresh through the day.</p>"
+          }
+        },
+        "product_q3": {
+          "type": "question",
+          "settings": {
+            "question": "Is there an adjustment period?",
+            "answer": "<p>Some people notice a short transition when switching from conventional antiperspirants. It usually settles within a week or two, and you can reapply anytime.</p>"
+          }
+        },
+        "product_q4": {
+          "type": "question",
+          "settings": {
+            "question": "Will it stain my clothes?",
+            "answer": "<p>It glides on clear and absorbs in seconds, so you can get dressed straight away — no white marks or residue.</p>"
+          }
+        },
+        "product_q5": {
+          "type": "question",
+          "settings": {
+            "question": "Is it suitable for sensitive skin?",
+            "answer": "<p>It's made for sensitive skin. We leave out bicarb, a common cause of irritation in natural deodorants, and use gentle magnesium with shea butter and coconut oil.</p>"
+          }
+        }
+      },
+      "block_order": ["product_q1", "product_q2", "product_q3", "product_q4", "product_q5"],
+      "settings": {
+        "heading": "The product",
+        "open_first": true,
+        "color_scheme": "scheme-7"
+      }
+    },
+    "faq_subscription": {
+      "type": "faq-group",
+      "blocks": {
+        "subscription_q1": {
+          "type": "question",
+          "settings": {
+            "question": "How does the subscription work?",
+            "answer": "<p>Choose to receive your balm every 4, 6 or 8 weeks and save 15%. It arrives right when you're running low — no reordering.</p>"
+          }
+        },
+        "subscription_q2": {
+          "type": "question",
+          "settings": {
+            "question": "Can I change my delivery frequency?",
+            "answer": "<p>Anytime, from your account. Switch between 4, 6 and 8 weeks whenever it suits your routine.</p>"
+          }
+        },
+        "subscription_q3": {
+          "type": "question",
+          "settings": {
+            "question": "Can I skip or cancel?",
+            "answer": "<p>Yes — skip a delivery or cancel entirely anytime, with no fees and no fuss.</p>"
+          }
+        },
+        "subscription_q4": {
+          "type": "question",
+          "settings": {
+            "question": "When am I charged?",
+            "answer": "<p>Each order is charged on the day it ships. We'll email you a few days beforehand so there are no surprises.</p>"
+          }
+        }
+      },
+      "block_order": ["subscription_q1", "subscription_q2", "subscription_q3", "subscription_q4"],
+      "settings": {
+        "heading": "Subscription",
+        "open_first": true,
+        "color_scheme": "scheme-7"
+      }
+    },
+    "faq_shipping": {
+      "type": "faq-group",
+      "blocks": {
+        "shipping_q1": {
+          "type": "question",
+          "settings": {
+            "question": "When will my order arrive?",
+            "answer": "<p>Standard shipping is 3–5 business days; express is 1–2. You'll receive tracking as soon as your order ships.</p>"
+          }
+        },
+        "shipping_q2": {
+          "type": "question",
+          "settings": {
+            "question": "Do you offer free shipping?",
+            "answer": "<p>Shipping is on us for orders over $50. Under that, a flat standard rate applies at checkout.</p>"
+          }
+        },
+        "shipping_q3": {
+          "type": "question",
+          "settings": {
+            "question": "Do you ship internationally?",
+            "answer": "<p>We currently ship across Australia, with more regions coming soon.</p>"
+          }
+        },
+        "shipping_q4": {
+          "type": "question",
+          "settings": {
+            "question": "What's your returns policy?",
+            "answer": "<p>We back every order with a 30-day happiness guarantee. If it's not for you, reach out and we'll make it right.</p>"
+          }
+        }
+      },
+      "block_order": ["shipping_q1", "shipping_q2", "shipping_q3", "shipping_q4"],
+      "settings": {
+        "heading": "Shipping & returns",
+        "open_first": true,
+        "color_scheme": "scheme-7"
+      }
+    },
+    "faq_companion": {
+      "type": "faq-group",
+      "blocks": {
+        "companion_q1": {
+          "type": "question",
+          "settings": {
+            "question": "What is The Companion?",
+            "answer": "<p>It is a reusable brass key designed to help get the last of the balm out of its tube.</p>"
+          }
+        },
+        "companion_q2": {
+          "type": "question",
+          "settings": {
+            "question": "Does it fit the balm tube?",
+            "answer": "<p>Yes — it's made for the AGAIN balm tube and slots onto its base.</p>"
+          }
+        },
+        "companion_q3": {
+          "type": "question",
+          "settings": {
+            "question": "Why brass?",
+            "answer": "<p>It's durable, plastic-free and ages beautifully. One key can last a lifetime of tubes.</p>"
+          }
+        }
+      },
+      "block_order": ["companion_q1", "companion_q2", "companion_q3"],
+      "settings": {
+        "heading": "The Companion",
+        "open_first": true,
+        "color_scheme": "scheme-7"
+      }
+    },
+    "contact_cta": {
+      "type": "cta-band",
+      "settings": {
+        "heading": "Still have a question?",
+        "text": "<p>Get in touch and we’ll be happy to help.</p>",
+        "button_label": "Contact us",
+        "button_link": "/pages/contact",
+        "color_scheme": "scheme-6",
+        "background_color": "#0d3f38",
+        "text_color": "#ffffff",
+        "button_color": "#d6f2ed",
+        "button_text_color": "#0d3f38",
+        "watermark_position": "right",
+        "show_divider": true,
+      }
+    }
+  },
+  "order": [
+    "page_hero",
+    "faq_product",
+    "faq_subscription",
+    "faq_shipping",
+    "faq_companion",
+    "contact_cta"
+  ]
+}
