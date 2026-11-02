@@ -1,0 +1,75 @@
+{% doc %}
+  Renders a product card with a branded missing-image fallback.
+
+  @param {product} product_card - Product to display
+  @param {string} [image_ratio] - CSS aspect ratio, such as "1 / 1" or "3 / 4"
+  @param {boolean} [lazy_load] - Set to false to load the image eagerly
+  @param {boolean} [show_vendor] - Whether to display the product vendor
+
+  @example
+  {% render 'product-card', product_card: product, image_ratio: '1 / 1' %}
+{% enddoc %}
+
+{%- if product_card != blank -%}
+  {%- liquid
+    assign image_ratio = image_ratio | default: '1 / 1'
+    assign image_loading = 'lazy'
+
+    if lazy_load == false
+      assign image_loading = 'eager'
+    endif
+
+    assign image_alt = product_card.featured_image.alt | default: product_card.title
+  -%}
+
+  <article class="again-product-card">
+    <a class="again-product-card__image-link" href="{{ product_card.url }}">
+      <div
+        class="again-product-card__media"
+        style="--again-product-card-ratio: {{ image_ratio | escape }};"
+      >
+        {%- if product_card.featured_image != blank -%}
+          {{
+            product_card.featured_image
+            | image_url: width: 900
+            | image_tag:
+              widths: '360, 540, 720, 900',
+              sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw',
+              loading: image_loading,
+              alt: image_alt
+          }}
+        {%- else -%}
+          {% render 'placeholder-image',
+            aspect_ratio: image_ratio,
+            color: '#E4E9E3',
+            label: image_alt
+          %}
+        {%- endif -%}
+      </div>
+    </a>
+
+    {%- if show_vendor and product_card.vendor != blank -%}
+      <p class="again-product-card__vendor">{{ product_card.vendor | escape }}</p>
+    {%- endif -%}
+
+    <h3 class="again-product-card__title">
+      <a href="{{ product_card.url }}">{{ product_card.title | escape }}</a>
+    </h3>
+
+    {% render 'price', product: product_card, show_compare_at_price: true %}
+  </article>
+{%- endif -%}
+
+{% stylesheet %}
+  .again-product-card__media {
+    aspect-ratio: var(--again-product-card-ratio, 1 / 1);
+    overflow: hidden;
+  }
+
+  .again-product-card__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+{% endstylesheet %}

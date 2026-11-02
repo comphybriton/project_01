@@ -48,6 +48,14 @@
               skip_styles: skip_card_product_styles,
               product_view_context: 'recommendation'
             %}
+            <!--              
+            {% render 'product-card',
+              product_card: recommendation,
+              image_ratio: '1 / 1',
+              lazy_load: true,
+              show_vendor: false
+            %}            
+            -->
           </li>
           {%- assign skip_card_product_styles = true -%}
         {% endfor %}
