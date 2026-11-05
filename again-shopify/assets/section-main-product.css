@@ -380,6 +380,62 @@ a.product__text {
   text-align: center;
 }
 
+.product--placeholder-media .again-placeholder {
+  width: 100%;
+}
+
+@media screen and (min-width: 750px) {
+  .product--placeholder-media.product--no-media {
+    max-width: none;
+  }
+
+  .product--placeholder-media .product__media-wrapper,
+  .product--placeholder-media .product__info-wrapper {
+    width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
+    max-width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
+  }
+
+  .product--placeholder-media .product__info-wrapper {
+    padding: 0 0 0 4rem;
+  }
+
+  .product--placeholder-media.product--right .product__info-wrapper {
+    padding: 0 4rem 0 0;
+  }
+
+  .product--placeholder-media .product__title,
+  .product--placeholder-media .product__text,
+  .product--placeholder-media .product__tax,
+  .product--placeholder-media .product__sku,
+  .product--placeholder-media shopify-payment-terms,
+  .product--placeholder-media .price {
+    text-align: left;
+  }
+
+  .product--placeholder-media .product-form,
+  .product--placeholder-media .product-form__quantity {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .product--placeholder-media .product__info-container > modal-opener {
+    text-align: left;
+  }
+
+  .product--placeholder-media.product--no-media .product-form__input--pill,
+  .product--placeholder-media.product--no-media .product-form__input--swatch,
+  .product--placeholder-media.product--no-media .product-form__input--dropdown {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .product--placeholder-media.product--no-media .product-form__input.product-form__input--pill,
+  .product--placeholder-media.product--no-media .product-form__input.product-form__input--swatch {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 /* Product media */
 .product__media-list video {
   border-radius: calc(var(--media-radius) - var(--media-border-width));
