@@ -1,0 +1,91 @@
+{% assign cross_sell_products = section.settings.products %}
+
+{% if cross_sell_products != blank %}
+  {{ 'component-card.css' | asset_url | stylesheet_tag }}
+  {{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+  <section class="cross-sell color-{{ section.settings.color_scheme }}">
+    <div class="page-width">
+      {% if section.settings.heading != blank %}
+        <h2 class="cross-sell__heading">
+          {{ section.settings.heading | escape }}
+        </h2>
+      {% endif %}
+
+      <ul class="grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--2-col-tablet-down" role="list">
+        {% assign skip_card_product_styles = false %}
+
+        {% for cross_sell_product in cross_sell_products %}
+          {% unless cross_sell_product.id == product.id %}
+            <li class="grid__item">
+              {% render 'card-product',
+                card_product: cross_sell_product,
+                media_aspect_ratio: section.settings.image_ratio,
+                show_secondary_image: false,
+                show_vendor: false,
+                show_rating: false,
+                lazy_load: true,
+                skip_styles: skip_card_product_styles,
+                section_id: section.id
+              %}
+            </li>
+            {% assign skip_card_product_styles = true %}
+          {% endunless %}
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product cross-sell",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Complete your ritual"
+    },
+    {
+      "type": "product_list",
+      "id": "products",
+      "label": "Products to recommend",
+      "limit": 4
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Desktop columns",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Product image ratio",
+      "options": [
+        { "value": "square", "label": "Square" },
+        { "value": "portrait", "label": "Portrait" },
+        { "value": "adapt", "label": "Adapt to image" }
+      ],
+      "default": "square"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product cross-sell"
+    }
+  ]
+}
+{% endschema %}

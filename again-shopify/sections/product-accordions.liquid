@@ -1,0 +1,138 @@
+{% if section.blocks.size > 0 %}
+  <section class="product-accordions color-{{ section.settings.color_scheme }}">
+    <div class="page-width">
+      {% if section.settings.heading != blank %}
+        <h2 class="product-accordions__heading">
+          {{ section.settings.heading | escape }}
+        </h2>
+      {% endif %}
+
+      <div class="product-accordions__items">
+        {% for block in section.blocks %}
+          <details
+            id="ProductAccordion-{{ section.id }}-{{ block.id }}"
+            class="product-accordions__item"
+            {% if section.settings.open_first and forloop.first %}open{% endif %}
+            {{ block.shopify_attributes }}
+          >
+            <summary class="product-accordions__summary">
+              <span>{{ block.settings.heading | escape }}</span>
+              <span class="product-accordions__icon" aria-hidden="true">
+                {{ 'icon-caret.svg' | inline_asset_content }}
+              </span>
+            </summary>
+
+            <div class="product-accordions__content rte">
+              {{ block.settings.content }}
+            </div>
+          </details>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+{% stylesheet %}
+  .product-accordions {
+    padding-block: 3rem;
+  }
+
+  .product-accordions__items {
+    border-top: 1px solid rgba(var(--color-foreground), 0.18);
+  }
+
+  .product-accordions__item {
+    border-bottom: 1px solid rgba(var(--color-foreground), 0.18);
+  }
+
+  .product-accordions__summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-block: 1.6rem;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .product-accordions__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .product-accordions__icon {
+    display: inline-flex;
+    width: 1.2rem;
+    transition: transform 180ms ease;
+  }
+
+  .product-accordions__item[open] .product-accordions__icon {
+    transform: rotate(180deg);
+  }
+
+  .product-accordions__content {
+    padding: 0 0 1.8rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .product-accordions__icon {
+      transition: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Product accordions",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Details"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first",
+      "label": "Open the first item by default",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Accordion item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Question or heading",
+          "default": "Product details"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Answer or details",
+          "default": "<p>Add product information here.</p>"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Product accordions",
+      "blocks": [
+        { "type": "item" }
+      ]
+    }
+  ]
+}
+{% endschema %}
