@@ -53,7 +53,7 @@ Do not add speculative SKUs, barcodes, stock levels, shipping weights, or additi
 - The Companion and Starter Kit each have one variant. Leave their variant option as Shopify's default single-variant option.
 - Model the Starter Kit initially as one standalone fixed-kit product/variant with a $45 price and $50 compare-at price. Its physical contents are one Balm and one Companion.
 - This is **not** a Shopify Bundles app component bundle: inventory is not automatically decremented from the Balm and Companion products. Fulfil the two included items against the kit order until component inventory management is explicitly configured.
-- Keep the Starter Kit one-time purchase only for now. Do not claim that the Companion is supplied only on the first order of a recurring kit until the chosen subscription/bundle setup has been tested. The recurring Balm subscription remains a separate product configuration.
+- The Starter Kit is a standalone fixed-kit product, not a Shopify Bundles component bundle. The approved subscription behavior is for the full Kit to repeat, including both the Balm and Companion on each renewal. Shopify Subscriptions plans are configured at 4 weeks / 10% off, 6 weeks / 15% off, and 8 weeks / 20% off. Verify an actual renewal order and fulfillment for both included items; this single Shopify product variant does not automatically decrement component inventory.
 
 ## Media
 
