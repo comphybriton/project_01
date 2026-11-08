@@ -87,6 +87,10 @@
                 {{ 'products.product.unavailable' | t }}
               {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
                 {{ 'products.product.sold_out' | t }}
+              {%- elsif template.suffix == 'companion' -%}
+                Add to bag · {{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}
+              {%- elsif template.suffix == 'kit' -%}
+                Add to bag · {{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}
               {%- else -%}
                 {{ 'products.product.add_to_cart' | t }}
               {%- endif -%}

@@ -12,30 +12,192 @@
         </h2>
       {% endif %}
 
-      <ul class="grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--2-col-tablet-down" role="list">
-        {% assign skip_card_product_styles = false %}
-
+      <div class="cross-sell__grid">
         {% for cross_sell_product in cross_sell_products %}
           {% unless cross_sell_product.id == product.id %}
-            <li class="grid__item">
-              {% render 'card-product',
-                card_product: cross_sell_product,
-                media_aspect_ratio: section.settings.image_ratio,
-                show_secondary_image: false,
-                show_vendor: false,
-                show_rating: false,
-                lazy_load: true,
-                skip_styles: skip_card_product_styles,
-                section_id: section.id
-              %}
-            </li>
-            {% assign skip_card_product_styles = true %}
+            {% liquid
+              assign card_description = cross_sell_product.metafields.custom.short_description | default: cross_sell_product.description | strip_html | truncate: 100
+
+              assign is_best_value = false
+              if cross_sell_product.tags contains 'best-value'
+                assign is_best_value = true
+              endif
+            %}
+
+            <a
+              class="cross-sell__card{% if is_best_value %} cross-sell__card--best-value{% endif %}"
+              href="{{ cross_sell_product.url }}"
+            >
+              <span class="cross-sell__image">
+                {% if cross_sell_product.featured_image != blank %}
+                  {{
+                    cross_sell_product.featured_image
+                    | image_url: width: 240
+                    | image_tag:
+                      widths: '96, 144, 192, 240',
+                      sizes: '96px',
+                      loading: 'lazy',
+                      alt: cross_sell_product.title
+                  }}
+                {% else %}
+                  {% render 'placeholder-image',
+                    aspect_ratio: '1 / 1',
+                    color: '#E4E9E3',
+                    label: cross_sell_product.title
+                  %}
+                {% endif %}
+              </span>
+
+              <span class="cross-sell__copy">
+                <span class="cross-sell__title">{{ cross_sell_product.title | escape }}</span>
+                <span class="cross-sell__description">{{ card_description }}</span>
+                <span class="cross-sell__price">
+                  {{ cross_sell_product.price | money_without_trailing_zeros }}
+                </span>
+              </span>
+
+              {% if is_best_value %}
+                <span class="cross-sell__badge">Best value</span>
+              {% endif %}
+
+              <span class="cross-sell__arrow" aria-hidden="true">›</span>
+            </a>
           {% endunless %}
         {% endfor %}
-      </ul>
+      </div>
     </div>
   </section>
 {% endif %}
+
+{% stylesheet %}
+  .cross-sell {
+    padding-block: 6.4rem;
+  }
+
+  .cross-sell__heading {
+    margin: 0 0 3.2rem;
+    color: #063f46;
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .cross-sell__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.4rem;
+  }
+
+  .cross-sell__card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+    min-width: 0;
+    padding: 1.6rem;
+    border: 1px solid transparent;
+    border-radius: 2rem;
+    background: #fff;
+    color: #063f46;
+    text-decoration: none;
+  }
+
+  .cross-sell__card--best-value {
+    border-color: #063f46;
+  }
+
+  .cross-sell__image {
+    display: block;
+    flex: 0 0 9.6rem;
+    width: 9.6rem;
+    height: 9.6rem;
+    overflow: hidden;
+    border-radius: 1.4rem;
+    background: #e4e9e3;
+  }
+
+  .cross-sell__image img,
+  .cross-sell__image svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cross-sell__copy {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.6rem;
+    min-width: 0;
+    padding-right: 1.6rem;
+  }
+
+  .cross-sell__title {
+    font-size: 2rem;
+    line-height: 1.25;
+    font-weight: 500;
+  }
+
+  .cross-sell__description {
+    color: #63777a;
+    font-size: 1.4rem;
+    line-height: 1.4;
+  }
+
+  .cross-sell__price {
+    margin-top: 0.4rem;
+    color: #063f46;
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+
+  .cross-sell__badge {
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    background: #063f46;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .cross-sell__arrow {
+    flex: 0 0 auto;
+    color: #82999b;
+    font-size: 2.8rem;
+    line-height: 1;
+  }
+
+  @media screen and (max-width: 749px) {
+    .cross-sell__grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.2rem;
+    }
+
+    .cross-sell__card {
+      gap: 1.2rem;
+      padding: 1.2rem;
+      border-radius: 1.6rem;
+    }
+
+    .cross-sell__image {
+      flex-basis: 7.2rem;
+      width: 7.2rem;
+      height: 7.2rem;
+    }
+
+    .cross-sell__title {
+      font-size: 1.7rem;
+    }
+
+    .cross-sell__badge {
+      top: 1rem;
+      right: 1rem;
+    }
+  }
+{% endstylesheet %}
 
 {% schema %}
 {

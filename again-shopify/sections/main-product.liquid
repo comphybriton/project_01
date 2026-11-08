@@ -1,6 +1,6 @@
 <product-info
   id="MainProduct-{{ section.id }}"
-  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
+  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}{% if template.suffix == 'companion' %} again-pdp-companion-section{% elsif template.suffix == 'kit' %} again-pdp-kit-section{% endif %}"
   data-section="{{ section.id }}"
   data-product-id="{{ product.id }}"
   data-update-url="true"
@@ -15,6 +15,7 @@
   {{ 'component-slider.css' | asset_url | stylesheet_tag }}
   {{ 'component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+  {{ 'again-subscribe-promo.css' | asset_url | stylesheet_tag }}
 
   {% unless product.has_only_default_variant %}
     {{ 'component-product-variant-picker.css' | asset_url | stylesheet_tag }}
@@ -41,6 +42,7 @@
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'subscribe-promo.js' | asset_url }}" defer="defer"></script>
   {%- if product.quantity_price_breaks_configured? -%}
     <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
@@ -72,12 +74,33 @@
     >
   {%- endif -%}
 
+  <nav class="product-breadcrumb" aria-label="Breadcrumb">
+    <div class="page-width">
+      <ol>
+        <li><a href="{{ routes.root_url }}">Home</a></li>
+        <li><a href="{{ routes.all_products_collection_url }}">Shop</a></li>
+        <li aria-current="page">{{ product.title | escape }}</li>
+      </ol>
+    </div>
+  </nav>
+
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <product-component view-event-payload="{{ product | standard_event_data: 'view', context: 'page' | escape }}">
     <div class="page-width">
-      <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}grid--2-col-tablet product--no-media product--placeholder-media{% endif %}">
+      <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}grid--2-col-tablet product--no-media product--placeholder-media{% endif %}{% if template.suffix == 'balm' %} again-pdp-balm{% elsif template.suffix == 'companion' %} again-pdp-companion{% elsif template.suffix == 'kit' %} again-pdp-kit{% endif %}">
         <div class="grid__item product__media-wrapper">
+          {% assign current_product_variant = product.selected_or_first_available_variant %}
           {% if product.media.size > 0 %}
+            {% if template.suffix == 'companion' %}
+              <span class="product-badge">Zero-waste hero</span>
+            {% elsif template.suffix == 'kit' and current_product_variant.compare_at_price > current_product_variant.price %}
+              {% assign kit_saving = current_product_variant.compare_at_price | minus: current_product_variant.price %}
+              <span class="product-badge again-pdp-kit__saving-badge">
+                Save {{ kit_saving | money_without_trailing_zeros }}
+              </span>
+            {% elsif product.tags contains 'Bestseller' %}
+              <span class="product-badge">Bestseller</span>
+            {% endif %}
             {% render 'product-media-gallery', variant_images: variant_images %}
           {% else %}
             {% assign media_label = product.title | append: ' product image' %}
@@ -96,6 +119,9 @@
             {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
             {%- for block in section.blocks -%}
+              {% if block.type == 'quantity_selector' %}
+                <div class="again-pdp-purchase-row{% if template.suffix == 'companion' %} again-pdp-purchase-row--companion{% endif %}">
+              {% endif %}
               {%- case block.type -%}
                 {%- when '@app' -%}
                   {% render block %}
@@ -116,14 +142,39 @@
                     </a>
                   </div>
                 {%- when 'price' -%}
-                  <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
-                    {%- render 'price',
-                      product: product,
-                      use_variant: true,
-                      show_badges: true,
-                      price_class: 'price--large'
-                    -%}
-                  </div>
+                  {% if template.suffix == 'companion' %}
+                    <div class="again-pdp-companion-price-row" {{ block.shopify_attributes }}>
+                      <div id="price-{{ section.id }}" class="again-pdp-companion-price" role="status">
+                        {{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}
+                      </div>
+                      <span class="again-pdp-companion-price-note">One-time · lasts a lifetime</span>
+                    </div>
+                  {% elsif template.suffix == 'kit' %}
+                    {% assign current_product_variant = product.selected_or_first_available_variant %}
+                    <div class="again-pdp-kit-price" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+                      <span class="again-pdp-kit-price__current">
+                        {{ current_product_variant.price | money_without_trailing_zeros }}
+                      </span>
+                      {% if current_product_variant.compare_at_price > current_product_variant.price %}
+                        {% assign kit_saving = current_product_variant.compare_at_price | minus: current_product_variant.price %}
+                        <s class="again-pdp-kit-price__compare">
+                          {{ current_product_variant.compare_at_price | money_without_trailing_zeros }}
+                        </s>
+                        <span class="again-pdp-kit-price__saving">
+                          Save {{ kit_saving | money_without_trailing_zeros }}
+                        </span>
+                      {% endif %}
+                    </div>
+                  {% else %}
+                    <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+                      {%- render 'price',
+                        product: product,
+                        use_variant: true,
+                        show_badges: true,
+                        price_class: 'price--large'
+                      -%}
+                    </div>
+                  {% endif %}
                   {%- if product.quantity_price_breaks_configured? -%}
                     <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
                       <span>{{ 'products.product.volume_pricing.note' | t }}</span>
@@ -204,7 +255,12 @@
                 {%- when 'description' -%}
                   {%- if product.description != blank -%}
                     <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                      {{ product.description }}
+                      {% if template.suffix == 'kit' %}
+                        Everything to start your ritual: The Deodorant Balm and The Companion, together. Made for
+                        sensitive skin — with nothing wasted.
+                      {% else %}
+                        {{ product.description }}
+                      {% endif %}
                     </div>
                   {%- endif -%}
                 {%- when 'sku' -%}
@@ -219,6 +275,92 @@
                   </p>
                 {%- when 'custom_liquid' -%}
                   {{ block.settings.custom_liquid }}
+                {%- when 'kit_contents' -%}
+                  {% assign included_products = block.settings.products %}
+                  {% if included_products != blank %}
+                    <section class="again-pdp-kit-contents" aria-label="{{ block.settings.heading | escape }}" {{ block.shopify_attributes }}>
+                      <h2 class="again-pdp-kit-contents__eyebrow">{{ block.settings.heading | escape }}</h2>
+                      <ul class="again-pdp-kit-contents__list" role="list">
+                        {% for included_product in included_products %}
+                          {% assign included_variant = included_product.selected_or_first_available_variant %}
+                          <li class="again-pdp-kit-contents__item">
+                            <span class="again-pdp-kit-contents__image">
+                              {% if included_product.featured_image != blank %}
+                                {{
+                                  included_product.featured_image
+                                  | image_url: width: 144
+                                  | image_tag:
+                                    widths: '64, 96, 128, 144',
+                                    sizes: '44px',
+                                    loading: 'lazy',
+                                    alt: included_product.title
+                                }}
+                              {% else %}
+                                {% render 'placeholder-image',
+                                  aspect_ratio: '1 / 1',
+                                  color: '#D6F2ED',
+                                  label: included_product.title
+                                %}
+                              {% endif %}
+                            </span>
+                            <span class="again-pdp-kit-contents__copy">
+                              <strong>{{ included_product.title | escape }}</strong>
+                              {% unless included_product.has_only_default_variant %}
+                                <span>{{ included_variant.options | join: ' · ' | escape }}</span>
+                              {% endunless %}
+                            </span>
+                            <span class="again-pdp-kit-contents__price">
+                              {{ included_variant.price | money_without_trailing_zeros }}
+                            </span>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    </section>
+                  {% endif %}
+                {%- when 'companion_kit_promo' -%}
+                  {%- assign kit_product = block.settings.product | default: all_products['starter-kit'] -%}
+                  {% if kit_product != blank %}
+                    {% assign balm_product = all_products['the-deodorant-balm'] %}
+                    {% assign kit_saving = 0 %}
+                    {% if balm_product != blank %}
+                      {% assign kit_saving = product.price | plus: balm_product.price | minus: kit_product.price %}
+                    {% endif %}
+                    <div class="again-companion-kit-promo" {{ block.shopify_attributes }}>
+                      <a class="again-companion-kit-promo__image" href="{{ kit_product.url }}">
+                        {% if product.featured_image != blank %}
+                          {{
+                            product.featured_image
+                            | image_url: width: 160
+                            | image_tag:
+                              widths: '64, 96, 128, 160',
+                              sizes: '64px',
+                              loading: 'lazy',
+                              alt: product.title
+                          }}
+                        {% else %}
+                          {% render 'placeholder-image',
+                            aspect_ratio: '1 / 1',
+                            color: '#D6F2ED',
+                            label: product.title
+                          %}
+                        {% endif %}
+                      </a>
+                      <div class="again-companion-kit-promo__copy">
+                        <strong>{{ block.settings.heading | escape }}</strong>
+                        <p>
+                          {{ block.settings.description | escape }}
+                          {% if kit_saving > 0 %}
+                            — {{ kit_product.price | money_without_trailing_zeros }}, save {{ kit_saving | money_without_trailing_zeros }}.
+                          {% else %}
+                            — {{ kit_product.price | money_without_trailing_zeros }}.
+                          {% endif %}
+                        </p>
+                      </div>
+                      <a class="again-companion-kit-promo__button" href="{{ kit_product.url }}">
+                        {{ block.settings.button_label | escape }}
+                      </a>
+                    </div>
+                  {% endif %}
                 {%- when 'collapsible_tab' -%}
                   <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
                     <details id="Details-{{ block.id }}-{{ section.id }}">
@@ -257,7 +399,7 @@
                       {%- endif -%}
                     </span>
                     <label
-                      class="quantity__label form__label"
+                      class="quantity__label form__label{% if template.suffix == 'balm' or template.suffix == 'companion' %} visually-hidden{% endif %}"
                       for="Quantity-{{ section.id }}"
                       aria-labelledby="quantity-label-{{ section.id }}"
                     >
@@ -495,10 +637,32 @@
                     surface: 'product_page'
                   -%}
                 {%- when 'variant_picker' -%}
-                  {% render 'product-variant-picker',
+                  {% if product.variants.size > 1 %}
+                    {% render 'product-variant-picker',
+                      product: product,
+                      block: block,
+                      product_form_id: product_form_id
+                    %}
+                  {% else %}
+                    <div class="again-pdp-variant-summary" {{ block.shopify_attributes }}>
+                      {% for option in product.options_with_values %}
+                        {% if option.name == 'Scent' %}
+                          <div class="again-pdp-variant-summary__option">
+                            <span class="form__label">{{ option.name }}</span>
+                            <span class="again-pdp-variant-summary__value">
+                              {{ option.selected_value | escape }}
+                            </span>
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                {%- when 'subscription_picker' -%}
+                  {% render 'subscription-picker',
                     product: product,
                     block: block,
-                    product_form_id: product_form_id
+                    product_form_id: product_form_id,
+                    section_id: section.id
                   %}
                 {%- when 'buy_buttons' -%}
                   {%- render 'buy-buttons',
@@ -508,6 +672,7 @@
                     section_id: section.id,
                     show_pickup_availability: true
                   -%}
+                  </div>
                 {%- when 'rating' -%}
                   {%- if product.metafields.reviews.rating.value != blank -%}
                     <div class="rating-wrapper">
@@ -932,6 +1097,50 @@
       ]
     },
     {
+      "type": "subscription_picker",
+      "name": "Subscription options",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "purchase_options_label",
+          "label": "Purchase options label",
+          "default": "Choose a purchase option"
+        },
+        {
+          "type": "text",
+          "id": "subscription_label",
+          "label": "Subscription option label",
+          "default": "Subscribe"
+        },
+        {
+          "type": "text",
+          "id": "subscription_description",
+          "label": "Subscription option description",
+          "default": "Delivered on repeat · cancel anytime"
+        },
+        {
+          "type": "text",
+          "id": "one_time_label",
+          "label": "One-time option label",
+          "default": "One-time"
+        },
+        {
+          "type": "text",
+          "id": "frequency_label",
+          "label": "Frequency label",
+          "default": "Deliver every"
+        },
+        {
+          "type": "text",
+          "id": "delivery_frequencies",
+          "label": "Delivery frequency options",
+          "info": "Comma-separated options. Each must match a frequency configured in the product's Shopify selling plans.",
+          "default": "4 weeks, 6 weeks, 8 weeks"
+        }
+      ]
+    },
+    {
       "type": "buy_buttons",
       "name": "t:sections.main-product.blocks.buy_buttons.name",
       "limit": 1,
@@ -979,6 +1188,53 @@
           "id": "custom_liquid",
           "label": "t:sections.custom-liquid.settings.custom_liquid.label",
           "info": "t:sections.custom-liquid.settings.custom_liquid.info"
+        }
+      ]
+    },
+    {
+      "type": "kit_contents",
+      "name": "Starter Kit contents",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "In the box"
+        },
+        {
+          "type": "product_list",
+          "id": "products",
+          "label": "Included products",
+          "limit": 4
+        }
+      ]
+    },
+    {
+      "type": "companion_kit_promo",
+      "name": "Companion kit promotion",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Kit product"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Better together"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Add The Deodorant Balm and make it the Starter Kit"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Make it a kit"
         }
       ]
     },

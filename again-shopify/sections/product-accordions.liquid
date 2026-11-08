@@ -1,31 +1,51 @@
 {% if section.blocks.size > 0 %}
   <section class="product-accordions color-{{ section.settings.color_scheme }}">
     <div class="page-width">
-      {% if section.settings.heading != blank %}
-        <h2 class="product-accordions__heading">
-          {{ section.settings.heading | escape }}
-        </h2>
-      {% endif %}
+      <div class="product-accordions__grid">
+        {% for group_block in section.blocks %}
+          {% if group_block.type == 'group' %}
+            {% assign group_key = group_block.settings.group_key | handleize %}
 
-      <div class="product-accordions__items">
-        {% for block in section.blocks %}
-          <details
-            id="ProductAccordion-{{ section.id }}-{{ block.id }}"
-            class="product-accordions__item"
-            {% if section.settings.open_first and forloop.first %}open{% endif %}
-            {{ block.shopify_attributes }}
-          >
-            <summary class="product-accordions__summary">
-              <span>{{ block.settings.heading | escape }}</span>
-              <span class="product-accordions__icon" aria-hidden="true">
-                {{ 'icon-caret.svg' | inline_asset_content }}
-              </span>
-            </summary>
+            <div class="product-accordions__group" {{ group_block.shopify_attributes }}>
+              <h2 class="product-accordions__heading">
+                {{ group_block.settings.heading | escape }}
+              </h2>
 
-            <div class="product-accordions__content rte">
-              {{ block.settings.content }}
+              <div class="product-accordions__card">
+                <div class="product-accordions__items">
+                  {% assign item_index = 0 %}
+
+                  {% for item_block in section.blocks %}
+                    {% if item_block.type == 'item' %}
+                      {% assign item_group_key = item_block.settings.group_key | handleize %}
+
+                      {% if item_group_key == group_key %}
+                        {% assign item_index = item_index | plus: 1 %}
+
+                        <details
+                          id="ProductAccordion-{{ section.id }}-{{ item_block.id }}"
+                          class="product-accordions__item"
+                          {% if group_block.settings.open_first and item_index == 1 %}
+                            open
+                          {% endif %}
+                          {{ item_block.shopify_attributes }}
+                        >
+                          <summary class="product-accordions__summary">
+                            <span>{{ item_block.settings.heading | escape }}</span>
+                            <span class="product-accordions__icon" aria-hidden="true"></span>
+                          </summary>
+
+                          <div class="product-accordions__content rte">
+                            {{ item_block.settings.content }}
+                          </div>
+                        </details>
+                      {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
             </div>
-          </details>
+          {% endif %}
         {% endfor %}
       </div>
     </div>
@@ -34,23 +54,53 @@
 
 {% stylesheet %}
   .product-accordions {
-    padding-block: 3rem;
+    padding-block: 2.4rem;
+  }
+
+  .product-accordions__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 48px;
+  }
+
+  .product-accordions__group {
+    min-width: 0;
+  }
+
+  .product-accordions__heading {
+    margin: 0 0 1.6rem;
+    color: #063f46;
+    font-size: 25px;
+    line-height: 1.2;
+    font-weight: 500;
+  }
+
+  .product-accordions__card {
+    padding: 12px 22px 16px;
+    border: 1px solid #dfe6e7;
+    border-radius: 16px;
+    background: rgb(var(--color-background));
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
   }
 
   .product-accordions__items {
-    border-top: 1px solid rgba(var(--color-foreground), 0.18);
+    border-top: 0;
   }
 
   .product-accordions__item {
-    border-bottom: 1px solid rgba(var(--color-foreground), 0.18);
+    border-bottom: 1px solid #dfe6e7;
   }
 
   .product-accordions__summary {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1.5rem;
-    padding-block: 1.6rem;
+    gap: 12px;
+    padding-block: 17px;
+    color: #063f46;
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 600;
     cursor: pointer;
     list-style: none;
   }
@@ -59,22 +109,59 @@
     display: none;
   }
 
-  .product-accordions__icon {
-    display: inline-flex;
-    width: 1.2rem;
-    transition: transform 180ms ease;
+  .product-accordions__summary::marker {
+    content: '';
   }
 
-  .product-accordions__item[open] .product-accordions__icon {
-    transform: rotate(180deg);
+  .product-accordions__icon {
+    position: relative;
+    display: block;
+    flex: 0 0 12px;
+    width: 12px;
+    height: 12px;
+    color: #063f46;
+  }
+
+  .product-accordions__icon::before,
+  .product-accordions__icon::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 1.5px;
+    background: currentColor;
+    content: '';
+    transform: translate(-50%, -50%);
+  }
+
+  .product-accordions__icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  .product-accordions__item[open] .product-accordions__icon::after {
+    opacity: 0;
   }
 
   .product-accordions__content {
-    padding: 0 0 1.8rem;
+    padding-bottom: 14px;
+    color: #526168;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .product-accordions__content p {
+    margin: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .product-accordions__grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 28px;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .product-accordions__icon {
+    .product-accordions__icon::after {
       transition: none;
     }
   }
@@ -107,9 +194,41 @@
   ],
   "blocks": [
     {
+      "type": "group",
+      "name": "Accordion group",
+      "settings": [
+        {
+          "type": "text",
+          "id": "group_key",
+          "label": "Group key",
+          "info": "Use a unique key, such as details or faq. Matching accordion items use this key.",
+          "default": "details"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Group heading",
+          "default": "Product details"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_first",
+          "label": "Open the first item in this group by default",
+          "default": false
+        }
+      ]
+    },
+    {
       "type": "item",
       "name": "Accordion item",
       "settings": [
+        {
+          "type": "text",
+          "id": "group_key",
+          "label": "Group key",
+          "info": "Must match the key of the group this item belongs to.",
+          "default": "details"
+        },
         {
           "type": "text",
           "id": "heading",
@@ -125,13 +244,11 @@
       ]
     }
   ],
-  "max_blocks": 10,
+  "max_blocks": 50,
   "presets": [
     {
       "name": "Product accordions",
-      "blocks": [
-        { "type": "item" }
-      ]
+      "blocks": [{ "type": "item" }]
     }
   ]
 }

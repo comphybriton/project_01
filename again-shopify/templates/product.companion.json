@@ -1,0 +1,265 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "kit_promo": {
+          "type": "companion_kit_promo",
+          "settings": {
+            "product": "starter-kit",
+            "heading": "Better together",
+            "description": "Add The Deodorant Balm and make it the Starter Kit",
+            "button_label": "Make it a kit"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "trust_row": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"again-pdp-trust\"><span>✓ Shipping on us over $50</span><span>✓ 30-day happiness guarantee</span></div>"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "rating",
+        "description",
+        "price",
+        "kit_promo",
+        "quantity_selector",
+        "buy_buttons",
+        "trust_row"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "show",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 12,
+        "padding_bottom": 24
+      }
+    },
+    "usp-marquee": {
+      "type": "usp-marquee",
+      "blocks": {
+        "claim_ga3Y3i": {
+          "type": "claim",
+          "settings": {
+            "claim": "Shipping on us over $50",
+            "icon": "truck"
+          }
+        },
+        "claim_WQRLp9": {
+          "type": "claim",
+          "settings": {
+            "claim": "100% Natural",
+            "icon": "leaf"
+          }
+        },
+        "claim_YARdJX": {
+          "type": "claim",
+          "settings": {
+            "claim": "Cruelty Free",
+            "icon": "heart"
+          }
+        },
+        "claim_98EENH": {
+          "type": "claim",
+          "settings": {
+            "claim": "Made in Australia",
+            "icon": "map-pin"
+          }
+        }
+      },
+      "block_order": ["claim_ga3Y3i", "claim_WQRLp9", "claim_YARdJX", "claim_98EENH"],
+      "settings": {
+        "display_mode": "pdp",
+        "accessibility_label": "AGAIN product claims",
+        "color_scheme": "scheme-8"
+      }
+    },
+    "how-it-works": {
+      "type": "how-it-works",
+      "blocks": {
+        "step_Q9Y7eq": {
+          "type": "step",
+          "settings": {
+            "title": "Twist & warm",
+            "text": "<p>A small squeeze; the balm softens with your skin.</p>"
+          }
+        },
+        "step_RJzHxB": {
+          "type": "step",
+          "settings": {
+            "title": "Two swipes each side",
+            "text": "<p>Glides on clear — no white marks, no residue.</p>"
+          }
+        },
+        "step_8bPNh3": {
+          "type": "step",
+          "settings": {
+            "title": "Go play harder",
+            "text": "<p>Fresh that lasts the whole day. Reapply only if you want to.</p>"
+          }
+        }
+      },
+      "block_order": ["step_Q9Y7eq", "step_RJzHxB", "step_8bPNh3"],
+      "settings": {
+        "eyebrow": "How it works",
+        "heading": "Three steps to fresh.",
+        "video_url": "https://www.youtube.com/watch?v=c6vC6uwihls",
+        "cover_image": "shopify://shop_images/woman-practicing-her-skincare-routine.jpg",
+        "video_label": "Level up your skincare",
+        "video_duration": "3:58",
+        "color_scheme": "scheme-9"
+      }
+    },
+    "product_details": {
+      "type": "product-accordions",
+      "blocks": {
+        "details_group": {
+          "type": "group",
+          "settings": {
+            "group_key": "details",
+            "heading": "Product details",
+            "open_first": true
+          }
+        },
+        "details_item": {
+          "type": "item",
+          "settings": {
+            "group_key": "details",
+            "heading": "Details",
+            "content": "<p>A bicarb-free balm made for sensitive skin. Glides on clear, smells beautiful and keeps you fresh all day — lightweight, never sticky, and gentle enough for daily use. 60g.</p>"
+          }
+        },
+        "item_EcnQG7": {
+          "type": "item",
+          "settings": {
+            "group_key": "details",
+            "heading": "Ingredients",
+            "content": "<p>Magnesium to neutralise odour without irritation, shea butter and coconut oil to soothe and glide, arrowroot to keep you dry, candelilla wax to set, and our essential-oil blend for a fresh scent you'll love. No bicarb, no aluminium.</p>"
+          }
+        },
+        "item_jGfUNg": {
+          "type": "item",
+          "settings": {
+            "group_key": "details",
+            "heading": "How to use",
+            "content": "<p>Twist up a small amount and swipe onto clean, dry underarms — two swipes each side. Let it absorb for a few seconds, then get dressed. Use again every day.</p>"
+          }
+        },
+        "item_aFWDkr": {
+          "type": "item",
+          "settings": {
+            "group_key": "details",
+            "heading": "Shipping & returns",
+            "content": "<p>Shipping on us for orders over $50. Not for you? Our 30-day happiness guarantee means we'll make it right.</p>"
+          }
+        },
+        "faq_group": {
+          "type": "group",
+          "settings": {
+            "group_key": "good-to-know",
+            "heading": "Good to know",
+            "open_first": true
+          }
+        },
+        "faq_item": {
+          "type": "item",
+          "settings": {
+            "group_key": "good-to-know",
+            "heading": "Is it bicarb-free?",
+            "content": "<p>Yes — no bicarb (baking soda) and no aluminium. We use magnesium instead, which neutralises odour without the irritation bicarb can cause on sensitive skin.</p>"
+          }
+        },
+        "item_iDqBUm": {
+          "type": "item",
+          "settings": {
+            "group_key": "good-to-know",
+            "heading": "Is there an adjustment period?",
+            "content": "<p>Some people notice a short transition coming off conventional antiperspirants. It usually settles within a week or two — and you can reapply anytime.</p>"
+          }
+        },
+        "item_Gi8azK": {
+          "type": "item",
+          "settings": {
+            "group_key": "good-to-know",
+            "heading": "Will it stain in my clothes?",
+            "content": "<p>No. It glides on clear and absorbs in seconds, so you can get dressed straight away — no white marks, no residue.</p>"
+          }
+        },
+        "item_LTBL7U": {
+          "type": "item",
+          "settings": {
+            "group_key": "good-to-know",
+            "heading": "How long does a tube last?",
+            "content": "<p>Around 8–10 weeks with daily use. Pair it with The Companion to get every last bit before you reorder.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "details_group",
+        "details_item",
+        "item_EcnQG7",
+        "item_jGfUNg",
+        "item_aFWDkr",
+        "faq_group",
+        "faq_item",
+        "item_iDqBUm",
+        "item_Gi8azK",
+        "item_LTBL7U"
+      ],
+      "settings": {
+        "heading": "Details",
+        "open_first": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "cross_sell_6hwxgr": {
+      "type": "cross-sell",
+      "name": "Product cross-sell",
+      "settings": {
+        "heading": "Complete the ritual",
+        "products": ["the-companion", "starter-kit"],
+        "columns_desktop": 2,
+        "image_ratio": "square",
+        "color_scheme": "scheme-8"
+      }
+    }
+  },
+  "order": ["main", "usp-marquee", "how-it-works", "product_details", "cross_sell_6hwxgr"]
+}

@@ -57,3 +57,18 @@
   width: 18%;
   opacity: 0.14;
 }
+
+.product__title h1 {
+  color: #0d3f38;
+  font-family: var(--again-font-heading);
+  line-height: 1.05;
+}
+
+.product__info-container {
+  color: #0d3f38;
+}
+
+.product__info-container .product__description {
+  color: #4c6661;
+  line-height: 1.6;
+}

@@ -1,0 +1,268 @@
+{% liquid
+  assign subscription_variant = product.selected_or_first_available_variant
+  assign default_allocation = blank
+  assign configured_frequencies = block.settings.delivery_frequencies | split: ','
+  assign input_id_prefix = 'AgainPdp-' | append: section_id | append: '-' | append: block.id
+
+  for allocation in subscription_variant.selling_plan_allocations
+    assign allocation_frequency = allocation.selling_plan.name
+    if allocation.selling_plan.options.size > 0
+      assign allocation_frequency = allocation.selling_plan.options.first.value
+    endif
+    assign allocation_frequency_key = allocation_frequency | downcase | remove: 'delivery' | remove: 'deliver' | remove: 'every' | remove: ' ' | remove: 's'
+
+    for configured_frequency in configured_frequencies
+      assign configured_frequency_key = configured_frequency | downcase | remove: 'delivery' | remove: 'deliver' | remove: 'every' | remove: ' ' | remove: 's'
+
+      if allocation_frequency_key == configured_frequency_key
+        if default_allocation == blank
+          assign default_allocation = allocation
+        endif
+        if allocation_frequency_key contains '6week'
+          assign default_allocation = allocation
+        endif
+      endif
+    endfor
+  endfor
+
+  if default_allocation == blank and subscription_variant.selling_plan_allocations.size > 0
+    assign default_allocation = subscription_variant.selling_plan_allocations.first
+  endif
+%}
+
+<again-subscribe-promo class="again-subscribe-promo__controller again-pdp-subscription">
+  <div class="again-subscribe-promo__form" {{ block.shopify_attributes }}>
+    <div class="again-subscribe-promo__card again-pdp-subscription__card">
+      <input
+        type="hidden"
+        name="selling_plan"
+        value="{% if default_allocation != blank %}{{ default_allocation.selling_plan.id }}{% endif %}"
+        data-selling-plan-input
+        form="{{ product_form_id }}"
+        {% if default_allocation == blank %}
+          disabled
+        {% endif %}
+      >
+
+      <fieldset class="again-subscribe-promo__purchase-options">
+        <legend class="visually-hidden">{{ block.settings.purchase_options_label | escape }}</legend>
+
+        {% if default_allocation != blank %}
+          {% liquid
+            assign discount_amount = subscription_variant.price | minus: default_allocation.price
+            assign discount_percent = 0
+            if subscription_variant.price > 0 and discount_amount > 0
+              assign discount_percent = discount_amount | times: 100.0 | divided_by: subscription_variant.price | round
+            endif
+          %}
+          <div class="again-subscribe-promo__purchase-option again-subscribe-promo__purchase-option--subscription">
+            <input
+              id="{{ input_id_prefix }}-subscription"
+              class="again-subscribe-promo__purchase-radio"
+              type="radio"
+              name="purchase-option-{{ input_id_prefix }}"
+              value="subscription"
+              data-purchase-option
+              checked
+            >
+            <label
+              class="again-subscribe-promo__purchase-label"
+              for="{{ input_id_prefix }}-subscription"
+            >
+              <span class="again-subscribe-promo__purchase-copy">
+                <span class="again-subscribe-promo__purchase-title">
+                  {{ block.settings.subscription_label | default: 'Subscribe & save' | escape }}
+                  {% unless template.suffix == 'kit' %}
+                    <span data-subscription-discount>{{ discount_percent }}</span>%
+                  {% endunless %}
+                </span>
+                <span class="again-subscribe-promo__purchase-description">
+                  {{ block.settings.subscription_description | default: 'Delivered on repeat · cancel anytime' | escape }}
+                </span>
+              </span>
+              <span class="again-subscribe-promo__purchase-price">
+                {% unless template.suffix == 'kit' %}
+                  <s data-subscription-compare-price>{{ subscription_variant.price | money_without_trailing_zeros }}</s>
+                {% endunless %}
+                <span data-subscription-price>{{ default_allocation.price | money_without_trailing_zeros }}</span>
+              </span>
+            </label>
+          </div>
+        {% endif %}
+
+        <div class="again-subscribe-promo__purchase-option again-subscribe-promo__purchase-option--one-time">
+          <input
+            id="{{ input_id_prefix }}-one-time"
+            class="again-subscribe-promo__purchase-radio"
+            type="radio"
+            name="purchase-option-{{ input_id_prefix }}"
+            value="one-time"
+            data-purchase-option
+            {% if default_allocation == blank %}
+              checked
+            {% endif %}
+          >
+          <label
+            class="again-subscribe-promo__purchase-label"
+            for="{{ input_id_prefix }}-one-time"
+          >
+            <span class="again-subscribe-promo__purchase-copy">
+              <span class="again-subscribe-promo__purchase-title">
+                {{ block.settings.one_time_label | escape }}
+              </span>
+              <span class="again-subscribe-promo__purchase-description">
+                Single delivery
+              </span>
+            </span>
+            <span class="again-subscribe-promo__purchase-price">
+              {{ subscription_variant.price | money_without_trailing_zeros }}
+            </span>
+          </label>
+        </div>
+      </fieldset>
+
+      {% if subscription_variant.selling_plan_allocations.size > 0 %}
+        <fieldset
+          class="again-subscribe-promo__frequency-options"
+          data-frequency-options
+          {% if default_allocation == blank %}
+            hidden
+          {% endif %}
+        >
+          <legend class="again-subscribe-promo__frequency-heading">
+            {{ block.settings.frequency_label | escape }}
+          </legend>
+
+          <div class="again-subscribe-promo__frequency-list">
+            {% assign matched_frequency_count = 0 %}
+            {% for configured_frequency in configured_frequencies %}
+              {% assign configured_frequency_key = configured_frequency
+                | downcase
+                | remove: 'delivery'
+                | remove: 'deliver'
+                | remove: 'every'
+                | remove: ' '
+                | remove: 's'
+              %}
+              {% assign matched_allocation = blank %}
+              {% for allocation in subscription_variant.selling_plan_allocations %}
+                {% assign allocation_frequency = allocation.selling_plan.name %}
+                {% if allocation.selling_plan.options.size > 0 %}
+                  {% assign allocation_frequency = allocation.selling_plan.options.first.value %}
+                {% endif %}
+                {% assign allocation_frequency_key = allocation_frequency
+                  | downcase
+                  | remove: 'delivery'
+                  | remove: 'deliver'
+                  | remove: 'every'
+                  | remove: ' '
+                  | remove: 's'
+                %}
+                {% if allocation_frequency_key == configured_frequency_key %}
+                  {% assign matched_allocation = allocation %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+
+              {% if matched_allocation != blank %}
+                {% assign matched_frequency_count = matched_frequency_count | plus: 1 %}
+                {% assign frequency_label = configured_frequency
+                  | strip
+                  | downcase
+                  | remove: 'delivery'
+                  | remove: 'deliver'
+                  | remove: 'every'
+                  | replace: ' weeks', ' Wks'
+                  | replace: ' week', ' Wk'
+                %}
+                {% assign plan_input_id = input_id_prefix
+                  | append: '-frequency-'
+                  | append: matched_allocation.selling_plan.id
+                %}
+                {% liquid
+                  assign plan_discount_amount = subscription_variant.price | minus: matched_allocation.price
+                  assign plan_discount_percent = 0
+                  if subscription_variant.price > 0 and plan_discount_amount > 0
+                    assign plan_discount_percent = plan_discount_amount | times: 100.0 | divided_by: subscription_variant.price | round
+                  endif
+                %}
+                <div class="again-subscribe-promo__frequency-option">
+                  <input
+                    id="{{ plan_input_id }}"
+                    class="again-subscribe-promo__frequency-radio"
+                    type="radio"
+                    name="frequency-{{ input_id_prefix }}"
+                    value="{{ matched_allocation.selling_plan.id }}"
+                    data-frequency-option
+                    data-plan-discount="{{ plan_discount_percent }}"
+                    data-plan-compare-price="{{ subscription_variant.price | money_without_trailing_zeros | escape }}"
+                    data-plan-price="{{ matched_allocation.price | money_without_trailing_zeros | escape }}"
+                    {% if default_allocation != blank
+                      and matched_allocation.selling_plan.id == default_allocation.selling_plan.id
+                    %}
+                      checked
+                    {% endif %}
+                  >
+                  <label for="{{ plan_input_id }}">{{ frequency_label | escape }}</label>
+                </div>
+              {% endif %}
+            {% endfor %}
+
+            {% if matched_frequency_count == 0 %}
+              {% for allocation in subscription_variant.selling_plan_allocations %}
+                {% assign allocation_frequency = allocation.selling_plan.name %}
+                {% if allocation.selling_plan.options.size > 0 %}
+                  {% assign allocation_frequency = allocation.selling_plan.options.first.value %}
+                {% endif %}
+                {% assign frequency_label = allocation_frequency
+                  | strip
+                  | downcase
+                  | remove: 'delivery'
+                  | remove: 'deliver'
+                  | remove: 'every'
+                  | replace: ' weeks', ' Wks'
+                  | replace: ' week', ' Wk'
+                %}
+                {% assign plan_input_id = input_id_prefix
+                  | append: '-frequency-'
+                  | append: allocation.selling_plan.id
+                %}
+                {% liquid
+                  assign plan_discount_amount = subscription_variant.price | minus: allocation.price
+                  assign plan_discount_percent = 0
+                  if subscription_variant.price > 0 and plan_discount_amount > 0
+                    assign plan_discount_percent = plan_discount_amount | times: 100.0 | divided_by: subscription_variant.price | round
+                  endif
+                %}
+                <div class="again-subscribe-promo__frequency-option">
+                  <input
+                    id="{{ plan_input_id }}"
+                    class="again-subscribe-promo__frequency-radio"
+                    type="radio"
+                    name="frequency-{{ input_id_prefix }}"
+                    value="{{ allocation.selling_plan.id }}"
+                    data-frequency-option
+                    data-plan-discount="{{ plan_discount_percent }}"
+                    data-plan-compare-price="{{ subscription_variant.price | money_without_trailing_zeros | escape }}"
+                    data-plan-price="{{ allocation.price | money_without_trailing_zeros | escape }}"
+                    {% if allocation.selling_plan.id == default_allocation.selling_plan.id %}
+                      checked
+                    {% endif %}
+                  >
+                  <label for="{{ plan_input_id }}">{{ frequency_label | escape }}</label>
+                </div>
+              {% endfor %}
+            {% endif %}
+          </div>
+        </fieldset>
+      {% endif %}
+
+      {% if request.design_mode and subscription_variant.selling_plan_allocations.size == 0 %}
+        <p class="again-subscribe-promo__plan-warning">
+          This product has no Shopify subscription selling plans. Configure the product's selling plans to show the
+          subscription option and delivery frequencies.
+        </p>
+      {% endif %}
+    </div>
+  </div>
+</again-subscribe-promo>
