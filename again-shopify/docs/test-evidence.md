@@ -72,6 +72,34 @@ The intended behavior, confirmed by the merchant, is Companion fulfillment on th
 2. Capture a later renewal for that same subscription showing Balm only.
 3. Verify component inventory changes and fulfillment reflect those order lines.
 
+## T031 — Customer account and subscription management
+
+**Status: Partially verified.** Merchant-provided screenshots show the management entry points and a signed-in subscription details page. They do not show completion of skip, pause/resume, frequency change, or cancellation, so those actions remain unverified.
+
+### Setup and customer flow shown
+
+1. The signed-in storefront account menu contains a **Management page** link.
+2. The order confirmation page for a subscribed Balm order displays **Manage your subscription** and explains that customers can continue to their account to view and manage subscriptions.
+3. The customer account Orders page displays **Manage subscription** for subscription orders #1004 and #1002. The one-time Companion order #1003 has no such button, as expected.
+4. The subscription management page displays the Balm, next order date, **Skip**, **Pause**, and **Cancel** controls. It also shows a pencil control beside delivery frequency, plus payment and shipping-address details.
+
+### Results
+
+| Check/action | Result | Evidence / notes |
+|---|---|---|
+| Account menu entry point | Pass | Management page link is visible in the signed-in account menu. |
+| Order confirmation entry point | Pass | Subscribed Balm confirmation page shows **Manage your subscription**. |
+| Orders-page entry point | Pass | **Manage subscription** appears for subscription orders #1004 and #1002; it is absent from one-time Companion order #1003. |
+| Subscription management page loads | Pass | Signed-in page shows upcoming order, product, frequency, payment, address, and management controls. |
+| Skip next order | Not tested | **Skip** is visible; no confirmation or changed upcoming-order state was supplied. |
+| Pause and resume | Not tested | **Pause** is visible; no paused or resumed state was supplied. |
+| Change delivery frequency | Not tested | Pencil control is visible beside “Deliver every 6 weeks”; no edited frequency or saved result was supplied. |
+| Cancel subscription | Not tested | **Cancel** is visible; no cancellation confirmation or resulting status was supplied. |
+
+### Follow-up tests
+
+Use a disposable development-store subscription, and capture the resulting page or Admin state after each action. Test skip, pause, resume, and frequency change first. Test cancellation last because it ends the subscription and cannot be undone. For frequency change, verify the new frequency is actually saved on the subscription and reflected in the next order; a visible pencil icon alone does not establish that customer changes are supported.
+
 ## Evidence references
 
 - Merchant-provided Shopify Admin screenshot: three purchase options—4 weeks / 10% off, 6 weeks / 15% off, 8 weeks / 20% off.
@@ -81,4 +109,5 @@ The intended behavior, confirmed by the merchant, is Companion fulfillment on th
 - Merchant-provided Order #1003 screenshot: one-time Companion only, $15.00; it does not show a bundle or subscription.
 - Merchant-provided Order #1002 screenshot: Balm only at $29.75 with the six-week plan; same initial November 9 order as above, not a later renewal.
 - Merchant-provided Balm PDP screenshots: 6 weeks / 15% off is the selected default at $29.75; 4 weeks displays 10% off at $31.50; 8 weeks displays 20% off at $28.00.
+- Merchant-provided T031 screenshots: account menu Management page link; subscribed order confirmation Manage your subscription link; Orders page Manage subscription buttons for #1004 and #1002 but not one-time order #1003; and the signed-in subscription page with Skip, Pause, Cancel, and delivery-frequency edit controls. Screenshots show controls, not completed actions.
 - Related provider decision and official documentation: [`decisions.md`](./decisions.md).
