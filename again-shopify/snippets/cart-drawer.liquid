@@ -63,7 +63,7 @@
       {%- endif -%}
       <div class="drawer__header">
         <h2 id="CartDrawerHeading" class="drawer__heading">
-          {{ 'sections.cart.title' | t }}
+          {{ 'sections.cart.title' | t }} ({{ cart.item_count }})
         </h2>
         <button
           class="drawer__close"
@@ -532,8 +532,8 @@
           </div>
 
           <div class="totals" role="status">
-            <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
-            <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
+            <h2 class="totals__total">{{ 'sections.cart.subtotal' | t }}</h2>
+            <p class="totals__total-value">{{ cart.total_price | money }}</p>
           </div>
 
           <small class="tax-note caption-large rte">

@@ -14,8 +14,12 @@
 <div class="free-shipping-bar">
   {%- if remaining_cents > 0 -%}
     <p class="free-shipping-bar__message" role="status" aria-live="polite" aria-atomic="true">
-      {{ settings.free_shipping_message | escape }}
-      <strong>{{ remaining_cents | money }}</strong>
+      <span class="free-shipping-bar__icon" aria-hidden="true">
+        {{- 'icon-truck.svg' | inline_asset_content -}}
+      </span>
+      <span>
+        You're <strong>{{ remaining_cents | money }}</strong> away from free shipping
+      </span>
     </p>
   {%- else -%}
     <p class="free-shipping-bar__message" role="status" aria-live="polite" aria-atomic="true">
