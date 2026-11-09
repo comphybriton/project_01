@@ -55,11 +55,30 @@ The additional Balm PDP screenshots show:
 3. In a test customer account, check skip, pause/resume, frequency change, and cancellation. Record each result separately; storefront checkout evidence does not prove portal behavior.
 4. Place a suitable test order and inspect a renewal before claiming the Starter Kit's component fulfillment or inventory behavior is verified.
 
+## T030 — Starter Kit composition and renewal behavior
+
+**Status: Not verified; the supplied orders do not establish Starter Kit bundle behavior.**
+
+| Test order | Screenshot contents | What it establishes | T030 result |
+|---|---|---|---|
+| #1003 | Companion only, $15.00, one-time order | A separate Companion purchase can be completed. It is not shown as part of a Starter Kit or Balm subscription. | Does not verify Companion is included with the first Balm subscription order. |
+| #1002 | Balm only, $29.75, “Deliver every 6 weeks, 15% off” | A Balm line was purchased with a six-week selling plan. This is the same November 9 order already documented above, not a later renewal. | Does not verify a repeat charge or that the Companion is excluded from renewals. |
+
+The intended behavior, confirmed by the merchant, is Companion fulfillment on the initial subscription order only, followed by Balm-only renewals. No supplied order screenshot shows a Starter Kit order containing the Balm and Companion together, nor a later renewal linked to the initial subscription. The intended behavior is therefore clear but remains unverified.
+
+### Remaining evidence needed
+
+1. Capture the initial subscription order showing the Balm and Companion with actual contents and quantities.
+2. Capture a later renewal for that same subscription showing Balm only.
+3. Verify component inventory changes and fulfillment reflect those order lines.
+
 ## Evidence references
 
 - Merchant-provided Shopify Admin screenshot: three purchase options—4 weeks / 10% off, 6 weeks / 15% off, 8 weeks / 20% off.
 - Merchant-provided cart screenshot: one-time Starter Kit ($45.00), subscribed Starter Kit ($38.25), Companion ($15.00), one-time Balm ($35.00), and subscribed Balm ($29.75); both subscription lines show six weeks and 15% off.
 - Merchant-provided checkout screenshot: subscribed Starter Kit ($38.25), Companion ($15.00), one-time Balm ($35.00), and subscribed Balm ($29.75); checkout shows the recurring-charge disclosure.
 - Merchant-provided order screenshots for #1001 and #1002: a $35 one-time Balm order has no subscription cadence, and a $29.75 Balm order records “Deliver every 6 weeks, 15% off.”
+- Merchant-provided Order #1003 screenshot: one-time Companion only, $15.00; it does not show a bundle or subscription.
+- Merchant-provided Order #1002 screenshot: Balm only at $29.75 with the six-week plan; same initial November 9 order as above, not a later renewal.
 - Merchant-provided Balm PDP screenshots: 6 weeks / 15% off is the selected default at $29.75; 4 weeks displays 10% off at $31.50; 8 weeks displays 20% off at $28.00.
 - Related provider decision and official documentation: [`decisions.md`](./decisions.md).
