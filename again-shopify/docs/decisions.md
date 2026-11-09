@@ -3,7 +3,7 @@
 ## T027 — Subscription app evaluation
 
 **Reviewed:** 2026-11-09
-**Status:** Shopify Subscriptions selected for the development store. The provided screenshots show a 6-week, 15%-off subscription line in the cart and checkout. Other frequency prices, customer portal actions, and renewal fulfillment still need verification.
+**Status:** Shopify Subscriptions selected for the development store. The Balm PDP screenshots show all configured frequencies and prices, with six weeks selected by default. Cart/order evidence confirms one-time versus six-week behavior. Four- and eight-week order submission, customer portal actions, and Kit renewal fulfillment still need verification.
 
 ### Requirements used for the comparison
 
@@ -22,8 +22,8 @@ Legend: **Yes** means documented publicly for the capability category; **Partial
 
 | Capability | Shopify Subscriptions |
 |---|---|
-| 4/6/8-week frequencies and frequency-specific discounts | **Configured in the store.** Admin screenshot shows 4 weeks at 10%, 6 weeks at 15%, and 8 weeks at 20%. The cart/checkout screenshots confirm the 6-week, 15% option. Verify the other two plan allocations in the storefront. |
-| Real selling plan through cart/checkout | **Demonstrated for the 6-week plan.** The Starter Kit appears at $38.25 (15% off $45) with “Deliver every 6 weeks, 15% off” and a recurring-charge notice. The Balm appears at $29.75 (15% off $35). |
+| 4/6/8-week frequencies and frequency-specific discounts | **Configured and shown on the Balm PDP.** Screenshots show 4 weeks / 10% at $31.50, 6 weeks / 15% at $29.75 (selected by default), and 8 weeks / 20% at $28.00. Cart/order submission evidence is available for six weeks; verify four and eight weeks through checkout/order. |
+| Real selling plan through cart/checkout/order | **Demonstrated for the 6-week plan.** The Starter Kit appears at $38.25 (15% off $45) and the Balm at $29.75 (15% off $35) in cart/checkout. Order #1002 records the Balm's “Deliver every 6 weeks, 15% off” plan. Separate one-time order #1001 has no subscription cadence. |
 | Customer portal: skip, pause, change frequency, cancel | **Partial / still verify.** Shopify documents skip, pause/resume, and cancellation for customers. Its customer-facing documentation does not list customer-initiated frequency changes; test whether the current account experience offers this action. |
 | Customer accounts compatibility | **Yes.** Shopify Subscriptions customer management uses Shopify customer accounts; verify the configured account experience in this store. |
 | Starter Kit recurrence | **Selling plan demonstrated; fulfillment not yet verified.** The screenshots show a selling plan on the standalone Starter Kit product. Confirm that each renewal order contains and fulfills both the Balm and Companion. |
@@ -42,7 +42,7 @@ Legend: **Yes** means documented publicly for the capability category; **Partial
 
 **Shopify Subscriptions is the selected provider for this development store**, following the merchant's preference and the supplied Admin, cart, and checkout screenshots. The screenshots provide concrete evidence that a 6-week plan with a 15% discount reaches cart and checkout for both the standalone Starter Kit and Balm. At those prices, the evidenced recurring amounts are $38.25 for the $45 Kit and $29.75 for the $35 Balm.
 
-Shopify Subscriptions is preferred over a third-party app for this scope because its native selling plans are already configured and the screenshots show their selected 6-week plan flowing through checkout. Do not interpret that as proof that all acceptance criteria have passed: the 4- and 8-week price allocations, customer-initiated frequency changes, and actual renewal fulfillment still require testing.
+Shopify Subscriptions is preferred over a third-party app for this scope because its native selling plans are configured and screenshots show all three frequency/discount combinations on the Balm PDP, plus distinct one-time and six-week orders. Do not interpret that as proof that all acceptance criteria have passed: four- and eight-week cart/order submission, customer-initiated frequency changes, and actual renewal fulfillment still require testing.
 
 ### Scope and proof-of-concept gates
 
@@ -50,8 +50,8 @@ The approved Starter Kit PDP requirement is that the **full Starter Kit, includi
 
 Run these checks in the development store before accepting the provider:
 
-1. Confirm the Admin plan group has 4 weeks at 10%, 6 weeks at 15%, and 8 weeks at 20% for each intended product. Verify all three selling-plan allocations and prices on the storefront; the screenshots only evidence the 6-week plan so far.
-2. Select one-time and subscription options separately. Verify the correct product variant and selected selling-plan ID in cart and checkout; one-time must submit no selling plan. The supplied screenshots demonstrate the 6-week subscription line and checkout notice.
+1. Confirm the Admin plan group has 4 weeks at 10%, 6 weeks at 15%, and 8 weeks at 20% for each intended product. Balm PDP evidence shows the three prices; verify cart/checkout/order submission for four and eight weeks.
+2. Select one-time and subscription options separately. Verify the correct product variant and selected selling-plan ID in cart and checkout; one-time must submit no selling plan. Orders #1001 and #1002 demonstrate a one-time Balm order without cadence and a Balm order with the six-week plan.
 3. Sign in using the store's configured customer-account mode. Exercise skip, pause/resume, frequency change, and cancellation; note whether frequency changes are supported for customers. Record screenshots or equivalent evidence in `test-evidence.md`.
 4. Confirm whether the intended Balm subscription ships only Balm on renewals and whether the standalone Starter Kit subscription repeats both Balm and Companion. Verify order lines, quantities, component inventory, and fulfillment on a renewal test.
 5. Confirm supported payment gateway, customer notifications, and relevant store/payment processing fees before production use.
@@ -63,6 +63,8 @@ Reviewed on 2026-11-09:
 - Merchant-provided Shopify Admin screenshot: selling plans are configured at 4 weeks / 10% off, 6 weeks / 15% off, and 8 weeks / 20% off.
 - Merchant-provided cart screenshot: one-time Starter Kit $45.00; 6-week subscribed Starter Kit $38.25 with “15% off”; one-time Balm $35.00; and 6-week subscribed Balm $29.75 with “15% off”.
 - Merchant-provided checkout screenshot: includes the 6-week Starter Kit subscription and displays Shopify's recurring-charge notice.
+- Merchant-provided order screenshots: order #1001 records a $35 one-time Balm without subscription cadence; order #1002 records a $29.75 Balm with “Deliver every 6 weeks, 15% off.”
+- Merchant-provided Balm PDP screenshots: six weeks / 15% off is the selected default at $29.75; four weeks shows 10% off at $31.50; eight weeks shows 20% off at $28.00.
 - [Shopify Subscriptions overview](https://help.shopify.com/en/manual/products/purchase-options/subscriptions/shopify-subscriptions) — plan types, discounts, merchant and customer subscription actions.
 - [Shopify Subscriptions customer experience](https://help.shopify.com/en/manual/products/purchase-options/subscriptions/shopify-subscriptions/customer-experience) — customer-account actions; documents skip, pause/resume, and cancellation.
 - [Shopify Subscriptions eligibility considerations](https://help.shopify.com/en/manual/products/purchase-options/subscriptions/shopify-subscriptions/considerations) — explicitly states that bundles are not compatible with Shopify Subscriptions.
