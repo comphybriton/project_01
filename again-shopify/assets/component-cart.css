@@ -220,3 +220,24 @@ cart-items {
     gap: 1rem;
   }
 }
+
+.free-shipping-bar__track {
+  height: 0.6rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background-color: rgba(var(--color-foreground), 0.12);
+}
+
+.free-shipping-bar__fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background-color: rgb(var(--color-button));
+  transition: width 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .free-shipping-bar__fill {
+    transition: none;
+  }
+}

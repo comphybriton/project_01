@@ -287,6 +287,8 @@
       "title": "Your cart",
       "caption": "Cart items",
       "remove_title": "Remove {{ title }}",
+      "free_shipping_unlocked": "You've unlocked free shipping!",
+      "free_shipping_progress": "Free shipping progress",
       "estimated_total": "Estimated total",
       "new_estimated_total": "New estimated total",
       "note": "Order special instructions",

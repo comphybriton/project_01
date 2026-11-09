@@ -1,0 +1,37 @@
+{%- liquid
+  assign shipping_threshold_cents = settings.free_shipping_threshold | times: 100
+  assign eligible_subtotal_cents = cart.items_subtotal_price
+
+  if shipping_threshold_cents > 0 and eligible_subtotal_cents < shipping_threshold_cents
+    assign remaining_cents = shipping_threshold_cents | minus: eligible_subtotal_cents
+    assign progress_percent = eligible_subtotal_cents | times: 100.0 | divided_by: shipping_threshold_cents | round | at_most: 100
+  else
+    assign remaining_cents = 0
+    assign progress_percent = 100
+  endif
+-%}
+
+<div class="free-shipping-bar">
+  {%- if remaining_cents > 0 -%}
+    <p class="free-shipping-bar__message" role="status" aria-live="polite" aria-atomic="true">
+      {{ settings.free_shipping_message | escape }}
+      <strong>{{ remaining_cents | money }}</strong>
+    </p>
+  {%- else -%}
+    <p class="free-shipping-bar__message" role="status" aria-live="polite" aria-atomic="true">
+      {{ 'sections.cart.free_shipping_unlocked' | t }}
+    </p>
+  {%- endif -%}
+
+  <div
+    class="free-shipping-bar__track"
+    role="progressbar"
+    aria-label="{{ 'sections.cart.free_shipping_progress' | t }}"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    aria-valuenow="{{ progress_percent }}"
+    aria-valuetext="{{ progress_percent }}%"
+  >
+    <span class="free-shipping-bar__fill" style="width: {{ progress_percent }}%"></span>
+  </div>
+</div>
